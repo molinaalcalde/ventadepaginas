@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import BlogTOC from "@/components/blog/BlogTOC";
 
+const baseUrl = "https://ventadepaginas.vercel.app";
+
 // --- Static params ---
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -24,7 +26,51 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `${baseUrl}/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      url: `${baseUrl}/blog/${post.slug}`,
+      locale: "es_DO",
+      siteName: "KINETIC Cloud & Web",
+      authors: ["KINETIC Cloud & Web"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
+}
+
+// --- BlogPosting JSON-LD ---
+function BlogPostJsonLd({ post }: { post: { title: string; excerpt: string; date: string; slug: string; author: string } }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Organization",
+      name: "KINETIC Cloud & Web",
+    },
+    publisher: {
+      "@id": `${baseUrl}/#business`,
+    },
+    url: `${baseUrl}/blog/${post.slug}`,
+    inLanguage: "es",
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
 }
 
 // --- Page ---
@@ -44,6 +90,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <BlogPostJsonLd post={post} />
       <Header />
 
       {/* Hero */}
@@ -93,7 +140,7 @@ export default async function BlogPostPage({
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-12 xl:gap-16 items-start">
 
-            {/* ── Article content ── */}
+            {/* Article content */}
             <article className="flex-1 min-w-0 max-w-[720px]">
               <div
                 className="
@@ -111,7 +158,7 @@ export default async function BlogPostPage({
               />
             </article>
 
-            {/* ── Sticky Sidebar TOC ── */}
+            {/* Sticky Sidebar TOC */}
             {post.headings.length > 0 && (
               <aside className="hidden lg:block w-64 xl:w-72 shrink-0">
                 <div className="sticky top-28">
@@ -137,7 +184,7 @@ export default async function BlogPostPage({
             negocio en menos de 24 horas.
           </p>
           <a
-            href="https://wa.me/1809XXXXXXX?text=Hola,%20le%C3%AD%20su%20blog%20y%20quiero%20una%20propuesta"
+            href="https://wa.me/18091234567?text=Hola,%20le%C3%AD%20su%20blog%20y%20quiero%20una%20propuesta"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-coral hover:bg-coral-hover text-white font-bold px-8 py-4 rounded-full shadow-coral hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"

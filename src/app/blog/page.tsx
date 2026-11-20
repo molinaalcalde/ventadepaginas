@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Blog | Consejos para hacer crecer tu negocio",
   description:
     "Consejos prácticos para hacer crecer tu negocio con una web profesional, WhatsApp Business y gestión de clientes.",
+  alternates: {
+    canonical: "https://ventadepaginas.vercel.app/blog",
+  },
 };
 
 export default function BlogPage() {

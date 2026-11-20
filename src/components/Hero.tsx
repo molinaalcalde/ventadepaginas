@@ -109,32 +109,32 @@ export default function Hero() {
           </motion.div>
 
           {/* Main Headline */}
-          <div className="mb-8 space-y-1">
+          <h1 className="mb-8 space-y-1">
             <TextReveal
-              as="h1"
-              className="text-fluid-hero font-display font-extrabold text-navy-deep leading-[1.1] tracking-tight"
+              as="span"
+              className="block text-fluid-hero font-display font-extrabold text-navy-deep leading-[1.1] tracking-tight"
               delay={0.4}
               splitBy="words"
             >
               Tus clientes te encuentran.
             </TextReveal>
             <TextReveal
-              as="h1"
-              className="text-fluid-hero font-display font-extrabold text-navy-deep leading-[1.1] tracking-tight"
+              as="span"
+              className="block text-fluid-hero font-display font-extrabold text-navy-deep leading-[1.1] tracking-tight"
               delay={0.7}
               splitBy="words"
             >
               Te escriben por WhatsApp.
             </TextReveal>
-            <motion.h1
-              className="text-fluid-hero font-serif italic text-coral leading-[1.1] tracking-tight"
+            <motion.span
+              className="block text-fluid-hero font-serif italic text-coral leading-[1.1] tracking-tight"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 1.1, ease: "easeOut" }}
             >
               Tú solo cierra ventas.
-            </motion.h1>
-          </div>
+            </motion.span>
+          </h1>
 
           {/* Subtitle */}
           <ScrollReveal

@@ -53,7 +53,7 @@ export default function Header() {
         {/* Logo + Desktop Nav */}
         <div className="flex items-center gap-8">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
+          <a href="/" className="flex items-center gap-2.5 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-white shadow-teal transition-transform group-hover:scale-105">
               <svg
                 width="22"

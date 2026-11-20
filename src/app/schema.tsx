@@ -3,7 +3,7 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": "ProfessionalService",
         "@id": "https://ventadepaginas.vercel.app/#business",
         name: "KINETIC Cloud & Web",
         description:
@@ -28,12 +28,6 @@ export function JsonLd() {
           closes: "18:00",
         },
         priceRange: "$$",
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "45",
-          bestRating: "5",
-        },
         areaServed: [
           { "@type": "Country", name: "República Dominicana" },
           { "@type": "Country", name: "Panamá" },
@@ -60,10 +54,6 @@ export function JsonLd() {
         serviceType: "Diseño y Desarrollo Web",
         description:
           "Páginas web profesionales con CRM y WhatsApp Business integrado. Entrega en 2 semanas. Incluye dominio, hosting y soporte.",
-        offers: {
-          "@type": "Offer",
-          description: "Web profesional + Gestor de clientes + WhatsApp + Dominio + Hosting",
-        },
         areaServed: {
           "@type": "Country",
           name: "República Dominicana",
@@ -75,10 +65,10 @@ export function JsonLd() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "¿Necesito pagar licencias adicionales por el CRM?",
+            name: "¿Necesito pagar licencias adicionales por el gestor de clientes?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. El CRM está integrado directamente en tu web, no necesitas pagar licencias de HubSpot, Salesforce ni ningún software adicional. Todo viene incluido en tu plan.",
+              text: "No. El gestor de clientes está integrado directamente en tu web, no necesitas pagar licencias de HubSpot, Salesforce ni ningún software adicional. Todo viene incluido en tu plan.",
             },
           },
           {
@@ -94,7 +84,7 @@ export function JsonLd() {
             name: "¿Cuánto tiempo tarda en estar lista mi web?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "2 semanas exactas desde nuestra primera conversación. Incluye diseño, desarrollo, CRM y lanzamiento.",
+              text: "2 semanas exactas desde nuestra primera conversación. Incluye diseño, desarrollo, gestor de clientes y lanzamiento.",
             },
           },
           {

@@ -28,9 +28,9 @@ const sectorLinks = [
 ];
 
 const legalLinks = [
-  { label: "Aviso Legal", href: "/aviso-legal" },
-  { label: "Privacidad", href: "/privacidad" },
-  { label: "Cookies", href: "/cookies" },
+  { label: "Aviso Legal", href: "#" },
+  { label: "Privacidad", href: "#" },
+  { label: "Cookies", href: "#" },
 ];
 
 export default function Footer() {
@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand column */}
           <ScrollReveal direction="up" delay={0} className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-2.5 mb-5">
+            <a href="/" className="flex items-center gap-2.5 mb-5">
               <span className="flex items-center justify-center w-9 h-9 bg-primary rounded-lg">
                 <svg
                   width="20"
