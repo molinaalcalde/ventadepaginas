@@ -26,13 +26,13 @@ export default function Hero() {
       {/* ── Light gradient mesh background ── */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-surface-soft to-white" />
 
-      {/* Teal glow orb — very subtle */}
+      {/* Warm peach glow orb — very subtle */}
       <motion.div
         className="absolute w-[700px] h-[700px] rounded-full blur-[140px]"
         style={{
           background:
-            "radial-gradient(circle, var(--color-primary) 0%, transparent 70%)",
-          opacity: 0.07,
+            "radial-gradient(circle, var(--color-warm-blush) 0%, transparent 70%)",
+          opacity: 0.5,
           top: "5%",
           left: "10%",
         }}
@@ -47,13 +47,13 @@ export default function Hero() {
         }}
       />
 
-      {/* Coral glow orb — very subtle */}
+      {/* Warm cream glow orb — very subtle */}
       <motion.div
         className="absolute w-[550px] h-[550px] rounded-full blur-[110px]"
         style={{
           background:
-            "radial-gradient(circle, var(--color-coral) 0%, transparent 70%)",
-          opacity: 0.06,
+            "radial-gradient(circle, var(--color-warm-peach) 0%, transparent 70%)",
+          opacity: 0.8,
           bottom: "15%",
           right: "8%",
         }}
@@ -68,13 +68,13 @@ export default function Hero() {
         }}
       />
 
-      {/* Secondary teal accent — very subtle */}
+      {/* Secondary warm blush accent — very subtle */}
       <motion.div
         className="absolute w-[320px] h-[320px] rounded-full blur-[90px]"
         style={{
           background:
-            "radial-gradient(circle, var(--color-primary) 0%, transparent 70%)",
-          opacity: 0.05,
+            "radial-gradient(circle, var(--color-warm-blush) 0%, transparent 70%)",
+          opacity: 0.4,
           top: "55%",
           right: "28%",
         }}
@@ -146,9 +146,7 @@ export default function Hero() {
             className="max-w-2xl mx-auto mb-12"
           >
             <p className="text-slate-text text-lg lg:text-xl leading-relaxed">
-              Diseño web de alto impacto con gestión de clientes y WhatsApp
-              integrado. Todo listo en 2 semanas, sin que toques una línea de
-              código.
+              Tu negocio merece una web que trabaje para ti. Recibe clientes desde Google, respóndeles por WhatsApp y véndeles más — todo en automático.
             </p>
           </ScrollReveal>
 

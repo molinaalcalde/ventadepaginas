@@ -23,11 +23,11 @@ export default function Features() {
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <ScrollReveal direction="up">
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary-light text-primary text-sm font-medium mb-4">
-              Todo lo necesario, nada de paja
+              Más clientes, más ventas, menos estrés
             </span>
           </ScrollReveal>
           <TextReveal as="h2" className="text-fluid-h2 font-bold text-navy-deep leading-tight">
-            Las 3 cosas que hacen único a nuestro sistema
+            Todo lo que necesitas para vender más por internet
           </TextReveal>
         </div>
 
@@ -40,17 +40,14 @@ export default function Features() {
                 1
               </span>
               <span className="text-sm font-semibold text-coral uppercase tracking-wide">
-                Presencia y Velocidad
+                TU IMAGEN PROFESIONAL
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Una web rápida y bonita que da confianza al primer vistazo
+              Una web que enamora a tus clientes desde el primer segundo
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Tu negocio se juega la primera impresión en 3 segundos. Creamos
-              páginas limpias, modernas y ultrarápidas que cargan al instante en
-              cualquier celular. Sin plantillas pesadas ni menús confusos que
-              espanten ventas.
+              La primera impresión importa. Cuando un cliente busca tu negocio en Google y encuentra una web rápida, bonita y profesional, ya ganaste su confianza. El 92% de las personas confían más en un negocio con web profesional.
             </p>
             <ul className="space-y-5">
               <FeatureItem
@@ -111,7 +108,7 @@ export default function Features() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 lg:mb-32">
           {/* Visual */}
           <ScrollReveal direction="left" className="lg:col-span-7 order-1">
-            <div className="bg-surface-soft rounded-2xl border border-border-subtle p-6 shadow-soft">
+            <div className="bg-warm-cream rounded-2xl border border-border-subtle p-6 shadow-soft">
               <div className="flex items-center justify-between mb-5">
                 <h4 className="font-semibold text-navy-deep text-sm">Bandeja de Contactos</h4>
                 <span className="text-xs text-slate-light">3 nuevos hoy</span>
@@ -156,12 +153,10 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Nada se te pierde: cada cliente que llega, tú lo sabes
+              Nunca más se te pierde un cliente
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Nada de programas raros en inglés que nadie entiende. Con nuestro
-              gestor de clientes, ves quién te escribió, qué necesita y cuándo
-              darle seguimiento — todo desde tu celular.
+              Imagina que cada persona que te escribe queda guardada automáticamente con su nombre, teléfono y qué necesita. Te avisa cuándo darle seguimiento. Es como tener un asistente que nunca se le olvida nada — y lo manejas todo desde tu celular.
             </p>
             <ul className="space-y-5">
               <FeatureItem
@@ -196,13 +191,10 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Tranquilidad absoluta: nosotros nos encargamos de todo lo técnico
+              Tú atiende a tus clientes, nosotros nos encargamos del resto
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Dominio, servidor de alta velocidad, copias de seguridad diarias y
-              certificados de seguridad. Tú no te preocupas de nada técnico. Y si
-              necesitas cambiar algo, nos escribes y lo tienes resuelto en menos
-              de 30 minutos.
+              Dominio, servidor, seguridad, actualizaciones... todo eso lo manejamos nosotros. Tú solo te concentras en lo que sabes hacer: atender a tu gente.
             </p>
             <ul className="space-y-5">
               <FeatureItem

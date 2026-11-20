@@ -7,37 +7,37 @@ import { ScrollReveal } from "@/components/animations/ScrollReveal";
 const rows = [
   {
     feature: "Tiempo de entrega",
-    kinetic: "2 semanas",
+    kinetic: "Lista en 14 días",
     agency: "2–6 meses",
     diy: "Meses de frustración",
   },
   {
     feature: "Gestor de clientes + WhatsApp",
-    kinetic: "Integrado, sin software extra",
+    kinetic: "Incluido y conectado a tu WhatsApp",
     agency: "Te cobran otro software aparte",
     diy: "Plugins que fallan",
   },
   {
     feature: "Diseño",
-    kinetic: "100% a tu medida",
+    kinetic: "Diseño único para tu negocio",
     agency: "Reciclan plantillas",
     diy: "Idéntica a miles de páginas",
   },
   {
     feature: "Propiedad",
-    kinetic: "El código es tuyo, sin permanencia",
+    kinetic: "Tuyo para siempre, sin amarres",
     agency: "Te amarran con contratos",
     diy: "Atrapado en su plataforma",
   },
   {
     feature: "Soporte",
-    kinetic: "WhatsApp directo (< 30 min)",
+    kinetic: "Te respondemos por WhatsApp en minutos",
     agency: "Tickets de 72 horas",
     diy: "Chatbots sin solución",
   },
   {
     feature: "Gestor de clientes (CRM)",
-    kinetic: "Incluido — te ahorras $50-200/mes en HubSpot o Salesforce",
+    kinetic: "Incluido — te ahorras hasta $200/mes en software",
     agency: "Te cobran licencia aparte ($50-200/mes extra)",
     diy: "No existe o plugins que se rompen",
   },
@@ -50,7 +50,7 @@ export default function Comparison() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary-light text-primary text-sm font-semibold tracking-wide mb-4">
-            Transparencia Total
+            Compara y decide
           </span>
           <TextReveal
             as="h2"
@@ -85,7 +85,7 @@ export default function Comparison() {
                         />
                       </svg>
                       <span className="text-sm font-bold text-white tracking-wide uppercase">
-                        KINETIC Web
+                        KINETIC
                       </span>
                     </div>
                   </th>

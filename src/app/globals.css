@@ -31,6 +31,11 @@
   --color-surface-card: #FFFFFF;
   --color-border-subtle: #E2E8F0;
 
+  /* ── Warm Backgrounds (littlehotelier inspired) ── */
+  --color-warm-peach: #FFF5EE;
+  --color-warm-cream: #FEF7F0;
+  --color-warm-blush: #FFE2D7;
+
   /* ── Border Radius ── */
   --radius-2xl: 1rem;
   --radius-3xl: 1.5rem;

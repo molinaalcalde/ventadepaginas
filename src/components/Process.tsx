@@ -10,7 +10,7 @@ const steps = [
     days: "Días 1-3",
     title: "Nos conocemos",
     description:
-      "Hablamos por WhatsApp o videollamada para entender tu negocio, tus clientes y qué necesitas. Sin tecnicismos.",
+      "Hablamos 30 minutos por WhatsApp o videollamada. Nos cuentas de tu negocio y listo — sin tecnicismos ni reuniones eternas.",
     check: "Briefing completo en 30 min",
     highlighted: true,
     icon: ChatCircleDots,
@@ -20,7 +20,7 @@ const steps = [
     days: "Días 4-7",
     title: "Diseñamos tu web",
     description:
-      "Te enviamos una propuesta visual personalizada para que veas exactamente cómo va a quedar antes de seguir.",
+      "Te mostramos cómo va a quedar tu web antes de construirla. Si no te encanta, la cambiamos hasta que digas 'wow'.",
     check: "Prototipo navegable para revisar",
     highlighted: false,
     icon: Layout,
@@ -30,7 +30,7 @@ const steps = [
     days: "Días 8-11",
     title: "Construimos y conectamos",
     description:
-      "Montamos tu web, conectamos WhatsApp Business y dejamos tu gestor de clientes listo para recibir los primeros contactos.",
+      "Montamos todo: tu web, el gestor de clientes y WhatsApp conectado. Tú no tocas nada técnico.",
     check: "Web + WhatsApp + Gestor integrado",
     highlighted: false,
     icon: Plugs,
@@ -40,7 +40,7 @@ const steps = [
     days: "Día 14",
     title: "¡Al aire!",
     description:
-      "Te explicamos todo en una videollamada de 30 minutos y publicamos tu web. Empiezas a recibir clientes ese mismo día.",
+      "Te enseñamos a usarla en 30 minutos y la publicamos. Ese mismo día empiezas a recibir clientes.",
     check: "Capacitación incluida",
     highlighted: false,
     icon: RocketLaunch,
@@ -51,20 +51,20 @@ export default function Process() {
   return (
     <section
       id="como-funciona"
-      className="py-28 lg:py-36 bg-surface-soft border-y border-border-subtle/80"
+      className="py-28 lg:py-36 bg-warm-cream border-y border-border-subtle/80"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary-light text-primary text-sm font-semibold tracking-wide mb-4">
-            Proceso claro y sin estrés
+            Así de fácil
           </span>
           <TextReveal as="h2" className="text-fluid-h2 font-extrabold text-navy-deep leading-tight">
             De la idea a tu web funcionando en solo{" "}
             <span className="text-primary">2 semanas</span>
           </TextReveal>
           <p className="mt-4 text-slate-light text-base sm:text-lg leading-relaxed">
-            Así de fácil es tener tu web profesional funcionando:
+            Otros te marean con procesos de meses. Nosotros en 14 días estás vendiendo.
           </p>
         </div>
 
