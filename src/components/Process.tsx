@@ -64,7 +64,7 @@ export default function Process() {
             <span className="text-primary">2 semanas</span>
           </TextReveal>
           <p className="mt-4 text-slate-light text-base sm:text-lg leading-relaxed">
-            Sin reuniones eternas ni jerga técnica. En 14 días tu web está lista y recibiendo clientes.
+            Sin reuniones eternas ni tecnicismos. Tú nos cuentas de tu negocio, nosotros hacemos el resto.
           </p>
         </div>
 

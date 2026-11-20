@@ -50,7 +50,7 @@ export default function Comparison() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary-light text-primary text-sm font-semibold tracking-wide mb-4">
-            Compara y decide
+            Compara antes de decidir
           </span>
           <TextReveal
             as="h2"

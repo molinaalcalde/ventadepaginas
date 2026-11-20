@@ -104,7 +104,7 @@ export default function Hero() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-coral" />
             </span>
             <span className="text-sm font-medium text-navy-deep tracking-wide">
-              Mientras lees esto, tu competencia está recibiendo clientes por su web
+              Tu competencia ya tiene web. ¿Y tú?
             </span>
           </motion.div>
 
@@ -116,7 +116,7 @@ export default function Hero() {
               delay={0.4}
               splitBy="words"
             >
-              Tu negocio en Google.
+              La vitrina digital
             </TextReveal>
             <TextReveal
               as="span"
@@ -124,7 +124,7 @@ export default function Hero() {
               delay={0.7}
               splitBy="words"
             >
-              Clientes en tu celular.
+              de tu negocio.
             </TextReveal>
             <motion.span
               className="block text-fluid-hero font-serif italic text-coral leading-[1.1] tracking-tight"
@@ -132,7 +132,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 1.1, ease: "easeOut" }}
             >
-              Ventas en piloto automático.
+              Abierta las 24 horas.
             </motion.span>
           </h1>
 
@@ -145,7 +145,7 @@ export default function Hero() {
             className="max-w-2xl mx-auto mb-12"
           >
             <p className="text-slate-text text-lg lg:text-xl leading-relaxed">
-              El 80% de tus clientes te buscan en Google antes de llamarte. Si no te encuentran, le compran a tu competencia.
+              Tu web es lo primero que ven tus clientes antes de llamarte, visitarte o comprarte. Ya sea que te busquen en Google, en ChatGPT o en redes sociales, tu web es donde deciden si confían en ti.
             </p>
           </ScrollReveal>
 

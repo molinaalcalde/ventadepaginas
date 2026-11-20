@@ -27,7 +27,7 @@ export default function Features() {
             </span>
           </ScrollReveal>
           <TextReveal as="h2" className="text-fluid-h2 font-bold text-navy-deep leading-tight">
-            Una web que trabaja para ti las 24 horas
+            Tu negocio profesional en internet, de principio a fin
           </TextReveal>
         </div>
 
@@ -44,10 +44,10 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Cuando te buscan en Google, te encuentran
+              Tu imagen profesional, donde todos te buscan
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Hoy tus clientes buscan en Google antes de llamar. Si tu negocio no aparece o se ve poco profesional, se van con tu competencia. Te diseñamos una web rápida y profesional que genera confianza desde el primer segundo.
+              Hoy tus clientes te buscan en Google, le preguntan a ChatGPT, o te ven en Instagram. Si no tienes una web profesional, simplemente no existes para ellos. Te diseñamos tu vitrina digital: rápida, profesional y que genera confianza desde el primer segundo.
             </p>
             <ul className="space-y-5">
               <FeatureItem
