@@ -62,9 +62,7 @@ export function JsonLd() {
           "Páginas web profesionales con CRM y WhatsApp Business integrado. Entrega en 2 semanas. Incluye dominio, hosting y soporte.",
         offers: {
           "@type": "Offer",
-          price: "997",
-          priceCurrency: "USD",
-          description: "Plan completo: Web + CRM + WhatsApp + Dominio + Hosting",
+          description: "Web profesional + Gestor de clientes + WhatsApp + Dominio + Hosting",
         },
         areaServed: {
           "@type": "Country",
@@ -101,10 +99,10 @@ export function JsonLd() {
           },
           {
             "@type": "Question",
-            name: "¿Cuánto cuesta?",
+            name: "¿Qué incluye exactamente?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Nuestros planes arrancan desde $997 USD e incluyen todo: web + CRM + WhatsApp + dominio + hosting. Consulta nuestras opciones de pago flexibles.",
+              text: "Todo lo que necesitas: web profesional, gestor de clientes integrado, conexión con WhatsApp Business, dominio, hosting de alta velocidad y soporte directo.",
             },
           },
         ],

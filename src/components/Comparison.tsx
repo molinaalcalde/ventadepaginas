@@ -36,10 +36,10 @@ const rows = [
     diy: "Chatbots sin solución",
   },
   {
-    feature: "Precio",
-    kinetic: "Desde $997 USD con todo",
-    agency: "$2,000–5,000+ sin gestor",
-    diy: "$0 pero tu tiempo vale más",
+    feature: "Gestor de clientes (CRM)",
+    kinetic: "Incluido — te ahorras $50-200/mes en HubSpot o Salesforce",
+    agency: "Te cobran licencia aparte ($50-200/mes extra)",
+    diy: "No existe o plugins que se rompen",
   },
 ];
 

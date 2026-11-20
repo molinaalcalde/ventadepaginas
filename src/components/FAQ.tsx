@@ -32,9 +32,9 @@ const faqs = [
       "Tienes soporte directo por WhatsApp con una persona real. Te respondemos en menos de 30 minutos en horario laboral. Nada de bots ni tickets.",
   },
   {
-    question: "¿Cuánto cuesta?",
+    question: "¿Qué incluye exactamente?",
     answer:
-      "Nuestros planes arrancan desde $997 USD e incluyen todo: web + gestor de clientes + WhatsApp + dominio + hosting. Consulta nuestras opciones de pago flexibles.",
+      "Todo lo que necesitas para recibir clientes online: web profesional, gestor de clientes integrado, conexión con WhatsApp Business, dominio, hosting de alta velocidad y soporte directo. Escríbenos por WhatsApp y te armamos una propuesta personalizada.",
   },
 ];
 
