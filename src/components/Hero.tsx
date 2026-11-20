@@ -104,7 +104,7 @@ export default function Hero() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-coral" />
             </span>
             <span className="text-sm font-medium text-navy-deep tracking-wide">
-              Más de 78,000 negocios en RD aún no tienen web profesional
+              Mientras lees esto, tu competencia está recibiendo clientes por su web
             </span>
           </motion.div>
 
@@ -116,7 +116,7 @@ export default function Hero() {
               delay={0.4}
               splitBy="words"
             >
-              Tus clientes te encuentran.
+              Tu negocio en Google.
             </TextReveal>
             <TextReveal
               as="span"
@@ -124,7 +124,7 @@ export default function Hero() {
               delay={0.7}
               splitBy="words"
             >
-              Te escriben por WhatsApp.
+              Clientes en tu celular.
             </TextReveal>
             <motion.span
               className="block text-fluid-hero font-serif italic text-coral leading-[1.1] tracking-tight"
@@ -132,7 +132,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 1.1, ease: "easeOut" }}
             >
-              Tú solo cierra ventas.
+              Ventas en piloto automático.
             </motion.span>
           </h1>
 
@@ -145,7 +145,7 @@ export default function Hero() {
             className="max-w-2xl mx-auto mb-12"
           >
             <p className="text-slate-text text-lg lg:text-xl leading-relaxed">
-              Tu negocio merece una web que trabaje para ti. Recibe clientes desde Google, respóndeles por WhatsApp y véndeles más, todo en automático.
+              El 80% de tus clientes te buscan en Google antes de llamarte. Si no te encuentran, le compran a tu competencia.
             </p>
           </ScrollReveal>
 
@@ -164,12 +164,12 @@ export default function Hero() {
                 className="inline-flex items-center gap-3 bg-coral hover:bg-coral-hover text-white font-bold text-lg px-10 py-4 rounded-2xl shadow-coral transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]"
               >
                 <WhatsappLogo size={22} weight="fill" aria-hidden="true" />
-                Quiero mi propuesta gratis
+                Ver qué incluye mi web
               </a>
             </MagneticButton>
 
             <p className="text-sm text-slate-light">
-              Sin compromiso · Respuesta por WhatsApp en 2 horas
+              Sin compromiso · Te respondemos en menos de 2 horas
             </p>
           </motion.div>
 
@@ -177,10 +177,10 @@ export default function Hero() {
           <ScrollReveal delay={0.5} direction="up" distance={20}>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warm-peach/80 border border-coral/10 text-sm text-navy-deep font-medium">
-                <span className="text-coral font-bold">140+</span> negocios confían en nosotros
+                <span className="text-coral font-bold">140+</span> negocios ya venden online
               </span>
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-light border border-primary/10 text-sm text-navy-deep font-medium">
-                <span className="text-primary font-bold">14 días</span> y tu web está lista
+                <span className="text-primary font-bold">14 días</span> de la idea a vender
               </span>
               <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-amber-50 border border-amber-200/50 text-sm text-navy-deep font-medium">
                 <svg className="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

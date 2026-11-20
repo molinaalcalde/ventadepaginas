@@ -137,7 +137,7 @@ export default function Header() {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="hidden sm:inline-flex items-center justify-center gap-2 bg-coral hover:bg-coral-hover text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-coral transition-colors duration-300"
           >
-            <span>Pedir mi propuesta</span>
+            <span>Quiero mi web</span>
             <ArrowRight weight="bold" size={16} />
           </motion.a>
 
@@ -261,7 +261,7 @@ export default function Header() {
                   onClick={closeMobile}
                   className="inline-flex items-center justify-center gap-2 bg-coral hover:bg-coral-hover text-white text-base font-bold px-6 py-3.5 rounded-full shadow-coral hover:shadow-lg transition-all"
                 >
-                  <span>Pedir mi propuesta</span>
+                  <span>Quiero mi web</span>
                   <ArrowRight weight="bold" size={18} />
                 </a>
               </motion.div>

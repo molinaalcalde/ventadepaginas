@@ -23,11 +23,11 @@ export default function Features() {
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <ScrollReveal direction="up">
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary-light text-primary text-sm font-medium mb-4">
-              Más clientes, más ventas, menos estrés
+              Todo incluido, sin complicaciones
             </span>
           </ScrollReveal>
           <TextReveal as="h2" className="text-fluid-h2 font-bold text-navy-deep leading-tight">
-            Todo lo que necesitas para vender más por internet
+            Una web que trabaja para ti las 24 horas
           </TextReveal>
         </div>
 
@@ -44,10 +44,10 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Una web que enamora a tus clientes desde el primer segundo
+              Cuando te buscan en Google, te encuentran
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              La primera impresión importa. Cuando un cliente busca tu negocio en Google y encuentra una web rápida, bonita y profesional, ya ganaste su confianza. El 92% de las personas confían más en un negocio con web profesional.
+              Hoy tus clientes buscan en Google antes de llamar. Si tu negocio no aparece o se ve poco profesional, se van con tu competencia. Te diseñamos una web rápida y profesional que genera confianza desde el primer segundo.
             </p>
             <ul className="space-y-5">
               <FeatureItem
@@ -153,10 +153,10 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Nunca más se te pierde un cliente
+              Cada cliente queda registrado, ninguno se te escapa
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Imagina que cada persona que te escribe queda guardada automáticamente con su nombre, teléfono y qué necesita. Te avisa cuándo darle seguimiento. Es como tener un asistente que nunca se le olvida nada. Y lo manejas todo desde tu celular.
+              Cada persona que te escribe queda guardada con su nombre, teléfono y lo que necesita. El sistema te avisa cuándo darle seguimiento. Es como tener un asistente que nunca olvida nada, y lo manejas todo desde tu celular.
             </p>
             <ul className="space-y-5">
               <FeatureItem
@@ -192,7 +192,7 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Tú atiende a tus clientes, nosotros nos encargamos del resto
+              Tú vendes, nosotros nos encargamos de lo técnico
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
               Dominio, servidor, seguridad, actualizaciones... todo eso lo manejamos nosotros. Tú solo te concentras en lo que sabes hacer: atender a tu gente.

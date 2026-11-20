@@ -72,7 +72,7 @@ export default function Sectores() {
           </TextReveal>
           <ScrollReveal direction="up" delay={0.2}>
             <p className="mt-4 text-slate-light text-base sm:text-lg leading-relaxed">
-              No es una plantilla genérica. Diseñamos pensando en cómo TUS clientes buscan y compran.
+              Cada sector vende diferente. Tu web debe reflejar eso.
             </p>
           </ScrollReveal>
         </div>

@@ -56,8 +56,8 @@ export default function Comparison() {
             as="h2"
             className="text-fluid-h2 font-extrabold text-navy-deep leading-tight"
           >
-            ¿Por qué somos la{" "}
-            <span className="text-primary">mejor opción</span>?
+            Lo que recibes con nosotros vs.{" "}
+            <span className="text-primary">las alternativas</span>
           </TextReveal>
         </div>
 

@@ -38,10 +38,10 @@ export default function Home() {
                 Solo te toma 2 minutos
               </span>
               <h2 className="text-fluid-h2 font-display font-extrabold text-navy-deep mb-4">
-                ¿Listo para que tus clientes te encuentren?
+                Descubre qué incluye tu web
               </h2>
               <p className="text-slate-text text-lg max-w-xl mx-auto">
-                Responde 5 preguntas rápidas y te enviamos una propuesta personalizada por WhatsApp en menos de 2 horas.
+                Responde 5 preguntas rápidas y recibe una propuesta personalizada por WhatsApp en menos de 2 horas.
               </p>
             </div>
             <GamifiedForm />

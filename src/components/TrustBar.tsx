@@ -15,7 +15,7 @@ export default function TrustBar() {
               </div>
               <div>
                 <p className="text-lg font-bold text-navy-deep">140+</p>
-                <p className="text-xs text-slate-light">negocios confían en nosotros</p>
+                <p className="text-xs text-slate-light">negocios ya venden online</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -24,7 +24,7 @@ export default function TrustBar() {
               </div>
               <div>
                 <p className="text-lg font-bold text-navy-deep">14 días</p>
-                <p className="text-xs text-slate-light">y tu web está lista</p>
+                <p className="text-xs text-slate-light">de la idea a vender</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
