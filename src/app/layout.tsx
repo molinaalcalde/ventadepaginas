@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ventadepaginas.vercel.app"),
   title: {
-    default: "KINETIC — Diseño Web Profesional con CRM y WhatsApp | República Dominicana",
+    default: "KINETIC | Diseño Web Profesional con CRM y WhatsApp | República Dominicana",
     template: "%s | KINETIC Cloud & Web",
   },
   description:
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "KINETIC — Diseño Web Profesional con CRM y WhatsApp Integrado",
+    title: "KINETIC | Diseño Web Profesional con CRM y WhatsApp Integrado",
     description:
       "Tu web profesional lista en 2 semanas con CRM y WhatsApp integrado. Sin complicaciones técnicas. República Dominicana.",
     type: "website",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "KINETIC — Diseño Web con CRM y WhatsApp Integrado",
+    title: "KINETIC | Diseño Web con CRM y WhatsApp Integrado",
     description:
       "Web profesional + CRM + WhatsApp en 2 semanas. Santo Domingo, RD.",
   },

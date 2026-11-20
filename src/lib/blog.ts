@@ -55,20 +55,20 @@ export const blogPosts: BlogPost[] = [
     content: `
       <h2 id="realidad-digital-rd">La realidad digital en República Dominicana</h2>
       <p>Según datos recientes, más de 78,000 negocios en República Dominicana operan sin una página web profesional. Mientras tanto, el 87% de los dominicanos con acceso a internet buscan productos y servicios en Google antes de comprar.</p>
-      <p>¿Qué significa esto? Que si tu negocio no aparece en Google, estás perdiendo clientes todos los días — clientes que terminan comprándole a tu competencia.</p>
+      <p>¿Qué significa esto? Que si tu negocio no aparece en Google, estás perdiendo clientes todos los días. Clientes que terminan comprándole a tu competencia.</p>
 
       <h2 id="clientes-buscan-google">Tus clientes te buscan en Google (aunque no lo sepas)</h2>
       <p>Piensa en la última vez que necesitaste un dentista, un hotel o un restaurante. ¿Qué hiciste? Probablemente abriste Google y buscaste. Tus clientes hacen exactamente lo mismo.</p>
-      <p>Sin una web profesional, tu negocio es <strong>invisible</strong> para estas personas. No importa qué tan bueno sea tu producto o servicio — si no te encuentran, no te compran.</p>
+      <p>Sin una web profesional, tu negocio es <strong>invisible</strong> para estas personas. No importa qué tan bueno sea tu producto o servicio. Si no te encuentran, no te compran.</p>
       <blockquote>El 92% de los consumidores confían más en un negocio que tiene página web profesional que en uno que solo tiene redes sociales.</blockquote>
 
       <h2 id="web-vs-redes-sociales">Web profesional vs. solo redes sociales</h2>
       <p>Muchos dueños de negocios creen que con una página de Instagram o Facebook es suficiente. La verdad es que las redes sociales son un complemento, no un sustituto.</p>
       <ul>
-        <li><strong>Las redes sociales no te pertenecen</strong> — Facebook puede cambiar su algoritmo mañana y tu alcance cae a cero</li>
-        <li><strong>No apareces en Google</strong> — nadie busca "mejor dentista Santo Domingo" en Instagram</li>
-        <li><strong>No puedes recibir reservas ni citas</strong> — solo puedes chatear por DM</li>
-        <li><strong>No transmites profesionalismo</strong> — una web propia dice "este negocio es serio"</li>
+        <li><strong>Las redes sociales no te pertenecen</strong>. Facebook puede cambiar su algoritmo mañana y tu alcance cae a cero</li>
+        <li><strong>No apareces en Google</strong>. Nadie busca "mejor dentista Santo Domingo" en Instagram</li>
+        <li><strong>No puedes recibir reservas ni citas</strong>. Solo puedes chatear por DM</li>
+        <li><strong>No transmites profesionalismo</strong>. Una web propia dice "este negocio es serio"</li>
       </ul>
 
       <h2 id="que-debe-tener">Qué debe tener tu web para vender</h2>
@@ -76,7 +76,7 @@ export const blogPosts: BlogPost[] = [
       <ol>
         <li><strong>Diseño profesional</strong> que genere confianza en los primeros 3 segundos</li>
         <li><strong>Velocidad de carga</strong> menor a 2 segundos (el 53% abandona si tarda más)</li>
-        <li><strong>Adaptada a celulares</strong> — el 70% de las visitas en RD vienen del celular</li>
+        <li><strong>Adaptada a celulares</strong>. El 70% de las visitas en RD vienen del celular</li>
         <li><strong>Conexión con WhatsApp</strong> para que el cliente te escriba en un clic</li>
         <li><strong>Optimizada para Google</strong> para que aparezcas en las búsquedas</li>
       </ol>
@@ -121,16 +121,16 @@ export const blogPosts: BlogPost[] = [
     ],
     content: `
       <h2 id="por-que-whatsapp">Por qué WhatsApp es clave para tu negocio</h2>
-      <p>En República Dominicana, el 95% de la población con smartphone usa WhatsApp diariamente. No es solo la app de mensajería más popular — es donde tus clientes esperan comunicarse contigo.</p>
+      <p>En República Dominicana, el 95% de la población con smartphone usa WhatsApp diariamente. No es solo la app de mensajería más popular, es donde tus clientes esperan comunicarse contigo.</p>
       <p>Cuando conectas WhatsApp Business a tu web, cada visitante puede escribirte con un solo toque. Sin formularios largos, sin esperas, sin fricción.</p>
 
       <h2 id="configurar-perfil">Configura tu perfil profesional</h2>
       <p>Tu perfil de WhatsApp Business es tu tarjeta de presentación digital. Asegúrate de completar:</p>
       <ul>
-        <li><strong>Foto de perfil</strong> — tu logo, no una foto personal</li>
-        <li><strong>Descripción</strong> — qué haces y dónde estás en 2 líneas</li>
-        <li><strong>Horarios</strong> — para que sepan cuándo esperar respuesta</li>
-        <li><strong>Dirección y web</strong> — genera confianza</li>
+        <li><strong>Foto de perfil</strong>: tu logo, no una foto personal</li>
+        <li><strong>Descripción</strong>: qué haces y dónde estás en 2 líneas</li>
+        <li><strong>Horarios</strong>: para que sepan cuándo esperar respuesta</li>
+        <li><strong>Dirección y web</strong>: genera confianza</li>
       </ul>
 
       <h2 id="respuestas-rapidas">Respuestas rápidas que cierran ventas</h2>
@@ -180,10 +180,10 @@ export const blogPosts: BlogPost[] = [
 
       <h2 id="beneficios-reales">Beneficios reales para tu negocio</h2>
       <ul>
-        <li><strong>Nunca se te pierde un cliente</strong> — todo queda registrado automáticamente</li>
-        <li><strong>Seguimiento sin esfuerzo</strong> — te avisa cuándo llamar o escribir</li>
-        <li><strong>Más ventas cerradas</strong> — porque respondes rápido y no olvidas a nadie</li>
-        <li><strong>Desde tu celular</strong> — no necesitas computadora ni conocimientos técnicos</li>
+        <li><strong>Nunca se te pierde un cliente</strong>: todo queda registrado automáticamente</li>
+        <li><strong>Seguimiento sin esfuerzo</strong>: te avisa cuándo llamar o escribir</li>
+        <li><strong>Más ventas cerradas</strong>: porque respondes rápido y no olvidas a nadie</li>
+        <li><strong>Desde tu celular</strong>: no necesitas computadora ni conocimientos técnicos</li>
       </ul>
     `,
   },
@@ -223,7 +223,7 @@ export const blogPosts: BlogPost[] = [
       <p>El dominicano quiere escribirte por WhatsApp, no llenar formularios eternos ni llamar por teléfono. Si tu web no tiene un botón de WhatsApp visible, estás poniendo una barrera entre tú y tu próximo cliente.</p>
 
       <h2 id="error-4">4. No aparece en Google</h2>
-      <p>De nada sirve tener la web más bonita del mundo si nadie la encuentra. La optimización para Google (SEO) no es opcional — es lo que hace que tus clientes te descubran cuando buscan lo que tú vendes.</p>
+      <p>De nada sirve tener la web más bonita del mundo si nadie la encuentra. La optimización para Google (SEO) no es opcional. Es lo que hace que tus clientes te descubran cuando buscan lo que tú vendes.</p>
 
       <h2 id="error-5">5. Diseño que no genera confianza</h2>
       <p>Tu web es tu primera impresión. Si se ve anticuada, desorganizada o poco profesional, el visitante asume que tu negocio también lo es. Un diseño moderno y limpio dice "aquí hay un negocio serio".</p>
@@ -302,7 +302,7 @@ export const blogPosts: BlogPost[] = [
       <h2 id="resultados">Los resultados en números</h2>
       <ul>
         <li><strong>3x más consultas</strong> de pacientes internacionales en 3 meses</li>
-        <li><strong>70% menos llamadas</strong> de agenda — los pacientes agendan solos</li>
+        <li><strong>70% menos llamadas</strong> de agenda. Los pacientes agendan solos</li>
         <li><strong>15 reseñas de 5 estrellas</strong> en Google en el primer trimestre</li>
       </ul>
       <p>Hoy, el Centro Dental Sonríe es uno de los más buscados en Google para "dentista Santiago RD".</p>

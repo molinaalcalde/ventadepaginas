@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { WhatsappLogo } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 
 export default function Hero() {
@@ -146,7 +145,7 @@ export default function Hero() {
             className="max-w-2xl mx-auto mb-12"
           >
             <p className="text-slate-text text-lg lg:text-xl leading-relaxed">
-              Tu negocio merece una web que trabaje para ti. Recibe clientes desde Google, respóndeles por WhatsApp y véndeles más — todo en automático.
+              Tu negocio merece una web que trabaje para ti. Recibe clientes desde Google, respóndeles por WhatsApp y véndeles más, todo en automático.
             </p>
           </ScrollReveal>
 
@@ -174,62 +173,21 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          {/* Trust Bar */}
+          {/* Social proof micro-badges */}
           <ScrollReveal delay={0.5} direction="up" distance={20}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12">
-
-              {/* Stat: Negocios activos */}
-              <div className="flex flex-col items-center gap-1">
-                <AnimatedCounter
-                  value={140}
-                  suffix="+"
-                  duration={2.5}
-                  className="text-3xl sm:text-4xl font-extrabold text-navy-deep font-display"
-                />
-                <span className="text-sm text-slate-text">negocios activos</span>
-              </div>
-
-              {/* Divider */}
-              <div className="hidden sm:block w-px h-10 bg-navy-deep/15" />
-
-              {/* Stat: Entrega */}
-              <div className="flex flex-col items-center gap-1">
-                <div className="flex items-baseline gap-1">
-                  <AnimatedCounter
-                    value={14}
-                    duration={1.8}
-                    className="text-3xl sm:text-4xl font-extrabold text-navy-deep font-display"
-                  />
-                  <span className="text-xl font-bold text-navy-deep font-display">
-                    días
-                  </span>
-                </div>
-                <span className="text-sm text-slate-text">entrega garantizada</span>
-              </div>
-
-              {/* Divider */}
-              <div className="hidden sm:block w-px h-10 bg-navy-deep/15" />
-
-              {/* Stat: Rating */}
-              <div className="flex flex-col items-center gap-1">
-                <div className="flex items-center gap-1.5">
-                  <AnimatedCounter
-                    value={4.9}
-                    duration={2}
-                    className="text-3xl sm:text-4xl font-extrabold text-navy-deep font-display"
-                  />
-                  <svg
-                    className="w-6 h-6 text-yellow-400 flex-shrink-0"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                  </svg>
-                </div>
-                <span className="text-sm text-slate-text">valoración promedio</span>
-              </div>
-
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warm-peach/80 border border-coral/10 text-sm text-navy-deep font-medium">
+                <span className="text-coral font-bold">140+</span> negocios confían en nosotros
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-light border border-primary/10 text-sm text-navy-deep font-medium">
+                <span className="text-primary font-bold">14 días</span> y tu web está lista
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-amber-50 border border-amber-200/50 text-sm text-navy-deep font-medium">
+                <svg className="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+                <span className="font-bold">4.9/5</span> valoración
+              </span>
             </div>
           </ScrollReveal>
         </div>

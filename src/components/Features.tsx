@@ -156,7 +156,7 @@ export default function Features() {
               Nunca más se te pierde un cliente
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Imagina que cada persona que te escribe queda guardada automáticamente con su nombre, teléfono y qué necesita. Te avisa cuándo darle seguimiento. Es como tener un asistente que nunca se le olvida nada — y lo manejas todo desde tu celular.
+              Imagina que cada persona que te escribe queda guardada automáticamente con su nombre, teléfono y qué necesita. Te avisa cuándo darle seguimiento. Es como tener un asistente que nunca se le olvida nada. Y lo manejas todo desde tu celular.
             </p>
             <ul className="space-y-5">
               <FeatureItem
@@ -171,8 +171,9 @@ export default function Features() {
               />
               <FeatureItem
                 icon={<ShieldCheck weight="bold" className="w-5 h-5" />}
-                title="Sin programas adicionales — Todo integrado en tu web, sin instalar nada más."
-                description=""
+                title="Sin programas adicionales"
+                description="Todo integrado en tu web, sin instalar nada más."
+
               />
             </ul>
           </ScrollReveal>

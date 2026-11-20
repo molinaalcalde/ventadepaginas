@@ -37,7 +37,7 @@ const rows = [
   },
   {
     feature: "Gestor de clientes (CRM)",
-    kinetic: "Incluido — te ahorras hasta $200/mes en software",
+    kinetic: "Incluido. Te ahorras hasta $200/mes en software",
     agency: "Te cobran licencia aparte ($50-200/mes extra)",
     diy: "No existe o plugins que se rompen",
   },

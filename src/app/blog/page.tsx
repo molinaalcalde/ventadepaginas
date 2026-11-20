@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog — Consejos para hacer crecer tu negocio",
+  title: "Blog | Consejos para hacer crecer tu negocio",
   description:
     "Consejos prácticos para hacer crecer tu negocio con una web profesional, WhatsApp Business y gestión de clientes.",
 };

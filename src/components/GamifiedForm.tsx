@@ -2,6 +2,20 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import {
+  Bed,
+  Heartbeat,
+  Key,
+  ForkKnife,
+  Handshake,
+  ShoppingBag,
+  Globe,
+  Layout,
+  Rocket,
+  Lightning,
+  CalendarDots,
+  MagnifyingGlass,
+} from "@phosphor-icons/react";
 
 /* ────────────────────────────────────────────────────────
    Types
@@ -34,61 +48,33 @@ const INITIAL: FormData = {
 const SECTORS = [
   {
     id: "hotel",
-    label: "Hotel / Turismo",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M3 21h18M3 7v14M21 7v14M6 11h4v4H6zM14 11h4v4h-4zM9 3h6l3 4H6l3-4z" />
-      </svg>
-    ),
+    label: "Hotel y Turismo",
+    icon: <Bed size={28} weight="duotone" />,
   },
   {
     id: "clinica",
-    label: "Clínica / Salud",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07" />
-        <circle cx="12" cy="12" r="9" />
-      </svg>
-    ),
+    label: "Clínica y Salud",
+    icon: <Heartbeat size={28} weight="duotone" />,
   },
   {
     id: "inmobiliaria",
     label: "Inmobiliaria",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M3 21V9l9-7 9 7v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" />
-        <path d="M9 21V12h6v9" />
-      </svg>
-    ),
+    icon: <Key size={28} weight="duotone" />,
   },
   {
     id: "restaurante",
-    label: "Restaurante / Eventos",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" />
-      </svg>
-    ),
+    label: "Restaurante y Eventos",
+    icon: <ForkKnife size={28} weight="duotone" />,
   },
   {
     id: "servicios",
     label: "Servicios Profesionales",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
-    ),
+    icon: <Handshake size={28} weight="duotone" />,
   },
   {
     id: "otro",
     label: "Otro tipo de negocio",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
-        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-      </svg>
-    ),
+    icon: <ShoppingBag size={28} weight="duotone" />,
   },
 ];
 
@@ -97,35 +83,20 @@ const NEEDS = [
     id: "web",
     label: "Solo la Web",
     desc: "Una página web profesional que genere confianza",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
-    ),
+    icon: <Globe size={32} weight="duotone" />,
   },
   {
     id: "web-crm",
-    label: "Web + CRM",
+    label: "Web + Gestor de Clientes",
     desc: "Web con gestor de clientes y WhatsApp",
     badge: "RECOMENDADO",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18M9 21V9" />
-      </svg>
-    ),
+    icon: <Layout size={32} weight="duotone" />,
   },
   {
     id: "paquete",
     label: "Todo el paquete",
-    desc: "Web + CRM + SEO + Automatizaciones",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-      </svg>
-    ),
+    desc: "Web + Gestor + SEO + Automatizaciones",
+    icon: <Rocket size={32} weight="duotone" />,
   },
 ];
 
@@ -157,32 +128,17 @@ const TIMELINES = [
     id: "urgente",
     label: "Lo antes posible",
     badge: "URGENTE",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
-    ),
+    icon: <Lightning size={28} weight="duotone" />,
   },
   {
     id: "semanas",
     label: "En las próximas semanas",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-        <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-      </svg>
-    ),
+    icon: <CalendarDots size={28} weight="duotone" />,
   },
   {
     id: "explorando",
     label: "Estoy explorando opciones",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-    ),
+    icon: <MagnifyingGlass size={28} weight="duotone" />,
   },
 ];
 

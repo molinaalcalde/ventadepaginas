@@ -1,6 +1,6 @@
 "use client";
 
-import { Buildings, FirstAidKit, HouseSimple, ForkKnife, Briefcase } from "@phosphor-icons/react";
+import { Bed, Heartbeat, Key, ForkKnife, Handshake } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { StaggerChildren } from "@/components/animations/StaggerChildren";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
@@ -10,27 +10,27 @@ const sectores = [
     title: "Hoteles y Turismo",
     description:
       "Recibe reservas directas desde tu web sin pagar comisiones a Booking ni Expedia. Tus huéspedes reservan y tú recibes el aviso al WhatsApp.",
-    icon: Buildings,
-    iconBg: "bg-[#E8F4FD]",
-    iconColor: "text-[#3B82F6]",
+    icon: Bed,
+    iconBg: "bg-[#E0F2FE]",
+    iconColor: "text-[#0284C7]",
     cta: "Reservas directas para mi hotel →",
   },
   {
     title: "Clínicas y Estética",
     description:
       "Tus pacientes agendan citas online y reciben recordatorios automáticos. Menos llamadas, menos cancelaciones, más consultas.",
-    icon: FirstAidKit,
-    iconBg: "bg-[#FDE8F0]",
-    iconColor: "text-[#EC4899]",
+    icon: Heartbeat,
+    iconBg: "bg-[#FCE7F3]",
+    iconColor: "text-[#DB2777]",
     cta: "Citas online para mi clínica →",
   },
   {
     title: "Inmobiliarias",
     description:
       "Muestra tus propiedades con fotos profesionales y captura compradores de USA y Europa que buscan en Google.",
-    icon: HouseSimple,
+    icon: Key,
     iconBg: "bg-[#EDE9FE]",
-    iconColor: "text-[#8B5CF6]",
+    iconColor: "text-[#7C3AED]",
     cta: "Captar compradores internacionales →",
   },
   {
@@ -46,9 +46,9 @@ const sectores = [
     title: "Servicios Profesionales",
     description:
       "Tus clientes te encuentran en Google, llenan un formulario y tú recibes todo en WhatsApp. Así de fácil.",
-    icon: Briefcase,
+    icon: Handshake,
     iconBg: "bg-[#D1FAE5]",
-    iconColor: "text-[#10B981]",
+    iconColor: "text-[#059669]",
     cta: "Automatizar mi captación →",
   },
 ];

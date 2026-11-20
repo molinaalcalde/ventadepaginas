@@ -10,7 +10,7 @@ const steps = [
     days: "Días 1-3",
     title: "Nos conocemos",
     description:
-      "Hablamos 30 minutos por WhatsApp o videollamada. Nos cuentas de tu negocio y listo — sin tecnicismos ni reuniones eternas.",
+      "Hablamos 30 minutos por WhatsApp o videollamada. Nos cuentas de tu negocio y listo, sin tecnicismos ni reuniones eternas.",
     check: "Briefing completo en 30 min",
     highlighted: true,
     icon: ChatCircleDots,

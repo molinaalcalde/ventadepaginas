@@ -39,7 +39,7 @@ const testimonials = [
     before:
       "Antes se me perdían los leads en papelitos y chats de WhatsApp.",
     after:
-      "Con el gestor de clientes de KINETIC todo queda organizado — me llega un aviso al WhatsApp cada vez que alguien se interesa en una propiedad. Las ventas subieron un 40%.",
+      "Con el gestor de clientes de KINETIC todo queda organizado. Me llega un aviso al WhatsApp cada vez que alguien se interesa en una propiedad. Las ventas subieron un 40%.",
   },
 ];
 
