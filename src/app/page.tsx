@@ -1,7 +1,6 @@
 import { JsonLd } from "./schema";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import TrustBar from "@/components/TrustBar";
 import Sectores from "@/components/Sectores";
 import Features from "@/components/Features";
 import Process from "@/components/Process";
@@ -18,7 +17,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <TrustBar />
         <Sectores />
         <Features />
         <Process />
