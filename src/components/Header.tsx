@@ -72,7 +72,7 @@ export default function Header() {
             <div className="flex flex-col">
               <span
                 className={`font-display font-extrabold text-xl tracking-tight leading-none transition-colors duration-300 ${
-                  scrolled ? "text-navy-deep" : "text-white"
+                  scrolled ? "text-navy-deep" : "text-navy-deep"
                 }`}
               >
                 KINETIC
@@ -92,14 +92,14 @@ export default function Header() {
                 className={`relative text-sm font-semibold px-3 py-2 transition-colors duration-300 group ${
                   scrolled
                     ? "text-slate-text hover:text-primary"
-                    : "text-white/90 hover:text-white"
+                    : "text-navy-deep/80 hover:text-primary"
                 }`}
               >
                 {link.label}
                 {/* Underline animation: grows from center */}
                 <span
                   className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-3/4 ${
-                    scrolled ? "bg-primary" : "bg-white"
+                    scrolled ? "bg-primary" : "bg-primary"
                   }`}
                 />
               </a>
@@ -117,7 +117,7 @@ export default function Header() {
             className={`hidden md:flex items-center gap-2 text-sm font-bold transition-colors duration-300 px-3 py-2 rounded-full hover:bg-surface-soft ${
               scrolled
                 ? "text-navy-deep hover:text-primary"
-                : "text-white/90 hover:text-white"
+                : "text-navy-deep/80 hover:text-primary"
             }`}
           >
             {/* WhatsApp icon */}
@@ -167,7 +167,7 @@ export default function Header() {
             className={`lg:hidden flex flex-col items-center justify-center w-10 h-10 rounded-xl transition-colors duration-300 gap-[5px] ${
               scrolled
                 ? "text-navy-deep hover:bg-surface-soft"
-                : "text-white hover:bg-white/10"
+                : "text-navy-deep hover:bg-surface-soft"
             }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
@@ -176,7 +176,7 @@ export default function Header() {
             {/* Animated hamburger lines */}
             <motion.span
               className={`block h-[2px] w-5 rounded-full ${
-                scrolled ? "bg-navy-deep" : "bg-white"
+                scrolled ? "bg-navy-deep" : "bg-navy-deep"
               }`}
               animate={
                 mobileMenuOpen
@@ -187,7 +187,7 @@ export default function Header() {
             />
             <motion.span
               className={`block h-[2px] w-5 rounded-full ${
-                scrolled ? "bg-navy-deep" : "bg-white"
+                scrolled ? "bg-navy-deep" : "bg-navy-deep"
               }`}
               animate={
                 mobileMenuOpen
@@ -198,7 +198,7 @@ export default function Header() {
             />
             <motion.span
               className={`block h-[2px] w-5 rounded-full ${
-                scrolled ? "bg-navy-deep" : "bg-white"
+                scrolled ? "bg-navy-deep" : "bg-navy-deep"
               }`}
               animate={
                 mobileMenuOpen
