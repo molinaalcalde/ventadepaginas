@@ -12,6 +12,12 @@ const steps = [
       "Hablamos por WhatsApp o videollamada para entender tu negocio, tus clientes y qué necesitas. Sin tecnicismos.",
     check: "Briefing completo en 30 min",
     highlighted: false,
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        <path d="M8 10h.01M12 10h.01M16 10h.01" strokeWidth="2" />
+      </svg>
+    ),
   },
   {
     number: "02",
@@ -21,6 +27,12 @@ const steps = [
       "Te enviamos una propuesta visual personalizada para que veas exactamente cómo va a quedar antes de seguir.",
     check: "Prototipo navegable para revisar",
     highlighted: false,
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M3 9h18M9 21V9" />
+      </svg>
+    ),
   },
   {
     number: "03",
@@ -28,17 +40,30 @@ const steps = [
     title: "Construimos y conectamos",
     description:
       "Montamos tu web, conectamos WhatsApp Business y dejamos tu CRM listo para recibir los primeros clientes.",
-    check: "Web + WhatsApp CRM integrado",
+    check: "Web + WhatsApp + CRM integrado",
     highlighted: false,
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    ),
   },
   {
     number: "04",
     days: "Día 14",
     title: "¡Al aire!",
     description:
-      "Te explicamos todo en 30 minutos por Zoom y publicamos tu web. Empiezas a recibir clientes ese mismo día.",
-    check: "Formación de 30 min incluida",
+      "Te explicamos todo en una videollamada de 30 minutos y publicamos tu web. Empiezas a recibir clientes ese mismo día.",
+    check: "Capacitación incluida",
     highlighted: true,
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <path d="M22 4 12 14.01l-3-3" strokeWidth="2" />
+      </svg>
+    ),
   },
 ];
 
@@ -94,77 +119,10 @@ export default function Process() {
               {/* Icon */}
               <div
                 className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
-                  step.highlighted ? "bg-coral-light" : "bg-primary-light"
+                  step.highlighted ? "bg-coral-light text-coral" : "bg-primary-light text-primary"
                 }`}
               >
-                {step.number === "01" && (
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className={step.highlighted ? "text-coral" : "text-primary"}
-                  >
-                    <path
-                      d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-                {step.number === "02" && (
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="text-primary"
-                  >
-                    <path
-                      d="M12 20h9M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-                {step.number === "03" && (
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="text-primary"
-                  >
-                    <path
-                      d="M16 18 22 12 16 6M8 6 2 12 8 18"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-                {step.number === "04" && (
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="text-coral"
-                  >
-                    <path
-                      d="M5 12l5 5L20 7"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
+                {step.icon}
               </div>
 
               {/* Title + Description */}
@@ -191,7 +149,7 @@ export default function Process() {
                   viewBox="0 0 18 18"
                   fill="none"
                   className={
-                    step.highlighted ? "text-coral" : "text-primary"
+                    step.highlighted ? "text-coral shrink-0" : "text-primary shrink-0"
                   }
                 >
                   <circle

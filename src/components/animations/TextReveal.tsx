@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, Children, isValidElement } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -14,19 +14,40 @@ interface TextRevealProps {
   splitBy?: "words" | "lines";
 }
 
+function flattenChildren(children: React.ReactNode): { text: string; className?: string }[] {
+  const segments: { text: string; className?: string }[] = [];
+
+  Children.forEach(children, (child) => {
+    if (typeof child === "string") {
+      child.split(/(\s+)/).forEach((part) => {
+        if (part.trim()) segments.push({ text: part });
+      });
+    } else if (typeof child === "number") {
+      segments.push({ text: String(child) });
+    } else if (isValidElement(child)) {
+      const el = child as React.ReactElement<{ className?: string; children?: React.ReactNode }>;
+      const innerText =
+        typeof el.props.children === "string"
+          ? el.props.children
+          : String(el.props.children ?? "");
+      innerText.split(/(\s+)/).forEach((part: string) => {
+        if (part.trim()) segments.push({ text: part, className: el.props.className });
+      });
+    }
+  });
+
+  return segments;
+}
+
 export function TextReveal({
   children,
   as: Tag = "h2",
   className,
   delay = 0,
-  splitBy = "words",
 }: TextRevealProps) {
   const containerRef = useRef<HTMLElement>(null);
 
-  const words = useMemo(() => {
-    const text = typeof children === "string" ? children : String(children);
-    return text.split(/\s+/).filter(Boolean);
-  }, [children]);
+  const words = useMemo(() => flattenChildren(children), [children]);
 
   useGSAP(() => {
     if (!containerRef.current) return;
@@ -67,14 +88,14 @@ export function TextReveal({
           }}
         >
           <span
-            className="text-reveal-inner"
+            className={`text-reveal-inner ${word.className || ""}`}
             style={{
               display: "inline-block",
               transform: "translateY(110%)",
               opacity: 0,
             }}
           >
-            {word}
+            {word.text}
           </span>
           {i < words.length - 1 && "\u00A0"}
         </span>
