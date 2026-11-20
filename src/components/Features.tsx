@@ -1,12 +1,23 @@
 "use client";
 
+import {
+  Lightning,
+  DeviceMobile,
+  MagnifyingGlass,
+  WhatsappLogo,
+  AddressBook,
+  ShieldCheck,
+  Headset,
+  LockSimple,
+  CheckCircle,
+} from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
 
 export default function Features() {
   return (
-    <section id="que-incluye" className="py-20 lg:py-28 bg-white">
+    <section id="que-incluye" className="py-28 lg:py-36 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
@@ -43,32 +54,17 @@ export default function Features() {
             </p>
             <ul className="space-y-5">
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                  </svg>
-                }
+                icon={<Lightning weight="bold" className="w-5 h-5" />}
                 title="Carga ultra veloz <1s"
                 description="Experiencia instantánea que retiene a cada visitante."
               />
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                    <line x1="12" y1="18" x2="12.01" y2="18" />
-                  </svg>
-                }
+                icon={<DeviceMobile weight="bold" className="w-5 h-5" />}
                 title="Adaptada a celulares"
                 description="Perfecta en cualquier pantalla, sin excepciones."
               />
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                }
+                icon={<MagnifyingGlass weight="bold" className="w-5 h-5" />}
                 title="Optimizada para Google"
                 description="SEO técnico incluido para que te encuentren primero."
               />
@@ -103,11 +99,7 @@ export default function Features() {
               <div className="w-full h-44 sm:h-56 rounded-xl bg-gradient-to-br from-primary/20 via-coral/10 to-primary-light overflow-hidden relative">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-3/4 h-3/4 rounded-lg bg-white/60 backdrop-blur-sm border border-white/80 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10 text-primary/40">
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <circle cx="8.5" cy="8.5" r="1.5" />
-                      <path d="M21 15l-5-5L5 21" />
-                    </svg>
+                    <DeviceMobile size={40} weight="duotone" className="text-primary/40" />
                   </div>
                 </div>
               </div>
@@ -164,48 +156,28 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              CRM tan sencillo que cualquiera puede usarlo
+              Nada se te pierde: cada cliente que llega, tú lo sabes
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Olvídate de CRMs complicados en inglés que nadie en tu equipo sabe
-              usar. Con nuestro gestor, cada vez que alguien pide presupuesto o
-              reserva, te suena el WhatsApp, respondes en un clic y tienes todo
-              organizado.
+              Nada de programas raros en inglés que nadie entiende. Con nuestro
+              gestor de clientes, ves quién te escribió, qué necesita y cuándo
+              darle seguimiento — todo desde tu celular.
             </p>
             <ul className="space-y-5">
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                    <path d="M14.05 2a9 9 0 0 1 8 7.94" />
-                    <path d="M14.05 6A5 5 0 0 1 18 10" />
-                  </svg>
-                }
+                icon={<WhatsappLogo weight="bold" className="w-5 h-5" />}
                 title="Alertas por WhatsApp"
                 description="Cada nuevo contacto te avisa al instante en tu celular."
               />
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <polyline points="10 9 9 9 8 9" />
-                  </svg>
-                }
+                icon={<AddressBook weight="bold" className="w-5 h-5" />}
                 title="Fichas completas"
                 description="Todo el historial del cliente en un solo lugar."
               />
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <line x1="12" y1="1" x2="12" y2="23" />
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                  </svg>
-                }
-                title="Sin licencias de terceros"
-                description="Todo integrado en tu plan, sin software adicional."
+                icon={<ShieldCheck weight="bold" className="w-5 h-5" />}
+                title="Sin programas adicionales — Todo integrado en tu web, sin instalar nada más."
+                description=""
               />
             </ul>
           </ScrollReveal>
@@ -234,34 +206,17 @@ export default function Features() {
             </p>
             <ul className="space-y-5">
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                }
+                icon={<Headset weight="bold" className="w-5 h-5" />}
                 title="Soporte personal"
                 description="Una persona real que responde, no un chatbot genérico."
               />
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                    <path d="M7 11V7a5 5 0 0 1 9.9-1" />
-                    <circle cx="12" cy="16" r="1" />
-                  </svg>
-                }
+                icon={<LockSimple weight="bold" className="w-5 h-5" />}
                 title="Seguridad incluida"
                 description="SSL, backups diarios y protección anti-hackeo activa."
               />
               <FeatureItem
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                }
+                icon={<CheckCircle weight="bold" className="w-5 h-5" />}
                 title="Todo verificado"
                 description="Dominio, hosting y mantenimiento gestionado por nosotros."
               />
@@ -273,10 +228,7 @@ export default function Features() {
             <div className="bg-surface-soft rounded-2xl border border-border-subtle p-6 shadow-soft">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-full bg-primary-light flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-7 h-7 text-primary">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" strokeLinecap="round" strokeLinejoin="round" />
-                    <circle cx="12" cy="7" r="4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  <Headset size={28} weight="duotone" className="text-primary" />
                 </div>
                 <div>
                   <p className="font-semibold text-navy-deep">Tu asesor técnico</p>
@@ -285,20 +237,14 @@ export default function Features() {
                   </p>
                 </div>
               </div>
-              {/* Commitment badge */}
+              {/* Commitment badges */}
               <div className="flex flex-wrap gap-3 mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-coral-light text-coral text-sm font-semibold">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
+                  <CheckCircle size={16} weight="bold" />
                   &lt; 30 min
                 </span>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-light text-primary text-sm font-medium">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
+                  <ShieldCheck size={16} weight="bold" />
                   Respuesta garantizada
                 </span>
               </div>
@@ -308,9 +254,7 @@ export default function Features() {
                   (item) => (
                     <div key={item} className="flex items-center gap-3">
                       <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 text-emerald-600">
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
+                        <CheckCircle size={12} weight="bold" className="text-emerald-600" />
                       </span>
                       <span className="text-sm text-slate-text">{item}</span>
                     </div>
@@ -343,7 +287,7 @@ function FeatureItem({
       </span>
       <div>
         <p className="font-semibold text-navy-deep text-sm">{title}</p>
-        <p className="text-slate-light text-sm">{description}</p>
+        {description && <p className="text-slate-light text-sm">{description}</p>}
       </div>
     </li>
   );

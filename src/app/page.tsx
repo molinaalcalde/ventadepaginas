@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import TrustBar from "@/components/TrustBar";
 import Sectores from "@/components/Sectores";
 import Features from "@/components/Features";
 import Process from "@/components/Process";
@@ -15,6 +16,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <TrustBar />
         <Sectores />
         <Features />
         <Process />
@@ -34,7 +36,7 @@ export default function Home() {
                 Solo te toma 2 minutos
               </span>
               <h2 className="text-fluid-h2 font-display font-extrabold text-navy-deep mb-4">
-                Cuéntanos de tu negocio
+                ¿Listo para que tus clientes te encuentren?
               </h2>
               <p className="text-slate-text text-lg max-w-xl mx-auto">
                 Responde 5 preguntas rápidas y te enviamos una propuesta personalizada por WhatsApp en menos de 2 horas.

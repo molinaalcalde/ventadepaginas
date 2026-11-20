@@ -1,39 +1,40 @@
 "use client";
 
 import { useState } from "react";
+import { CaretDown } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 const faqs = [
   {
-    question: "¿Tengo que pagar mensualidades por el CRM?",
+    question: "¿Tengo que pagar algo extra por el gestor de clientes?",
     answer:
-      "El CRM está integrado directamente en tu web, no necesitas pagar licencias de HubSpot, Salesforce ni ningún software adicional. Todo viene incluido en tu plan.",
+      "No. El gestor de clientes está integrado directamente en tu web. No necesitas pagar HubSpot, Salesforce ni ningún programa adicional. Todo viene incluido en tu plan.",
   },
   {
-    question: "¿Funciona con WhatsApp Business?",
+    question: "¿Me llegan los mensajes al WhatsApp?",
     answer:
-      "¡Claro! Conectamos tu WhatsApp Business para que cada formulario, reserva o consulta te llegue directo al celular. También puedes responder desde el panel web.",
+      "¡Claro! Conectamos tu WhatsApp Business para que cada formulario, reserva o consulta te llegue directo al celular. También puedes responder desde la web.",
   },
   {
     question: "¿Puedo actualizar la web yo mismo?",
     answer:
-      "Sí. Te dejamos un panel súper sencillo. Cambiar un precio, subir una foto o editar un texto te toma 1 minuto. Y si prefieres, nos escribes y lo hacemos por ti.",
+      "Sí. Te dejamos un panel súper sencillo donde puedes cambiar fotos, textos y precios sin tocar código. Y si necesitas ayuda, nos escribes por WhatsApp.",
   },
   {
     question: "¿Cuánto tiempo tarda en estar lista?",
     answer:
-      "2 semanas exactas desde nuestra primera conversación. Cumplimos los plazos porque sabemos que tu negocio no puede esperar meses.",
+      "14 días exactos desde nuestra primera conversación. Incluye diseño, desarrollo, gestor de clientes y lanzamiento.",
   },
   {
     question: "¿Qué pasa si necesito ayuda después?",
     answer:
-      "Tienes soporte directo por WhatsApp. Cualquier duda o cambio pequeño lo resolvemos en menos de 30 minutos. No hablamos con bots, hablamos contigo.",
+      "Tienes soporte directo por WhatsApp con una persona real. Te respondemos en menos de 30 minutos en horario laboral. Nada de bots ni tickets.",
   },
   {
     question: "¿Cuánto cuesta?",
     answer:
-      "Nuestros planes arrancan desde $997 USD e incluyen todo: web + CRM + WhatsApp + dominio + hosting. Consulta nuestras opciones de pago flexibles.",
+      "Nuestros planes arrancan desde $997 USD e incluyen todo: web + gestor de clientes + WhatsApp + dominio + hosting. Consulta nuestras opciones de pago flexibles.",
   },
 ];
 
@@ -45,14 +46,17 @@ export default function FAQ() {
   };
 
   return (
-    <section id="preguntas" className="py-20 lg:py-28 bg-white">
+    <section id="preguntas" className="py-28 lg:py-36 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
           <span className="inline-block text-sm font-semibold text-primary bg-primary-light px-4 py-1.5 rounded-full mb-4 tracking-wide">
             Dudas Resueltas
           </span>
-          <TextReveal as="h2" className="text-fluid-h2 font-bold text-navy-deep tracking-tight">
+          <TextReveal
+            as="h2"
+            className="text-fluid-h2 font-bold text-navy-deep tracking-tight"
+          >
             Preguntas Frecuentes
           </TextReveal>
         </div>
@@ -62,7 +66,12 @@ export default function FAQ() {
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <ScrollReveal key={index} delay={index * 0.08} direction="up" distance={20}>
+              <ScrollReveal
+                key={index}
+                delay={index * 0.08}
+                direction="up"
+                distance={20}
+              >
                 <div className="bg-surface-soft rounded-2xl transition-all duration-200">
                   <button
                     onClick={() => toggle(index)}
@@ -77,21 +86,7 @@ export default function FAQ() {
                         isOpen ? "rotate-180" : "rotate-0"
                       }`}
                     >
-                      <svg
-                        width="22"
-                        height="22"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6 9l6 6 6-6"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <CaretDown weight="bold" size={22} />
                     </span>
                   </button>
                   <div
