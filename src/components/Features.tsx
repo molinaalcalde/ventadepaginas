@@ -16,7 +16,7 @@ export default function Features() {
             </span>
           </ScrollReveal>
           <TextReveal as="h2" className="text-fluid-h2 font-bold text-navy-deep leading-tight">
-            Las 3 cosas que hacen \u00fanico a nuestro sistema
+            Las 3 cosas que hacen único a nuestro sistema
           </TextReveal>
         </div>
 
@@ -33,12 +33,12 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Una web r\u00e1pida y bonita que da confianza al primer vistazo
+              Una web rápida y bonita que da confianza al primer vistazo
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Tu negocio se juega la primera impresi\u00f3n en 3 segundos. Creamos
-              p\u00e1ginas limpias, modernas y ultrarr\u00e1pidas que cargan al instante en
-              cualquier celular. Sin plantillas pesadas ni men\u00fas confusos que
+              Tu negocio se juega la primera impresión en 3 segundos. Creamos
+              páginas limpias, modernas y ultrarápidas que cargan al instante en
+              cualquier celular. Sin plantillas pesadas ni menús confusos que
               espanten ventas.
             </p>
             <ul className="space-y-5">
@@ -49,7 +49,7 @@ export default function Features() {
                   </svg>
                 }
                 title="Carga ultra veloz <1s"
-                description="Experiencia instant\u00e1nea que retiene a cada visitante."
+                description="Experiencia instantánea que retiene a cada visitante."
               />
               <FeatureItem
                 icon={
@@ -70,7 +70,7 @@ export default function Features() {
                   </svg>
                 }
                 title="Optimizada para Google"
-                description="SEO t\u00e9cnico incluido para que te encuentren primero."
+                description="SEO técnico incluido para que te encuentren primero."
               />
             </ul>
           </ScrollReveal>
@@ -90,7 +90,7 @@ export default function Features() {
                   <p className="text-2xl sm:text-3xl font-bold text-primary">
                     <AnimatedCounter value={100} />
                   </p>
-                  <p className="text-xs text-slate-light mt-1">SEO M\u00f3vil</p>
+                  <p className="text-xs text-slate-light mt-1">SEO Móvil</p>
                 </div>
                 <div className="bg-white rounded-xl p-4 text-center border border-border-subtle">
                   <p className="text-2xl sm:text-3xl font-bold text-coral">
@@ -115,7 +115,7 @@ export default function Features() {
           </ScrollReveal>
         </div>
 
-        {/* ───────── Pillar 2: Gesti\u00f3n de Clientes ───────── */}
+        {/* ───────── Pillar 2: Gestión de Clientes ───────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 lg:mb-32">
           {/* Visual */}
           <ScrollReveal direction="left" className="lg:col-span-7 order-1">
@@ -128,7 +128,7 @@ export default function Features() {
                 <ContactRow
                   initials="CR"
                   initialsColor="bg-coral"
-                  name="Carlos Rodr\u00edguez"
+                  name="Carlos Rodríguez"
                   status="Alerta WhatsApp"
                   statusColor="text-emerald-600 bg-emerald-50"
                   time="Hace 5 min"
@@ -136,7 +136,7 @@ export default function Features() {
                 <ContactRow
                   initials="MP"
                   initialsColor="bg-primary"
-                  name="Mar\u00eda P\u00e9rez"
+                  name="María Pérez"
                   status="Presupuesto Enviado"
                   statusColor="text-amber-600 bg-amber-50"
                   time="Hace 2 h"
@@ -144,7 +144,7 @@ export default function Features() {
                 <ContactRow
                   initials="JH"
                   initialsColor="bg-violet-500"
-                  name="Jos\u00e9 Hern\u00e1ndez"
+                  name="José Hernández"
                   status="Cita Agendada"
                   statusColor="text-primary bg-primary-light"
                   time="Ayer"
@@ -160,14 +160,14 @@ export default function Features() {
                 2
               </span>
               <span className="text-sm font-semibold text-coral uppercase tracking-wide">
-                Gesti\u00f3n de Clientes F\u00e1cil
+                Gestión de Clientes Fácil
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
               CRM tan sencillo que cualquiera puede usarlo
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Olv\u00eddate de CRMs complicados en ingl\u00e9s que nadie en tu equipo sabe
+              Olvídate de CRMs complicados en inglés que nadie en tu equipo sabe
               usar. Con nuestro gestor, cada vez que alguien pide presupuesto o
               reserva, te suena el WhatsApp, respondes en un clic y tienes todo
               organizado.
@@ -204,8 +204,8 @@ export default function Features() {
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                   </svg>
                 }
-                title="Sin cuotas mensuales"
-                description="Incluido en tu plan, sin sorpresas ni costes extra."
+                title="Sin licencias de terceros"
+                description="Todo integrado en tu plan, sin software adicional."
               />
             </ul>
           </ScrollReveal>
@@ -224,11 +224,11 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
-              Tranquilidad absoluta: nosotros nos encargamos de todo lo t\u00e9cnico
+              Tranquilidad absoluta: nosotros nos encargamos de todo lo técnico
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
               Dominio, servidor de alta velocidad, copias de seguridad diarias y
-              certificados de seguridad. T\u00fa no te preocupas de nada t\u00e9cnico. Y si
+              certificados de seguridad. Tú no te preocupas de nada técnico. Y si
               necesitas cambiar algo, nos escribes y lo tienes resuelto en menos
               de 30 minutos.
             </p>
@@ -242,7 +242,7 @@ export default function Features() {
                   </svg>
                 }
                 title="Soporte personal"
-                description="Una persona real que responde, no un chatbot gen\u00e9rico."
+                description="Una persona real que responde, no un chatbot genérico."
               />
               <FeatureItem
                 icon={
@@ -253,7 +253,7 @@ export default function Features() {
                   </svg>
                 }
                 title="Seguridad incluida"
-                description="SSL, backups diarios y protecci\u00f3n anti-hackeo activa."
+                description="SSL, backups diarios y protección anti-hackeo activa."
               />
               <FeatureItem
                 icon={
@@ -279,7 +279,7 @@ export default function Features() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-navy-deep">Tu asesor t\u00e9cnico</p>
+                  <p className="font-semibold text-navy-deep">Tu asesor técnico</p>
                   <p className="text-sm text-slate-light">
                     Siempre disponible para lo que necesites
                   </p>
@@ -304,7 +304,7 @@ export default function Features() {
               </div>
               {/* Mini checklist */}
               <div className="space-y-3">
-                {["Dominio y hosting gestionado", "Copias de seguridad diarias", "Certificado SSL activo", "Actualizaciones autom\u00e1ticas"].map(
+                {["Dominio y hosting gestionado", "Copias de seguridad diarias", "Certificado SSL activo", "Actualizaciones automáticas"].map(
                   (item) => (
                     <div key={item} className="flex items-center gap-3">
                       <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">

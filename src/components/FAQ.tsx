@@ -8,32 +8,32 @@ const faqs = [
   {
     question: "¿Tengo que pagar mensualidades por el CRM?",
     answer:
-      "No. A diferencia de HubSpot o Salesforce, el CRM esta integrado en tu propia web. No pagas licencias por usuario ni tarifas por tener mas contactos. Solo pagas una vez.",
+      "El CRM está integrado directamente en tu web, no necesitas pagar licencias de HubSpot, Salesforce ni ningún software adicional. Todo viene incluido en tu plan.",
   },
   {
     question: "¿Funciona con WhatsApp Business?",
     answer:
-      "¡Claro! Conectamos tu WhatsApp Business para que cada formulario, reserva o consulta te llegue directo al celular. Tambien puedes responder desde el panel web.",
+      "¡Claro! Conectamos tu WhatsApp Business para que cada formulario, reserva o consulta te llegue directo al celular. También puedes responder desde el panel web.",
   },
   {
     question: "¿Puedo actualizar la web yo mismo?",
     answer:
-      "Si. Te dejamos un panel super sencillo. Cambiar un precio, subir una foto o editar un texto te toma 1 minuto. Y si prefieres, nos escribes y lo hacemos por ti.",
+      "Sí. Te dejamos un panel súper sencillo. Cambiar un precio, subir una foto o editar un texto te toma 1 minuto. Y si prefieres, nos escribes y lo hacemos por ti.",
   },
   {
     question: "¿Cuánto tiempo tarda en estar lista?",
     answer:
-      "2 semanas exactas desde nuestra primera conversacion. Cumplimos los plazos porque sabemos que tu negocio no puede esperar meses.",
+      "2 semanas exactas desde nuestra primera conversación. Cumplimos los plazos porque sabemos que tu negocio no puede esperar meses.",
   },
   {
     question: "¿Qué pasa si necesito ayuda después?",
     answer:
-      "Tienes soporte directo por WhatsApp. Cualquier duda o cambio pequeno lo resolvemos en menos de 30 minutos. No hablamos con bots, hablamos contigo.",
+      "Tienes soporte directo por WhatsApp. Cualquier duda o cambio pequeño lo resolvemos en menos de 30 minutos. No hablamos con bots, hablamos contigo.",
   },
   {
     question: "¿Cuánto cuesta?",
     answer:
-      "Nuestros planes arrancan desde $997 USD con todo incluido (web + CRM + WhatsApp + dominio + hosting). Ofrecemos pagos en 3 o 6 cuotas para que no sea un golpe fuerte.",
+      "Nuestros planes arrancan desde $997 USD e incluyen todo: web + CRM + WhatsApp + dominio + hosting. Consulta nuestras opciones de pago flexibles.",
   },
 ];
 

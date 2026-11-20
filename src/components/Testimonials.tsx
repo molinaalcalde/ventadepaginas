@@ -5,28 +5,28 @@ import { StaggerChildren } from "@/components/animations/StaggerChildren";
 
 const testimonials = [
   {
-    name: "Maria del Carmen Nunez",
+    name: "María del Carmen Núñez",
     role: "Directora, Hotel Boutique Casa Colonial, Santo Domingo",
     initials: "MC",
     color: "bg-primary",
     quote:
-      "Pagabamos una fortuna en comisiones de Booking y Expedia. Desde que KINETIC nos monto la web con reservas directas, el 60% de nuestros huespedes reservan sin intermediarios. El panel es tan facil que cualquier miembro del equipo lo maneja.",
+      "Pagábamos una fortuna en comisiones de Booking y Expedia. Desde que KINETIC nos montó la web con reservas directas, el 60% de nuestros huéspedes reservan sin intermediarios. El panel es tan fácil que cualquier miembro del equipo lo maneja.",
   },
   {
-    name: "Dr. Rafael Mendez",
-    role: "Director, Centro Dental Sonrie, Santiago",
+    name: "Dr. Rafael Méndez",
+    role: "Director, Centro Dental Sonríe, Santiago",
     initials: "RM",
     color: "bg-coral",
     quote:
-      "Necesitabamos una web que atrajera pacientes internacionales. KINETIC nos hizo la pagina en espanol e ingles, con citas online y WhatsApp automatico. En 3 meses triplicamos las consultas de americanos.",
+      "Necesitábamos una web que atrajera pacientes internacionales. KINETIC nos hizo la página en español e inglés, con citas online y WhatsApp automático. En 3 meses triplicamos las consultas de americanos.",
   },
   {
     name: "Carolina Reyes",
-    role: "Socia, Reyes & Asociados Bienes Raices, Punta Cana",
+    role: "Socia, Reyes & Asociados Bienes Raíces, Punta Cana",
     initials: "CR",
     color: "bg-primary",
     quote:
-      "Nuestro problema era que los leads de compradores extranjeros se nos perdian en emails. Con el CRM de KINETIC todo queda organizado, me llega un aviso al WhatsApp y respondo en segundos. Las ventas subieron un 40%.",
+      "Nuestro problema era que los leads de compradores extranjeros se nos perdían en emails. Con el CRM de KINETIC todo queda organizado, me llega un aviso al WhatsApp y respondo en segundos. Las ventas subieron un 40%.",
   },
 ];
 

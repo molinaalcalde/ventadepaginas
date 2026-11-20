@@ -24,19 +24,19 @@ export default function Home() {
         {/* Gamified Contact Form */}
         <section
           id="contacto"
-          className="py-20 lg:py-28 bg-gradient-to-br from-navy-deep via-navy-slate to-navy-soft relative overflow-hidden"
+          className="py-20 lg:py-28 bg-surface-soft relative overflow-hidden"
         >
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-coral/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-coral/5 rounded-full blur-3xl pointer-events-none" />
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-12">
-              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-primary-light uppercase tracking-wider mb-6">
+              <span className="inline-flex items-center gap-2 bg-primary-light px-4 py-1.5 rounded-full text-xs font-bold text-primary uppercase tracking-wider mb-6">
                 Solo te toma 2 minutos
               </span>
-              <h2 className="text-fluid-h2 font-display font-extrabold text-white mb-4">
+              <h2 className="text-fluid-h2 font-display font-extrabold text-navy-deep mb-4">
                 Cuéntanos de tu negocio
               </h2>
-              <p className="text-slate-300 text-lg max-w-xl mx-auto">
+              <p className="text-slate-text text-lg max-w-xl mx-auto">
                 Responde 5 preguntas rápidas y te enviamos una propuesta personalizada por WhatsApp en menos de 2 horas.
               </p>
             </div>

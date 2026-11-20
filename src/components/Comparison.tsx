@@ -12,7 +12,7 @@ const rows = [
   },
   {
     feature: "CRM + WhatsApp",
-    kinetic: "Incluido de por vida",
+    kinetic: "Integrado, sin software extra",
     agency: "Te cobran otro software aparte",
     diy: "Plugins que fallan",
   },

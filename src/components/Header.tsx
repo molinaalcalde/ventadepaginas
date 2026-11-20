@@ -8,7 +8,7 @@ const navLinks = [
   { href: "#como-funciona", label: "Cómo funciona" },
   { href: "#sectores", label: "Sectores" },
   { href: "#testimonios", label: "Opiniones" },
-  { href: "#precios", label: "Precios" },
+  { href: "#contacto", label: "Contacto" },
 ];
 
 export default function Header() {

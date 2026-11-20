@@ -8,7 +8,7 @@ const sectores = [
   {
     title: "Hoteles y Turismo",
     description:
-      "Reservas directas, motor de b\u00fasqueda de habitaciones y conexi\u00f3n con WhatsApp para que tus hu\u00e9spedes reserven sin intermediarios. Punta Cana, Saman\u00e1, Jarabacoa \u2014 donde sea.",
+      "Reservas directas, motor de búsqueda de habitaciones y conexión con WhatsApp para que tus huéspedes reserven sin intermediarios. Punta Cana, Samaná, Jarabacoa — donde sea.",
     icon: (
       <svg
         width="28"
@@ -31,9 +31,9 @@ const sectores = [
     iconColor: "text-primary",
   },
   {
-    title: "Cl\u00ednicas y Est\u00e9tica",
+    title: "Clínicas y Estética",
     description:
-      "Citas online, recordatorios autom\u00e1ticos por WhatsApp y fichas de pacientes. Para dentistas, est\u00e9tica, dermatolog\u00eda y cirug\u00eda pl\u00e1stica.",
+      "Citas online, recordatorios automáticos por WhatsApp y fichas de pacientes. Para dentistas, estética, dermatología y cirugía plástica.",
     icon: (
       <svg
         width="28"
@@ -63,7 +63,7 @@ const sectores = [
   {
     title: "Inmobiliarias",
     description:
-      "Escaparate de propiedades con fichas cuidadas, calculadora de inversi\u00f3n y captura de leads internacionales. Ideal para compradores de USA y Europa.",
+      "Escaparate de propiedades con fichas cuidadas, calculadora de inversión y captura de leads internacionales. Ideal para compradores de USA y Europa.",
     icon: (
       <svg
         width="28"
@@ -94,7 +94,7 @@ const sectores = [
   {
     title: "Restaurantes y Eventos",
     description:
-      "Reservas de mesa, men\u00fa digital, peticiones de catering y confirmaci\u00f3n autom\u00e1tica. Adi\u00f3s a las llamadas perdidas.",
+      "Reservas de mesa, menú digital, peticiones de catering y confirmación automática. Adiós a las llamadas perdidas.",
     icon: (
       <svg
         width="28"
@@ -125,7 +125,7 @@ const sectores = [
   {
     title: "Servicios Profesionales",
     description:
-      "Abogados, contadores, consultores. Formularios de solicitud, seguimiento de casos y presupuestos autom\u00e1ticos.",
+      "Abogados, contadores, consultores. Formularios de solicitud, seguimiento de casos y presupuestos automáticos.",
     icon: (
       <svg
         width="28"
@@ -167,8 +167,8 @@ export default function Sectores() {
           </TextReveal>
           <ScrollReveal direction="up" delay={0.2}>
             <p className="mt-4 text-slate-light text-base sm:text-lg leading-relaxed">
-              Cada sector capta clientes de forma distinta. Por eso dise\u00f1amos
-              soluciones espec\u00edficas que encajan con tu flujo de trabajo real.
+              Cada sector capta clientes de forma distinta. Por eso diseñamos
+              soluciones específicas que encajan con tu flujo de trabajo real.
             </p>
           </ScrollReveal>
         </div>
@@ -200,7 +200,7 @@ export default function Sectores() {
                   href="#contacto"
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors group"
                 >
-                  Ver soluci\u00f3n
+                  Ver solución
                   <svg
                     width="16"
                     height="16"

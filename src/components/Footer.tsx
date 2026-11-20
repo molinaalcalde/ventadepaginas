@@ -3,7 +3,7 @@
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 const includeLinks = [
-  { label: "Web Ultra Rapida", href: "#que-incluye" },
+  { label: "Web Ultra Rápida", href: "#que-incluye" },
   { label: "Gestor CRM", href: "#que-incluye" },
   { label: "Avisos WhatsApp", href: "#que-incluye" },
   { label: "Dominio y Servidor", href: "#que-incluye" },
@@ -12,8 +12,8 @@ const includeLinks = [
 
 const sectorLinks = [
   { label: "Hoteles y Resorts", href: "#sectores" },
-  { label: "Clinicas y Consultorios", href: "#sectores" },
-  { label: "Bienes Raices", href: "#sectores" },
+  { label: "Clínicas y Consultorios", href: "#sectores" },
+  { label: "Bienes Raíces", href: "#sectores" },
   { label: "Servicios Profesionales", href: "#sectores" },
   { label: "Restaurantes y Delivery", href: "#sectores" },
 ];
@@ -54,11 +54,11 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-slate-text leading-relaxed mb-3 max-w-sm">
-              Paginas web profesionales con CRM, reservas y WhatsApp integrado.
+              Páginas web profesionales con CRM, reservas y WhatsApp integrado.
               Todo listo en 2 semanas.
             </p>
             <p className="text-sm text-slate-light mb-5">
-              Santo Domingo, Republica Dominicana
+              Santo Domingo, República Dominicana
             </p>
             <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-light bg-surface-soft px-3 py-1.5 rounded-full border border-border-subtle">
               <svg
@@ -84,14 +84,14 @@ export default function Footer() {
                   strokeLinecap="round"
                 />
               </svg>
-              Proteccion de datos garantizada
+              Protección de datos garantizada
             </span>
           </ScrollReveal>
 
           {/* Que incluye */}
           <ScrollReveal direction="up" delay={0.1}>
             <h4 className="text-sm font-semibold text-navy-deep uppercase tracking-wider mb-4">
-              ¿Que incluye?
+              ¿Qué incluye?
             </h4>
             <ul className="space-y-3">
               {includeLinks.map((link) => (
