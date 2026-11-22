@@ -92,7 +92,15 @@ export function JsonLd() {
             name: "¿Qué incluye exactamente?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Todo lo que necesitas: web profesional, gestor de clientes integrado, conexión con WhatsApp Business, dominio, hosting de alta velocidad y soporte directo.",
+              text: "Todo lo que necesitas: web profesional, gestor de clientes integrado, conexión con WhatsApp Business, tu Tarjeta Digital para redes sociales, dominio, hosting de alta velocidad y soporte directo.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "¿Qué es un gestor de clientes y por qué lo necesito?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Es como la libreta donde antes anotabas los datos de tus clientes, pero inteligente. Guarda quién te llamó, qué te pidió, cuándo fue la última vez que le escribiste y si ya te pagó. Los negocios que usan un gestor de clientes venden hasta un 29% más.",
             },
           },
         ],

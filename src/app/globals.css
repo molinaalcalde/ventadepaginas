@@ -7,34 +7,34 @@
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
 
-  /* ── Primary (Teal) ── */
-  --color-primary: #009688;
-  --color-primary-dark: #007A6E;
-  --color-primary-light: #E6F7F6;
-  --color-primary-container: #00A3A6;
+  /* ── Primary (Deep Teal) ── */
+  --color-primary: #0F766E;
+  --color-primary-dark: #0D6560;
+  --color-primary-light: #E8F5F3;
+  --color-primary-container: #0F766E;
 
-  /* ── Coral (CTA) ── */
-  --color-coral: #FF5A5F;
-  --color-coral-hover: #E84D52;
-  --color-coral-light: #FFF0F0;
+  /* ── Coral (CTA — Terracota) ── */
+  --color-coral: #E8422A;
+  --color-coral-hover: #C1341F;
+  --color-coral-light: #FEF0ED;
 
-  /* ── Navy (Headings / Deep Contrast) ── */
-  --color-navy-deep: #0C2340;
-  --color-navy-slate: #102A43;
-  --color-navy-soft: #1E3A5F;
+  /* ── Ink (Headings / Deep Contrast) ── */
+  --color-navy-deep: #1A1A2E;
+  --color-navy-slate: #1A1A2E;
+  --color-navy-soft: #2D2D3F;
 
-  /* ── Neutrals ── */
-  --color-slate-text: #4A5568;
-  --color-slate-light: #64748B;
-  --color-surface-soft: #F7FAF9;
-  --color-surface-muted: #F3F6F8;
+  /* ── Neutrals (Warm zinc family) ── */
+  --color-slate-text: #52525B;
+  --color-slate-light: #A1A1AA;
+  --color-surface-soft: #FAFAF9;
+  --color-surface-muted: #F5F5F4;
   --color-surface-card: #FFFFFF;
-  --color-border-subtle: #E2E8F0;
+  --color-border-subtle: #E7E5E4;
 
-  /* ── Warm Backgrounds (littlehotelier inspired) ── */
-  --color-warm-peach: #FFF5EE;
-  --color-warm-cream: #FEF7F0;
-  --color-warm-blush: #FFE2D7;
+  /* ── Warm Backgrounds (stone family) ── */
+  --color-warm-peach: #F5F0EB;
+  --color-warm-cream: #F5F0EB;
+  --color-warm-blush: #EDE8E0;
 
   /* ── Border Radius ── */
   --radius-2xl: 1rem;
@@ -42,11 +42,11 @@
   --radius-full: 9999px;
 
   /* ── Shadows ── */
-  --shadow-soft: 0 2px 15px -3px rgba(12, 35, 64, 0.05), 0 4px 6px -2px rgba(12, 35, 64, 0.02);
-  --shadow-float: 0 20px 35px -10px rgba(12, 35, 64, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-coral: 0 10px 25px -5px rgba(255, 90, 95, 0.35);
-  --shadow-teal: 0 10px 25px -5px rgba(0, 163, 166, 0.3);
-  --shadow-glow: 0 0 60px -12px rgba(0, 150, 136, 0.4);
+  --shadow-soft: 0 2px 15px -3px rgba(26, 26, 46, 0.05), 0 4px 6px -2px rgba(26, 26, 46, 0.02);
+  --shadow-float: 0 20px 35px -10px rgba(26, 26, 46, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-coral: 0 10px 25px -5px rgba(232, 66, 42, 0.30);
+  --shadow-teal: 0 10px 25px -5px rgba(15, 118, 110, 0.25);
+  --shadow-glow: 0 0 60px -12px rgba(15, 118, 110, 0.35);
 }
 
 @layer base {

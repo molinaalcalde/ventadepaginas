@@ -10,6 +10,7 @@ import {
   Headset,
   LockSimple,
   CheckCircle,
+  LinkSimple,
 } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
@@ -64,6 +65,11 @@ export default function Features() {
                 icon={<MagnifyingGlass weight="bold" className="w-5 h-5" />}
                 title="Optimizada para Google"
                 description="SEO técnico incluido para que te encuentren primero."
+              />
+              <FeatureItem
+                icon={<LinkSimple weight="bold" className="w-5 h-5" />}
+                title="Tu Tarjeta Digital para redes"
+                description="Una mini-página con todos tus enlaces para Instagram, TikTok y WhatsApp. Incluida gratis."
               />
             </ul>
           </ScrollReveal>
@@ -156,7 +162,7 @@ export default function Features() {
               Cada cliente queda registrado, ninguno se te escapa
             </h3>
             <p className="text-slate-text mb-8 leading-relaxed">
-              Cada persona que te escribe queda guardada con su nombre, teléfono y lo que necesita. El sistema te avisa cuándo darle seguimiento. Es como tener un asistente que nunca olvida nada, y lo manejas todo desde tu celular.
+              Cada persona que te escribe queda guardada con su nombre, teléfono y lo que necesita. El sistema te avisa cuándo darle seguimiento. Los negocios que usan un gestor de clientes venden hasta un 29% más. Y lo manejas todo desde tu celular.
             </p>
             <ul className="space-y-5">
               <FeatureItem

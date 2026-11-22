@@ -11,45 +11,35 @@ const sectores = [
     description:
       "Recibe reservas directas desde tu web sin pagar comisiones a Booking ni Expedia. Tus huéspedes reservan y tú recibes el aviso al WhatsApp.",
     icon: Bed,
-    iconBg: "bg-[#E0F2FE]",
-    iconColor: "text-[#0284C7]",
-    cta: "Reservas directas para mi hotel →",
+    cta: "Reservas directas para mi hotel",
   },
   {
     title: "Clínicas y Estética",
     description:
       "Tus pacientes agendan citas online y reciben recordatorios automáticos. Menos llamadas, menos cancelaciones, más consultas.",
     icon: Heartbeat,
-    iconBg: "bg-[#FCE7F3]",
-    iconColor: "text-[#DB2777]",
-    cta: "Citas online para mi clínica →",
+    cta: "Citas online para mi clínica",
   },
   {
     title: "Inmobiliarias",
     description:
       "Muestra tus propiedades con fotos profesionales y captura compradores de USA y Europa que buscan en Google.",
     icon: Key,
-    iconBg: "bg-[#EDE9FE]",
-    iconColor: "text-[#7C3AED]",
-    cta: "Captar compradores internacionales →",
+    cta: "Captar compradores internacionales",
   },
   {
     title: "Restaurantes y Eventos",
     description:
       "Reservas de mesa desde el celular, menú digital y pedidos por WhatsApp. Sin llamadas perdidas, sin hojas de papel.",
     icon: ForkKnife,
-    iconBg: "bg-[#FEF3C7]",
-    iconColor: "text-[#F59E0B]",
-    cta: "Adiós a las llamadas perdidas →",
+    cta: "Adiós a las llamadas perdidas",
   },
   {
     title: "Servicios Profesionales",
     description:
       "Tus clientes te encuentran en Google, llenan un formulario y tú recibes todo en WhatsApp. Así de fácil.",
     icon: Handshake,
-    iconBg: "bg-[#D1FAE5]",
-    iconColor: "text-[#059669]",
-    cta: "Automatizar mi captación →",
+    cta: "Automatizar mi captación",
   },
 ];
 
@@ -86,9 +76,9 @@ export default function Sectores() {
                 <div className="bg-white rounded-2xl p-6 shadow-soft hover:shadow-float border border-border-subtle/80 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                   {/* Icon */}
                   <div
-                    className={`w-14 h-14 rounded-2xl ${sector.iconBg} ${sector.iconColor} flex items-center justify-center mb-4`}
+                    className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4"
                   >
-                    <Icon size={28} weight="duotone" />
+                    <Icon size={24} weight="bold" />
                   </div>
 
                   {/* Title */}

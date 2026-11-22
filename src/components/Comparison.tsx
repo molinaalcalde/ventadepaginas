@@ -37,9 +37,15 @@ const rows = [
   },
   {
     feature: "Gestor de clientes (CRM)",
-    kinetic: "Incluido. Te ahorras hasta $200/mes en software",
-    agency: "Te cobran licencia aparte ($50-200/mes extra)",
+    kinetic: "Incluido. Te ahorras $100 a $300 al mes en software",
+    agency: "Te cobran HubSpot o Salesforce aparte ($20 a $100 por usuario al mes)",
     diy: "No existe o plugins que se rompen",
+  },
+  {
+    feature: "Tarjeta Digital para redes",
+    kinetic: "Incluida. Tu enlace profesional para Instagram, TikTok y WhatsApp",
+    agency: "No la ofrecen",
+    diy: "Tienes que pagar Linktree aparte ($9 a $35 al mes)",
   },
 ];
 
