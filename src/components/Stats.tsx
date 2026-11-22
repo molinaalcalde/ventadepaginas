@@ -11,6 +11,8 @@ const stats = [
     suffix: "+",
     label: "Negocios confían en nosotros",
     description: "De República Dominicana, Panamá y Costa Rica",
+    color: "text-primary",
+    iconBg: "bg-primary/10",
   },
   {
     icon: Timer,
@@ -18,6 +20,8 @@ const stats = [
     suffix: "",
     label: "Días de la idea a vender",
     description: "Diseño, desarrollo y lanzamiento incluidos",
+    color: "text-coral",
+    iconBg: "bg-coral/10",
   },
   {
     icon: TrendUp,
@@ -25,6 +29,8 @@ const stats = [
     suffix: "%",
     label: "Más ventas con un gestor de clientes",
     description: "Dato comprobado en negocios como el tuyo",
+    color: "text-primary",
+    iconBg: "bg-primary/10",
   },
   {
     icon: Star,
@@ -32,16 +38,15 @@ const stats = [
     suffix: "/5",
     label: "Valoración de nuestros clientes",
     description: "Basada en reseñas verificadas",
+    color: "text-coral",
+    iconBg: "bg-coral/10",
   },
 ];
 
 export default function Stats() {
   return (
-    <section className="py-20 lg:py-28 bg-navy-deep relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-20 lg:py-28 bg-warm-cream">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
@@ -52,20 +57,20 @@ export default function Stats() {
                 delay={index * 0.12}
               >
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 mb-4">
-                    <Icon size={24} weight="bold" className="text-primary-light" />
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl ${stat.iconBg} mb-4`}>
+                    <Icon size={24} weight="bold" className={stat.color} />
                   </div>
-                  <p className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-2">
+                  <p className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-2 ${stat.color}`}>
                     <AnimatedCounter
                       value={stat.value}
                       suffix={stat.suffix}
                       duration={2.5}
                     />
                   </p>
-                  <p className="text-sm sm:text-base font-semibold text-white/90 mb-1">
+                  <p className="text-sm sm:text-base font-semibold text-navy-deep mb-1">
                     {stat.label}
                   </p>
-                  <p className="text-xs sm:text-sm text-white/50">
+                  <p className="text-xs sm:text-sm text-slate-light">
                     {stat.description}
                   </p>
                 </div>

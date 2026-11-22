@@ -1,5 +1,3 @@
-"use client";
-
 interface SectionDividerProps {
   /** Top section background color (Tailwind CSS variable or hex) */
   from?: string;
@@ -22,16 +20,16 @@ export function SectionDivider({
       style={{ marginTop: -1, marginBottom: -1 }}
     >
       <svg
-        viewBox="0 0 1440 80"
+        viewBox="0 0 1440 48"
         preserveAspectRatio="none"
-        className="w-full h-12 sm:h-16 lg:h-20 block"
+        className="w-full h-8 sm:h-10 lg:h-12 block"
         style={{ transform: flip ? "scaleY(-1)" : undefined }}
       >
         {/* Background fill matching top section */}
-        <rect width="1440" height="80" fill={from} />
-        {/* Curved transition to bottom section */}
+        <rect width="1440" height="48" fill={from} />
+        {/* Gentle curved transition to bottom section */}
         <path
-          d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z"
+          d="M0,12 C480,48 960,48 1440,12 L1440,48 L0,48 Z"
           fill={to}
         />
       </svg>

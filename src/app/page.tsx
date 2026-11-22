@@ -40,10 +40,9 @@ export default function Home() {
 
         <Portfolio />
 
-        {/* Stats — dark section with animated counters */}
-        <SectionDivider from="var(--color-surface-soft)" to="var(--color-navy-deep)" />
+        <SectionDivider from="var(--color-surface-soft)" to="var(--color-warm-cream)" />
         <Stats />
-        <SectionDivider from="var(--color-navy-deep)" to="white" flip />
+        <SectionDivider from="var(--color-warm-cream)" to="white" flip />
 
         <FAQ />
 
