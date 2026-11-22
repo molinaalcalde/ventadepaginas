@@ -1,6 +1,6 @@
 "use client";
 
-import { ChatCircleDots, Layout, Plugs, RocketLaunch, CheckCircle } from "@phosphor-icons/react";
+import { CheckCircle } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
@@ -10,233 +10,276 @@ const steps = [
     days: "Días 1 a 3",
     title: "Nos conocemos",
     description:
-      "Hablamos 30 minutos por WhatsApp o videollamada. Nos cuentas de tu negocio y listo, sin tecnicismos ni reuniones eternas.",
+      "30 minutos por WhatsApp o videollamada. Nos cuentas de tu negocio, sin tecnicismos.",
     check: "Briefing completo en 30 min",
-    icon: ChatCircleDots,
-    visual: (
-      <div className="space-y-2.5">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center">
-            <div className="w-4 h-4 rounded-full bg-[#25D366]" />
-          </div>
-          <div className="flex-1 bg-white/10 rounded-xl rounded-tl-none px-3 py-2">
-            <div className="w-3/4 h-2 rounded bg-white/30 mb-1.5" />
-            <div className="w-1/2 h-2 rounded bg-white/20" />
-          </div>
-        </div>
-        <div className="flex items-center gap-2 justify-end">
-          <div className="bg-primary/30 rounded-xl rounded-tr-none px-3 py-2">
-            <div className="w-20 h-2 rounded bg-white/30 mb-1.5" />
-            <div className="w-14 h-2 rounded bg-white/20" />
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center">
-            <div className="w-4 h-4 rounded-full bg-[#25D366]" />
-          </div>
-          <div className="flex-1 bg-white/10 rounded-xl rounded-tl-none px-3 py-2">
-            <div className="w-full h-2 rounded bg-white/30 mb-1.5" />
-            <div className="w-2/3 h-2 rounded bg-white/20" />
-          </div>
-        </div>
-      </div>
-    ),
   },
   {
     number: "02",
     days: "Días 4 a 7",
     title: "Diseñamos tu web",
     description:
-      "Te mostramos cómo va a quedar tu web antes de construirla. Si no te encanta, la cambiamos hasta que digas 'wow'.",
+      "Te mostramos tu web antes de construirla. La cambiamos hasta que digas 'wow'.",
     check: "Prototipo navegable para revisar",
-    icon: Layout,
-    visual: (
-      <div className="bg-white/10 rounded-lg overflow-hidden">
-        <div className="flex items-center gap-1 px-2.5 py-1.5 bg-white/5">
-          <div className="w-1.5 h-1.5 rounded-full bg-red-400/60" />
-          <div className="w-1.5 h-1.5 rounded-full bg-amber-400/60" />
-          <div className="w-1.5 h-1.5 rounded-full bg-green-400/60" />
-        </div>
-        <div className="p-3 space-y-2">
-          <div className="w-1/3 h-1.5 rounded bg-primary/40" />
-          <div className="w-3/4 h-2.5 rounded bg-white/20" />
-          <div className="w-1/2 h-2.5 rounded bg-white/15" />
-          <div className="w-1/4 h-4 rounded bg-coral/40 mt-2" />
-          <div className="flex gap-1.5 mt-2">
-            <div className="flex-1 h-8 rounded bg-white/8" />
-            <div className="flex-1 h-8 rounded bg-white/8" />
-            <div className="flex-1 h-8 rounded bg-white/8" />
-          </div>
-        </div>
-      </div>
-    ),
   },
   {
     number: "03",
     days: "Días 8 a 11",
     title: "Construimos y conectamos",
     description:
-      "Montamos todo: tu web, el gestor de clientes y WhatsApp conectado. Tú no tocas nada técnico.",
+      "Montamos todo: web, gestor de clientes y WhatsApp conectado. Tú no tocas nada técnico.",
     check: "Web + WhatsApp + Gestor integrado",
-    icon: Plugs,
-    visual: (
-      <div className="space-y-2">
-        <div className="flex items-center gap-2 bg-white/8 rounded-lg px-3 py-2">
-          <div className="w-6 h-6 rounded bg-primary/30 flex-shrink-0" />
-          <div className="flex-1">
-            <div className="w-16 h-1.5 rounded bg-white/30 mb-1" />
-            <div className="w-10 h-1 rounded bg-white/15" />
-          </div>
-          <div className="w-2 h-2 rounded-full bg-green-400" />
-        </div>
-        <div className="flex items-center gap-2 bg-white/8 rounded-lg px-3 py-2">
-          <div className="w-6 h-6 rounded bg-[#25D366]/30 flex-shrink-0" />
-          <div className="flex-1">
-            <div className="w-20 h-1.5 rounded bg-white/30 mb-1" />
-            <div className="w-12 h-1 rounded bg-white/15" />
-          </div>
-          <div className="w-2 h-2 rounded-full bg-green-400" />
-        </div>
-        <div className="flex items-center gap-2 bg-white/8 rounded-lg px-3 py-2">
-          <div className="w-6 h-6 rounded bg-coral/30 flex-shrink-0" />
-          <div className="flex-1">
-            <div className="w-14 h-1.5 rounded bg-white/30 mb-1" />
-            <div className="w-8 h-1 rounded bg-white/15" />
-          </div>
-          <div className="w-2 h-2 rounded-full bg-green-400" />
-        </div>
-      </div>
-    ),
   },
   {
     number: "04",
     days: "Día 14",
     title: "¡Al aire!",
     description:
-      "Te enseñamos a usarla en 30 minutos y la publicamos. Ese mismo día empiezas a recibir clientes.",
+      "Te enseñamos a usarla y la publicamos. Ese mismo día empiezas a recibir clientes.",
     check: "Capacitación incluida",
-    icon: RocketLaunch,
-    visual: (
-      <div className="relative">
-        <div className="bg-white/10 rounded-lg overflow-hidden">
-          <div className="flex items-center gap-1 px-2.5 py-1.5 bg-white/5">
-            <div className="w-1.5 h-1.5 rounded-full bg-red-400/60" />
-            <div className="w-1.5 h-1.5 rounded-full bg-amber-400/60" />
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400/60" />
-            <div className="ml-2 flex-1">
-              <div className="w-24 h-1.5 rounded bg-white/15 mx-auto" />
+  },
+];
+
+/* ─── Visual mockups for each step (embedded in dark cards) ─── */
+
+function VisualChat() {
+  return (
+    <div className="h-full flex flex-col justify-center gap-2.5 p-5">
+      {/* Incoming message */}
+      <div className="flex items-end gap-2 max-w-[85%]">
+        <div className="w-7 h-7 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
+          <svg width="14" height="14" fill="white" viewBox="0 0 256 256"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84Z"/></svg>
+        </div>
+        <div className="bg-white/[0.12] backdrop-blur-sm rounded-2xl rounded-bl-md px-4 py-2.5">
+          <p className="text-[11px] text-white/80 leading-relaxed">Hola, tengo un restaurante en<br/>Santo Domingo y necesito una web</p>
+          <p className="text-[9px] text-white/30 mt-1 text-right">10:32 AM</p>
+        </div>
+      </div>
+      {/* Outgoing message */}
+      <div className="flex items-end gap-2 max-w-[80%] self-end">
+        <div className="bg-primary/40 backdrop-blur-sm rounded-2xl rounded-br-md px-4 py-2.5">
+          <p className="text-[11px] text-white/90 leading-relaxed">¡Perfecto! Te cuento cómo<br/>funciona en 2 minutos 🚀</p>
+          <p className="text-[9px] text-white/30 mt-1 text-right">10:33 AM</p>
+        </div>
+      </div>
+      {/* Typing indicator */}
+      <div className="flex items-end gap-2 max-w-[85%]">
+        <div className="w-7 h-7 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
+          <svg width="14" height="14" fill="white" viewBox="0 0 256 256"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84Z"/></svg>
+        </div>
+        <div className="bg-white/[0.12] rounded-2xl rounded-bl-md px-4 py-3 flex gap-1">
+          <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+          <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+          <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function VisualDesign() {
+  return (
+    <div className="h-full flex items-center justify-center p-4">
+      <div className="w-full bg-white/[0.08] rounded-xl overflow-hidden border border-white/[0.06]">
+        {/* Browser chrome */}
+        <div className="flex items-center gap-1.5 px-3 py-2 bg-white/[0.04] border-b border-white/[0.06]">
+          <span className="w-2 h-2 rounded-full bg-[#FF5F57]" />
+          <span className="w-2 h-2 rounded-full bg-[#FEBC2E]" />
+          <span className="w-2 h-2 rounded-full bg-[#28C840]" />
+          <div className="ml-3 flex-1 h-3.5 bg-white/[0.06] rounded-md max-w-[120px] mx-auto" />
+        </div>
+        {/* Website content */}
+        <div className="p-4 space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="w-14 h-2 rounded bg-primary/50" />
+            <div className="flex gap-2">
+              <div className="w-8 h-1.5 rounded bg-white/15" />
+              <div className="w-8 h-1.5 rounded bg-white/15" />
+              <div className="w-8 h-1.5 rounded bg-white/15" />
             </div>
           </div>
-          <div className="p-3 space-y-2">
-            <div className="w-1/3 h-1.5 rounded bg-primary/40" />
-            <div className="w-2/3 h-2 rounded bg-white/20" />
-            <div className="w-1/4 h-3 rounded bg-coral/50 mt-1" />
-            <div className="flex gap-1.5 mt-2">
-              <div className="flex-1 h-6 rounded bg-white/6" />
-              <div className="flex-1 h-6 rounded bg-white/6" />
-            </div>
+          <div className="pt-2">
+            <div className="w-[70%] h-3 rounded bg-white/20 mb-2" />
+            <div className="w-[50%] h-3 rounded bg-white/14 mb-2" />
+            <div className="w-[60%] h-2 rounded bg-white/8 mb-3" />
+            <div className="w-20 h-5 rounded-md bg-coral/60" />
+          </div>
+          <div className="flex gap-2 pt-2">
+            <div className="flex-1 h-12 rounded-lg bg-white/[0.04] border border-white/[0.06]" />
+            <div className="flex-1 h-12 rounded-lg bg-white/[0.04] border border-white/[0.06]" />
+            <div className="flex-1 h-12 rounded-lg bg-white/[0.04] border border-white/[0.06]" />
           </div>
         </div>
-        {/* Live indicator */}
-        <div className="absolute -top-2 -right-2 flex items-center gap-1 bg-green-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+      </div>
+    </div>
+  );
+}
+
+function VisualConnect() {
+  return (
+    <div className="h-full flex flex-col justify-center gap-3 p-5">
+      {[
+        { label: "Sitio web", sub: "Diseño responsive", color: "bg-primary", connected: true },
+        { label: "WhatsApp Business", sub: "Notificaciones activas", color: "bg-[#25D366]", connected: true },
+        { label: "Gestor de clientes", sub: "CRM integrado", color: "bg-coral", connected: true },
+      ].map((item) => (
+        <div key={item.label} className="flex items-center gap-3 bg-white/[0.06] backdrop-blur-sm rounded-xl px-4 py-3 border border-white/[0.04]">
+          <div className={`w-8 h-8 rounded-lg ${item.color}/20 flex items-center justify-center flex-shrink-0`}>
+            <div className={`w-3.5 h-3.5 rounded-sm ${item.color}`} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-[12px] font-semibold text-white/90 truncate">{item.label}</p>
+            <p className="text-[10px] text-white/40">{item.sub}</p>
+          </div>
+          {item.connected && (
+            <div className="flex items-center gap-1.5">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              <span className="text-[9px] font-semibold text-emerald-400 uppercase tracking-wider">Activo</span>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function VisualLaunch() {
+  return (
+    <div className="h-full flex items-center justify-center p-4 relative">
+      <div className="w-full bg-white/[0.08] rounded-xl overflow-hidden border border-white/[0.06] relative">
+        {/* Browser chrome */}
+        <div className="flex items-center gap-1.5 px-3 py-2 bg-white/[0.04] border-b border-white/[0.06]">
+          <span className="w-2 h-2 rounded-full bg-[#FF5F57]" />
+          <span className="w-2 h-2 rounded-full bg-[#FEBC2E]" />
+          <span className="w-2 h-2 rounded-full bg-[#28C840]" />
+          <div className="ml-3 flex-1 flex items-center gap-1 justify-center">
+            <svg className="w-2.5 h-2.5 text-emerald-400" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+            <span className="text-[9px] text-white/50 font-medium">tunegocio.com</span>
+          </div>
+        </div>
+        {/* Website content */}
+        <div className="p-3 space-y-2.5">
+          <div className="flex justify-between items-center">
+            <div className="w-12 h-2 rounded bg-primary/50" />
+            <div className="flex gap-1.5">
+              <div className="w-6 h-1 rounded bg-white/12" />
+              <div className="w-6 h-1 rounded bg-white/12" />
+            </div>
+          </div>
+          <div className="w-[55%] h-2.5 rounded bg-white/18 mb-1" />
+          <div className="w-[35%] h-2.5 rounded bg-white/12" />
+          <div className="w-16 h-4 rounded bg-coral/50 mt-1" />
+          <div className="flex gap-1.5 pt-1">
+            <div className="flex-1 h-8 rounded-md bg-white/[0.04]" />
+            <div className="flex-1 h-8 rounded-md bg-white/[0.04]" />
+          </div>
+        </div>
+        {/* Live badge */}
+        <div className="absolute top-8 right-2 flex items-center gap-1 bg-emerald-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-lg shadow-emerald-500/30">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
           </span>
-          Live
+          En vivo
         </div>
       </div>
-    ),
-  },
-];
+      {/* Notification popup */}
+      <div className="absolute bottom-6 right-3 bg-white/[0.12] backdrop-blur-md rounded-xl px-3 py-2 border border-white/[0.08] shadow-xl max-w-[140px]">
+        <p className="text-[9px] text-emerald-400 font-bold mb-0.5">Nuevo contacto</p>
+        <p className="text-[8px] text-white/60 leading-tight">María P. quiere reservar una mesa</p>
+      </div>
+    </div>
+  );
+}
+
+const visuals = [VisualChat, VisualDesign, VisualConnect, VisualLaunch];
 
 export default function Process() {
   return (
     <section
       id="como-funciona"
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-28 lg:py-36"
       style={{
-        background: "linear-gradient(180deg, var(--color-warm-cream) 0%, #1a1a2e 100%)",
+        background: "linear-gradient(180deg, var(--color-warm-cream) 0%, var(--color-primary-light) 40%, #0F766E 100%)",
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
           <ScrollReveal direction="up">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary-light text-primary text-sm font-semibold tracking-wide mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-white/80 text-primary text-sm font-semibold tracking-wide mb-4">
               Así de fácil
             </span>
           </ScrollReveal>
           <TextReveal as="h2" className="text-fluid-h2 font-extrabold text-navy-deep leading-tight">
-            De la idea a tu web funcionando en solo{" "}
+            De la idea a tu web en solo{" "}
             <span className="text-primary">2 semanas</span>
           </TextReveal>
           <ScrollReveal direction="up" delay={0.15}>
             <p className="mt-4 text-slate-text text-base sm:text-lg leading-relaxed">
-              Sin reuniones eternas ni tecnicismos. Tú nos cuentas de tu negocio, nosotros hacemos el resto.
+              Sin reuniones eternas ni tecnicismos. Tú nos cuentas, nosotros hacemos el resto.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* Steps as cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 max-w-6xl mx-auto mb-12">
+        {/* Step cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto mb-14">
           {steps.map((step, idx) => {
-            const Icon = step.icon;
+            const Visual = visuals[idx];
             return (
-              <ScrollReveal
-                key={step.number}
-                direction="up"
-                delay={idx * 0.1}
-              >
+              <ScrollReveal key={step.number} direction="up" delay={idx * 0.1}>
                 <div
-                  className="group bg-navy-deep/90 backdrop-blur-sm rounded-2xl p-6 h-full flex flex-col border border-white/[0.06] hover:border-white/[0.12] cursor-default"
+                  className="group rounded-2xl overflow-hidden h-full flex flex-col"
                   style={{
+                    backgroundColor: "rgba(15, 20, 25, 0.85)",
+                    backdropFilter: "blur(16px)",
+                    border: "1px solid rgba(255,255,255,0.06)",
                     transition: "all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)",
-                    boxShadow: "0 20px 40px -15px rgba(0,0,0,0.3)",
                   }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(-6px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 30px 60px -15px rgba(0,0,0,0.4)";
+                    const el = e.currentTarget;
+                    el.style.transform = "translateY(-8px)";
+                    el.style.boxShadow = "0 30px 60px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1)";
+                    el.style.borderColor = "rgba(255,255,255,0.12)";
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 20px 40px -15px rgba(0,0,0,0.3)";
+                    const el = e.currentTarget;
+                    el.style.transform = "translateY(0)";
+                    el.style.boxShadow = "none";
+                    el.style.borderColor = "rgba(255,255,255,0.06)";
                   }}
                 >
-                  {/* Step header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold tracking-widest uppercase text-white/40">
+                  {/* Visual area */}
+                  <div className="h-52 sm:h-56 relative overflow-hidden">
+                    <Visual />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5 flex flex-col flex-1 border-t border-white/[0.06]">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-[11px] font-bold tracking-widest uppercase text-white/30">
                         Paso {step.number}
                       </span>
-                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-primary/20 text-primary">
+                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-primary/20 text-primary-light">
                         {step.days}
                       </span>
                     </div>
-                    <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center">
-                      <Icon size={18} weight="bold" className="text-primary" />
+
+                    <h3 className="text-lg font-bold text-white mb-2 leading-snug tracking-tight">
+                      {step.title}
+                    </h3>
+                    <p className="text-[13px] text-white/45 leading-relaxed mb-4 flex-1">
+                      {step.description}
+                    </p>
+
+                    <div className="flex items-center gap-2 pt-3 border-t border-white/[0.06]">
+                      <CheckCircle size={14} weight="bold" className="text-emerald-400 shrink-0" />
+                      <span className="text-[11px] font-semibold text-emerald-400/90">
+                        {step.check}
+                      </span>
                     </div>
-                  </div>
-
-                  {/* Visual mockup */}
-                  <div className="mb-5">
-                    {step.visual}
-                  </div>
-
-                  {/* Text */}
-                  <h3 className="text-base font-bold text-white mb-2 leading-snug">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-white/50 leading-relaxed mb-4 flex-1">
-                    {step.description}
-                  </p>
-
-                  {/* Check */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-white/[0.06]">
-                    <CheckCircle size={14} weight="bold" className="text-primary shrink-0" />
-                    <span className="text-xs font-semibold text-primary">
-                      {step.check}
-                    </span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -247,8 +290,8 @@ export default function Process() {
         {/* Finish line */}
         <ScrollReveal direction="up" delay={0.5}>
           <div className="flex items-center justify-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-coral/20 flex items-center justify-center">
-              <CheckCircle size={20} weight="bold" className="text-coral" />
+            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+              <CheckCircle size={20} weight="bold" className="text-white" />
             </div>
             <p className="text-base font-bold text-white">
               Tu web está en línea. Empiezas a recibir clientes.
