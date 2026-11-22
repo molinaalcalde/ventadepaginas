@@ -6,9 +6,13 @@ import Features from "@/components/Features";
 import Process from "@/components/Process";
 import Comparison from "@/components/Comparison";
 import Testimonials from "@/components/Testimonials";
+import Portfolio from "@/components/Portfolio";
+import Stats from "@/components/Stats";
 import FAQ from "@/components/FAQ";
 import GamifiedForm from "@/components/GamifiedForm";
 import Footer from "@/components/Footer";
+import { SectionDivider } from "@/components/animations/SectionDivider";
+import { ScrollRevealText } from "@/components/animations/ScrollRevealText";
 
 export default function Home() {
   return (
@@ -17,13 +21,46 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+
+        <SectionDivider from="white" to="var(--color-warm-cream)" />
         <Sectores />
+        <SectionDivider from="var(--color-warm-cream)" to="white" flip />
+
         <Features />
+
+        <SectionDivider from="white" to="var(--color-warm-cream)" />
         <Process />
+        <SectionDivider from="var(--color-warm-cream)" to="white" flip />
+
         <Comparison />
+
+        <SectionDivider from="white" to="var(--color-surface-soft)" />
         <Testimonials />
+        <SectionDivider from="var(--color-surface-soft)" to="var(--color-surface-soft)" />
+
+        <Portfolio />
+
+        {/* Stats — dark section with animated counters */}
+        <SectionDivider from="var(--color-surface-soft)" to="var(--color-navy-deep)" />
+        <Stats />
+        <SectionDivider from="var(--color-navy-deep)" to="white" flip />
+
         <FAQ />
+
+        {/* Scroll-reveal impact text before contact form */}
+        <section className="py-20 lg:py-28 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <ScrollRevealText
+              text="Tus clientes ya están buscando un negocio como el tuyo en internet. La pregunta es: ¿te van a encontrar a ti o a tu competencia?"
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-deep leading-tight tracking-tight"
+              highlightWords={["ti", "competencia"]}
+              highlightClassName="text-coral"
+            />
+          </div>
+        </section>
+
         {/* Gamified Contact Form */}
+        <SectionDivider from="white" to="var(--color-warm-peach)" />
         <section
           id="contacto"
           className="py-20 lg:py-28 bg-warm-peach relative overflow-hidden"

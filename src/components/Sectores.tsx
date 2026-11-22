@@ -4,6 +4,7 @@ import { Bed, Heartbeat, Key, ForkKnife, Handshake } from "@phosphor-icons/react
 import { TextReveal } from "@/components/animations/TextReveal";
 import { StaggerChildren } from "@/components/animations/StaggerChildren";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { TiltCard } from "@/components/animations/TiltCard";
 
 const sectores = [
   {
@@ -47,7 +48,7 @@ export default function Sectores() {
   return (
     <section
       id="sectores"
-      className="py-28 lg:py-36 bg-warm-cream border-y border-border-subtle/80"
+      className="py-28 lg:py-36 bg-warm-cream"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -73,32 +74,34 @@ export default function Sectores() {
             const Icon = sector.icon;
             return (
               <ScrollReveal key={sector.title} direction="up" delay={index * 0.1}>
-                <div className="bg-white rounded-2xl p-6 shadow-soft hover:shadow-float border border-border-subtle/80 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
-                  {/* Icon */}
-                  <div
-                    className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4"
-                  >
-                    <Icon size={24} weight="bold" />
+                <TiltCard className="relative h-full" tiltMax={10} glareOpacity={0.06}>
+                  <div className="bg-white rounded-2xl p-6 shadow-soft hover:shadow-float border border-border-subtle/80 transition-shadow duration-300 flex flex-col h-full">
+                    {/* Icon */}
+                    <div
+                      className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4"
+                    >
+                      <Icon size={24} weight="bold" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-base font-display font-bold text-navy-deep mb-2 leading-snug">
+                      {sector.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-slate-light leading-relaxed mb-5 flex-1">
+                      {sector.description}
+                    </p>
+
+                    {/* Link */}
+                    <a
+                      href="#contacto"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors group"
+                    >
+                      {sector.cta}
+                    </a>
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-base font-display font-bold text-navy-deep mb-2 leading-snug">
-                    {sector.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-slate-light leading-relaxed mb-5 flex-1">
-                    {sector.description}
-                  </p>
-
-                  {/* Link */}
-                  <a
-                    href="#contacto"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors group"
-                  >
-                    {sector.cta}
-                  </a>
-                </div>
+                </TiltCard>
               </ScrollReveal>
             );
           })}

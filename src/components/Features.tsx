@@ -15,6 +15,7 @@ import {
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
+import { BrowserMockup } from "@/components/animations/BrowserMockup";
 
 export default function Features() {
   return (
@@ -98,14 +99,8 @@ export default function Features() {
                   <p className="text-xs text-slate-light mt-1">Respuesta</p>
                 </div>
               </div>
-              {/* Gradient placeholder image */}
-              <div className="w-full h-44 sm:h-56 rounded-xl bg-gradient-to-br from-primary/20 via-coral/10 to-primary-light overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-3/4 h-3/4 rounded-lg bg-white/60 backdrop-blur-sm border border-white/80 flex items-center justify-center">
-                    <DeviceMobile size={40} weight="duotone" className="text-primary/40" />
-                  </div>
-                </div>
-              </div>
+              {/* Interactive browser mockup with scroll-linked content */}
+              <BrowserMockup />
             </div>
           </ScrollReveal>
         </div>

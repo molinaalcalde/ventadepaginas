@@ -39,7 +39,11 @@ export function AnimatedCounter({
       },
       onUpdate: () => {
         if (ref.current) {
-          ref.current.innerText = `${prefix}${Math.round(counter.val)}${suffix}`;
+          const hasDecimal = value % 1 !== 0;
+          const display = hasDecimal
+            ? counter.val.toFixed(1)
+            : Math.round(counter.val).toString();
+          ref.current.innerText = `${prefix}${display}${suffix}`;
         }
       },
     });

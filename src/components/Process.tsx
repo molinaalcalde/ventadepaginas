@@ -47,7 +47,7 @@ export default function Process() {
   return (
     <section
       id="como-funciona"
-      className="py-28 lg:py-36 bg-warm-cream border-y border-border-subtle/80"
+      className="py-28 lg:py-36 bg-warm-cream"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
