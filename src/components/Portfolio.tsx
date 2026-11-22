@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useRef, useCallback, useState } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react";
 
 const projects = [
@@ -25,7 +24,7 @@ function SiteMockup({ project }: { project: (typeof projects)[0] }) {
 
   return (
     <div
-      className="relative group"
+      className="relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -33,15 +32,13 @@ function SiteMockup({ project }: { project: (typeof projects)[0] }) {
         className="rounded-lg overflow-hidden cursor-pointer"
         style={{
           boxShadow: hovered
-            ? "0 50px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1)"
-            : "0 25px 50px -15px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05)",
-          transform: hovered ? "translateZ(40px) scale(1.05)" : "translateZ(0) scale(1)",
-          transformStyle: "preserve-3d",
-          transition: "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
+            ? "0 40px 60px -15px rgba(0,0,0,0.6)"
+            : "0 20px 40px -15px rgba(0,0,0,0.4)",
+          transform: hovered ? "scale(1.06)" : "scale(1)",
+          transition: "all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)",
         }}
       >
-        <div style={{ backgroundColor: bg, aspectRatio: "16/10" }} className="relative p-[6%]">
-          {/* Nav */}
+        <div style={{ backgroundColor: bg, aspectRatio: "16/10" }} className="p-[6%]">
           <div className="flex items-center justify-between mb-[8%]">
             <div className="w-[16%] h-[5px] rounded-sm" style={{ backgroundColor: accent }} />
             <div className="flex gap-[2%] w-[35%]">
@@ -50,13 +47,10 @@ function SiteMockup({ project }: { project: (typeof projects)[0] }) {
               <div className="flex-1 h-[3px] rounded-sm" style={{ backgroundColor: text, opacity: 0.1 }} />
             </div>
           </div>
-          {/* Headline */}
           <div className="w-[60%] h-[7px] rounded-sm mb-[4%]" style={{ backgroundColor: text, opacity: 0.14 }} />
           <div className="w-[40%] h-[7px] rounded-sm mb-[4%]" style={{ backgroundColor: text, opacity: 0.09 }} />
           <div className="w-[55%] h-[4px] rounded-sm mb-[6%]" style={{ backgroundColor: text, opacity: 0.06 }} />
-          {/* CTA */}
           <div className="w-[20%] h-[12px] rounded-sm mb-[8%]" style={{ backgroundColor: accent }} />
-          {/* Cards */}
           <div className="flex gap-[3%]">
             <div className="flex-1 rounded-md" style={{ backgroundColor: text, opacity: 0.04, aspectRatio: "1/0.65" }} />
             <div className="flex-1 rounded-md" style={{ backgroundColor: text, opacity: 0.04, aspectRatio: "1/0.65" }} />
@@ -67,7 +61,7 @@ function SiteMockup({ project }: { project: (typeof projects)[0] }) {
 
       {/* URL tooltip */}
       <div
-        className="absolute -bottom-9 left-1/2 z-20"
+        className="absolute -bottom-8 left-1/2 z-20"
         style={{
           opacity: hovered ? 1 : 0,
           transform: `translateX(-50%) ${hovered ? "translateY(0)" : "translateY(-4px)"}`,
@@ -76,8 +70,7 @@ function SiteMockup({ project }: { project: (typeof projects)[0] }) {
         }}
       >
         <span className="inline-flex items-center gap-1 bg-white text-[#1A1A2E] text-[11px] font-semibold px-3 py-1.5 rounded-full shadow-xl whitespace-nowrap">
-          {project.url}
-          <ArrowUpRight size={10} weight="bold" />
+          {project.url} <ArrowUpRight size={10} weight="bold" />
         </span>
       </div>
     </div>
@@ -85,71 +78,54 @@ function SiteMockup({ project }: { project: (typeof projects)[0] }) {
 }
 
 export default function Portfolio() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const sceneY = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const sceneRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!sectionRef.current) return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    setMousePos({
-      x: ((e.clientX - rect.left) / rect.width - 0.5) * 2,
-      y: ((e.clientY - rect.top) / rect.height - 0.5) * 2,
+    if (!sceneRef.current) return;
+    const rect = sceneRef.current.getBoundingClientRect();
+    setTilt({
+      x: ((e.clientX - rect.left) / rect.width - 0.5) * 8,
+      y: ((e.clientY - rect.top) / rect.height - 0.5) * -6,
     });
   }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="relative overflow-hidden py-32 lg:py-0"
-      style={{ backgroundColor: "#0a0a0f", minHeight: "100vh" }}
+      className="relative py-28 lg:py-0 lg:min-h-screen flex items-center justify-center"
+      style={{ backgroundColor: "#0a0a0f" }}
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => setMousePos({ x: 0, y: 0 })}
+      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
     >
-      {/* 3D perspective grid */}
-      <motion.div
-        className="relative flex items-center justify-center"
-        style={{
-          minHeight: "100vh",
-          perspective: "1000px",
-          perspectiveOrigin: "50% 50%",
-          y: sceneY,
-        }}
+      {/* Title — centered behind the grid */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <h2
+          className="text-5xl sm:text-7xl lg:text-[7rem] font-bold text-white leading-none tracking-tighter text-center"
+          style={{ textShadow: "0 4px 60px rgba(0,0,0,0.9), 0 0 120px rgba(0,0,0,0.6)" }}
+        >
+          Así se ve<br />nuestro trabajo
+        </h2>
+      </div>
+
+      {/* 3D perspective scene */}
+      <div
+        ref={sceneRef}
+        className="relative z-0 w-full max-w-7xl mx-auto px-6 py-16 lg:py-24"
+        style={{ perspective: "1200px" }}
       >
-        {/* Mouse-reactive tilt on entire grid */}
         <div
+          className="grid grid-cols-3 sm:grid-cols-4 gap-5 lg:gap-7"
           style={{
-            transform: `rotateX(${mousePos.y * -4 + 8}deg) rotateY(${mousePos.x * 4}deg)`,
+            transform: `rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`,
             transformStyle: "preserve-3d",
-            transition: "transform 0.12s ease-out",
+            transition: "transform 0.1s ease-out",
           }}
         >
-          {/* Grid of website cards */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 p-4 sm:p-6 max-w-6xl mx-auto">
-            {projects.map((project) => (
-              <SiteMockup key={project.url} project={project} />
-            ))}
-          </div>
+          {projects.map((project) => (
+            <SiteMockup key={project.url} project={project} />
+          ))}
         </div>
-
-        {/* Center title overlay */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-          <h2
-            className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white leading-none tracking-tighter text-center px-4"
-            style={{
-              textShadow: "0 4px 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5)",
-            }}
-          >
-            Así se ve<br />nuestro trabajo
-          </h2>
-        </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
