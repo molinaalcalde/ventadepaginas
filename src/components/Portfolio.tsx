@@ -3,42 +3,34 @@
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { TiltCard } from "@/components/animations/TiltCard";
-import { motion } from "motion/react";
 
 const projects = [
   {
     title: "Hotel Boutique Casa Colonial",
     sector: "Hoteles y Turismo",
-    description:
-      "Reservas directas integradas con WhatsApp. Redujo dependencia de Booking un 60%.",
-    color: "from-primary/20 via-primary/5 to-primary-light",
-    accentColor: "bg-primary",
-    url: "tunegocio.com",
+    result: "60% reservas directas",
+    color: "from-primary/8 via-primary/3 to-transparent",
+    url: "casacolonial.com",
   },
   {
     title: "Centro Dental Sonríe",
     sector: "Clínicas y Estética",
-    description:
-      "Citas online bilingüe con gestor de pacientes integrado. 3x más pacientes internacionales.",
-    color: "from-coral/15 via-coral/5 to-coral-light",
-    accentColor: "bg-coral",
+    result: "3x pacientes internacionales",
+    color: "from-coral/8 via-coral/3 to-transparent",
     url: "centrosonrie.com",
   },
   {
     title: "Reyes & Asociados Bienes Raíces",
     sector: "Inmobiliarias",
-    description:
-      "Catálogo de propiedades con CRM integrado y alertas por WhatsApp. +40% en ventas.",
-    color: "from-violet-500/15 via-violet-500/5 to-violet-50",
-    accentColor: "bg-violet-500",
+    result: "+40% en ventas",
+    color: "from-violet-500/8 via-violet-500/3 to-transparent",
     url: "reyesbienes.com",
   },
 ];
 
 export default function Portfolio() {
   return (
-    <section className="py-28 lg:py-36 bg-surface-soft">
+    <section className="py-28 lg:py-36 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -49,95 +41,76 @@ export default function Portfolio() {
           </ScrollReveal>
           <TextReveal
             as="h2"
-            className="text-fluid-h2 font-extrabold text-navy-deep leading-tight"
+            className="text-fluid-h2 font-bold text-navy-deep"
           >
-            Lo que hemos{" "}
-            <span className="text-primary">construido</span>
+            Lo que hemos construido
           </TextReveal>
-          <ScrollReveal direction="up" delay={0.2}>
-            <p className="mt-4 text-slate-light text-base sm:text-lg leading-relaxed">
-              Cada proyecto es único, diseñado para las necesidades específicas de cada negocio.
-            </p>
-          </ScrollReveal>
         </div>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <ScrollReveal
               key={project.title}
               direction="up"
-              delay={index * 0.15}
+              delay={index * 0.12}
             >
-              <TiltCard
-                className="relative h-full"
-                tiltMax={8}
-                glareOpacity={0.06}
+              <div className="group bg-surface-soft rounded-2xl overflow-hidden border border-border-subtle hover:shadow-float cursor-pointer"
+                style={{ transition: "box-shadow 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)" }}
               >
-                <div className="bg-white rounded-2xl border border-border-subtle shadow-soft overflow-hidden h-full flex flex-col group">
-                  {/* Browser frame preview */}
-                  <div className="relative">
-                    {/* Mini browser chrome */}
-                    <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-soft border-b border-border-subtle">
-                      <span className="w-2 h-2 rounded-full bg-rose-300" />
-                      <span className="w-2 h-2 rounded-full bg-amber-300" />
-                      <span className="w-2 h-2 rounded-full bg-emerald-300" />
-                      <span className="text-[10px] text-slate-light ml-2">
-                        {project.url}
-                      </span>
-                    </div>
-
-                    {/* Preview area */}
-                    <div
-                      className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}
-                    >
-                      {/* Wireframe-style content */}
-                      <div className="p-5 space-y-3">
-                        <div className="w-16 h-1.5 rounded bg-black/10" />
-                        <div className="w-3/4 h-3 rounded bg-black/10" />
-                        <div className="w-1/2 h-3 rounded bg-black/8" />
-                        <div className="flex gap-2 mt-3">
-                          <div className="w-16 h-6 rounded-md bg-black/10" />
-                          <div className="w-16 h-6 rounded-md border border-black/10" />
-                        </div>
-                        <div className="grid grid-cols-3 gap-2 mt-3">
-                          <div className="h-14 rounded-lg bg-white/60" />
-                          <div className="h-14 rounded-lg bg-white/60" />
-                          <div className="h-14 rounded-lg bg-white/60" />
-                        </div>
-                      </div>
-
-                      {/* Hover overlay */}
-                      <motion.div
-                        className="absolute inset-0 bg-navy-deep/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      >
-                        <div className="flex items-center gap-2 text-white font-semibold text-sm">
-                          <ArrowUpRight size={18} weight="bold" />
-                          Ver caso de éxito
-                        </div>
-                      </motion.div>
-                    </div>
+                {/* Browser frame preview */}
+                <div className="relative">
+                  <div className="flex items-center gap-1.5 px-4 py-2.5 bg-white border-b border-border-subtle">
+                    <span className="w-2.5 h-2.5 rounded-full bg-border-subtle" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-border-subtle" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-border-subtle" />
+                    <span className="text-[11px] text-slate-light ml-2 font-medium">
+                      {project.url}
+                    </span>
                   </div>
 
-                  {/* Info */}
-                  <div className="p-5 flex-1 flex flex-col">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span
-                        className={`w-2 h-2 rounded-full ${project.accentColor}`}
-                      />
-                      <span className="text-xs font-semibold text-slate-light uppercase tracking-wider">
-                        {project.sector}
+                  <div className={`h-52 bg-gradient-to-br ${project.color} bg-surface-soft relative overflow-hidden`}>
+                    {/* Wireframe content */}
+                    <div className="p-6 space-y-3">
+                      <div className="w-20 h-1.5 rounded bg-navy-deep/8" />
+                      <div className="w-3/4 h-3.5 rounded bg-navy-deep/8" />
+                      <div className="w-1/2 h-3.5 rounded bg-navy-deep/6" />
+                      <div className="flex gap-2 mt-4">
+                        <div className="w-20 h-8 rounded-md bg-navy-deep/8" />
+                        <div className="w-20 h-8 rounded-md border border-navy-deep/8" />
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 mt-4">
+                        <div className="h-16 rounded-lg bg-white/80" />
+                        <div className="h-16 rounded-lg bg-white/80" />
+                        <div className="h-16 rounded-lg bg-white/80" />
+                      </div>
+                    </div>
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-navy-deep/0 group-hover:bg-navy-deep/80 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      style={{ transition: "all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)" }}
+                    >
+                      <span className="inline-flex items-center gap-2 text-white font-semibold text-sm">
+                        <ArrowUpRight size={18} weight="bold" />
+                        Ver caso de éxito
                       </span>
                     </div>
-                    <h3 className="text-base font-bold text-navy-deep mb-2 leading-snug">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-slate-text leading-relaxed flex-1">
-                      {project.description}
-                    </p>
                   </div>
                 </div>
-              </TiltCard>
+
+                {/* Info */}
+                <div className="p-5">
+                  <p className="text-xs font-medium text-slate-light uppercase tracking-wider mb-1">
+                    {project.sector}
+                  </p>
+                  <h3 className="text-base font-bold text-navy-deep mb-2 leading-snug">
+                    {project.title}
+                  </h3>
+                  <span className="inline-block px-3 py-1 rounded-full bg-primary-light text-primary text-xs font-semibold">
+                    {project.result}
+                  </span>
+                </div>
+              </div>
             </ScrollReveal>
           ))}
         </div>

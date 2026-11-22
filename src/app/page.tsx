@@ -11,7 +11,6 @@ import Stats from "@/components/Stats";
 import FAQ from "@/components/FAQ";
 import GamifiedForm from "@/components/GamifiedForm";
 import Footer from "@/components/Footer";
-import { SectionDivider } from "@/components/animations/SectionDivider";
 import { ScrollRevealText } from "@/components/animations/ScrollRevealText";
 
 export default function Home() {
@@ -21,29 +20,13 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-
-        <SectionDivider from="white" to="var(--color-warm-cream)" />
         <Sectores />
-        <SectionDivider from="var(--color-warm-cream)" to="white" flip />
-
         <Features />
-
-        <SectionDivider from="white" to="var(--color-warm-cream)" />
         <Process />
-        <SectionDivider from="var(--color-warm-cream)" to="white" flip />
-
         <Comparison />
-
-        <SectionDivider from="white" to="var(--color-surface-soft)" />
         <Testimonials />
-        <SectionDivider from="var(--color-surface-soft)" to="var(--color-surface-soft)" />
-
         <Portfolio />
-
-        <SectionDivider from="var(--color-surface-soft)" to="var(--color-warm-cream)" />
         <Stats />
-        <SectionDivider from="var(--color-warm-cream)" to="white" flip />
-
         <FAQ />
 
         {/* Scroll-reveal impact text before contact form */}
@@ -51,7 +34,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <ScrollRevealText
               text="Tus clientes ya están buscando un negocio como el tuyo en internet. La pregunta es: ¿te van a encontrar a ti o a tu competencia?"
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-deep leading-tight tracking-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-deep leading-tight tracking-tighter"
               highlightWords={["ti", "competencia"]}
               highlightClassName="text-coral"
             />
@@ -59,7 +42,6 @@ export default function Home() {
         </section>
 
         {/* Gamified Contact Form */}
-        <SectionDivider from="white" to="var(--color-warm-peach)" />
         <section
           id="contacto"
           className="py-20 lg:py-28 bg-warm-peach relative overflow-hidden"

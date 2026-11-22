@@ -43,11 +43,14 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md border-b border-border-subtle/80 shadow-sm"
           : "bg-transparent border-b border-transparent"
       }`}
+      style={{
+        transition: "background-color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)",
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
         {/* Logo + Desktop Nav */}

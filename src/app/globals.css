@@ -47,6 +47,14 @@
   --shadow-coral: 0 10px 25px -5px rgba(232, 66, 42, 0.30);
   --shadow-teal: 0 10px 25px -5px rgba(15, 118, 110, 0.25);
   --shadow-glow: 0 0 60px -12px rgba(15, 118, 110, 0.35);
+
+  /* ── Easings (Squarespace-inspired) ── */
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-cta: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  /* ── Transition defaults ── */
+  --transition-base: 0.5s var(--ease-out-quart);
+  --transition-fast: 0.2s var(--ease-cta);
 }
 
 @layer base {
@@ -99,19 +107,19 @@ html.lenis, html.lenis body {
   }
 }
 
-/* ── Fluid typography ── */
+/* ── Fluid typography (editorial, Squarespace-tight) ── */
 .text-fluid-hero {
   font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
 }
 .text-fluid-h2 {
   font-size: clamp(2rem, 3.5vw + 0.5rem, 3.75rem);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
 }
 .text-fluid-h3 {
   font-size: clamp(1.5rem, 2vw + 0.5rem, 2.25rem);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
 }

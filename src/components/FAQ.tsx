@@ -72,17 +72,17 @@ export default function FAQ() {
         </div>
 
         {/* Accordion */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <ScrollReveal
                 key={index}
-                delay={index * 0.08}
+                delay={index * 0.06}
                 direction="up"
-                distance={20}
+                distance={16}
               >
-                <div className="bg-surface-soft rounded-2xl transition-all duration-200">
+                <div className="bg-surface-soft rounded-2xl">
                   <button
                     onClick={() => toggle(index)}
                     className="w-full p-6 flex items-center justify-between text-left gap-4 cursor-pointer"
@@ -92,21 +92,28 @@ export default function FAQ() {
                       {faq.question}
                     </span>
                     <span
-                      className={`flex-shrink-0 text-slate-light transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : "rotate-0"
-                      }`}
+                      className="flex-shrink-0 text-slate-light"
+                      style={{
+                        transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)",
+                      }}
                     >
                       <CaretDown weight="bold" size={22} />
                     </span>
                   </button>
+                  {/* Grid-based accordion — no max-height hack */}
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
-                    }`}
+                    className="grid"
+                    style={{
+                      gridTemplateRows: isOpen ? "1fr" : "0fr",
+                      transition: "grid-template-rows 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)",
+                    }}
                   >
-                    <p className="px-6 pb-6 text-slate-text leading-relaxed">
-                      {faq.answer}
-                    </p>
+                    <div className="overflow-hidden">
+                      <p className="px-6 pb-6 text-slate-text leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
