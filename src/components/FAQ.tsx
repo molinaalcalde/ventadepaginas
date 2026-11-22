@@ -34,7 +34,7 @@ const faqs = [
   {
     question: "¿Qué incluye exactamente?",
     answer:
-      "Todo lo que necesitas para recibir clientes online: web profesional, gestor de clientes integrado, conexión con WhatsApp Business, tu Tarjeta Digital para redes sociales, dominio, hosting de alta velocidad y soporte directo. Escríbenos por WhatsApp y te armamos una propuesta personalizada.",
+      "Todo lo que necesitas para recibir clientes online: web profesional, gestor de clientes integrado, conexión con WhatsApp Business, tu Tarjeta Digital para redes sociales, hosting de alta velocidad y soporte directo. Si ya tienes dominio lo enlazamos, si no te orientamos para comprarlo. Escríbenos por WhatsApp y te armamos una propuesta personalizada.",
   },
   {
     question: "¿Qué es un gestor de clientes y por qué lo necesito?",

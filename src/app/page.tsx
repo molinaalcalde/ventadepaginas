@@ -39,7 +39,7 @@ export default function Home() {
                 Tu vitrina digital empieza aquí
               </h2>
               <p className="text-slate-text text-lg max-w-xl mx-auto">
-                Responde 5 preguntas rápidas y recibe una propuesta personalizada para tu negocio.
+                Responde 4 preguntas rápidas y recibe una propuesta personalizada para tu negocio.
               </p>
             </div>
             <GamifiedForm />

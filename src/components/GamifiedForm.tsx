@@ -9,9 +9,6 @@ import {
   ForkKnife,
   Handshake,
   ShoppingBag,
-  Globe,
-  Layout,
-  Rocket,
   Lightning,
   CalendarDots,
   MagnifyingGlass,
@@ -23,7 +20,6 @@ import {
 
 interface FormData {
   sector: string;
-  need: string;
   teamSize: string;
   timeline: string;
   name: string;
@@ -33,7 +29,6 @@ interface FormData {
 
 const INITIAL: FormData = {
   sector: "",
-  need: "",
   teamSize: "",
   timeline: "",
   name: "",
@@ -78,27 +73,7 @@ const SECTORS = [
   },
 ];
 
-const NEEDS = [
-  {
-    id: "web",
-    label: "Solo la Web",
-    desc: "Una página web profesional que genere confianza",
-    icon: <Globe size={32} weight="duotone" />,
-  },
-  {
-    id: "web-crm",
-    label: "Web + Gestor de Clientes",
-    desc: "Web con gestor de clientes y WhatsApp",
-    badge: "RECOMENDADO",
-    icon: <Layout size={32} weight="duotone" />,
-  },
-  {
-    id: "paquete",
-    label: "Todo el paquete",
-    desc: "Web + Gestor + SEO + Automatizaciones",
-    icon: <Rocket size={32} weight="duotone" />,
-  },
-];
+/* Plan único — no hay selector de planes */
 
 const TEAM_SIZES = [
   {
@@ -261,12 +236,12 @@ export default function GamifiedForm() {
   const [formData, setFormData] = useState<FormData>(INITIAL);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const totalSteps = 5;
+  const totalSteps = 4;
 
   /* Navigation */
   const goNext = useCallback(() => {
     setDirection(1);
-    setStep((s) => Math.min(s + 1, 5));
+    setStep((s) => Math.min(s + 1, 4));
   }, []);
 
   const goBack = useCallback(() => {
@@ -286,8 +261,8 @@ export default function GamifiedForm() {
   /* Keyboard: Enter to advance */
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "Enter" && step < 4) {
-        const fields: (keyof FormData)[] = ["sector", "need", "teamSize", "timeline"];
+      if (e.key === "Enter" && step < 3) {
+        const fields: (keyof FormData)[] = ["sector", "teamSize", "timeline"];
         if (formData[fields[step]]) goNext();
       }
     };
@@ -309,12 +284,11 @@ export default function GamifiedForm() {
     }
     setErrors({});
     setDirection(1);
-    setStep(5);
+    setStep(4);
   };
 
   /* Labels for summary */
   const getSectorLabel = () => SECTORS.find((s) => s.id === formData.sector)?.label ?? "";
-  const getNeedLabel = () => NEEDS.find((n) => n.id === formData.need)?.label ?? "";
   const getTeamLabel = () => TEAM_SIZES.find((t) => t.id === formData.teamSize)?.label ?? "";
   const getTimelineLabel = () => TIMELINES.find((t) => t.id === formData.timeline)?.label ?? "";
 
@@ -403,79 +377,8 @@ export default function GamifiedForm() {
           </motion.div>
         );
 
-      /* ── STEP 1: Need ── */
+      /* ── STEP 1: Team Size ── */
       case 1:
-        return (
-          <motion.div
-            key="step1"
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="w-full"
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy-deep mb-2 font-display">
-              ¿Qué necesitas para tu negocio?
-            </h2>
-            <p className="text-slate-light mb-8">
-              Elige el nivel de servicio ideal para ti
-            </p>
-
-            <div className="flex flex-col lg:flex-row gap-4">
-              {NEEDS.map((need) => {
-                const selected = formData.need === need.id;
-                return (
-                  <motion.button
-                    key={need.id}
-                    type="button"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => selectAndAdvance("need", need.id)}
-                    className={`
-                      relative flex-1 flex flex-col items-center gap-3 p-6 rounded-2xl border-2 transition-colors cursor-pointer text-center
-                      ${
-                        selected
-                          ? "border-coral bg-coral-light shadow-coral"
-                          : "border-border-subtle bg-surface-soft hover:border-primary hover:bg-primary-light"
-                      }
-                    `}
-                  >
-                    {need.badge && (
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-coral text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wider">
-                        {need.badge}
-                      </span>
-                    )}
-                    <span className={selected ? "text-coral" : "text-primary"}>
-                      {need.icon}
-                    </span>
-                    <span className={`text-base font-bold ${selected ? "text-coral" : "text-navy-deep"}`}>
-                      {need.label}
-                    </span>
-                    <span className="text-sm text-slate-light leading-snug">
-                      {need.desc}
-                    </span>
-                    {selected && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="absolute top-3 right-3 w-5 h-5 rounded-full bg-coral flex items-center justify-center"
-                      >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3">
-                          <path d="M5 13l4 4L19 7" />
-                        </svg>
-                      </motion.div>
-                    )}
-                  </motion.button>
-                );
-              })}
-            </div>
-          </motion.div>
-        );
-
-      /* ── STEP 2: Team Size ── */
-      case 2:
         return (
           <motion.div
             key="step2"
@@ -563,8 +466,8 @@ export default function GamifiedForm() {
           </motion.div>
         );
 
-      /* ── STEP 3: Timeline ── */
-      case 3:
+      /* ── STEP 2: Timeline ── */
+      case 2:
         return (
           <motion.div
             key="step3"
@@ -632,8 +535,8 @@ export default function GamifiedForm() {
           </motion.div>
         );
 
-      /* ── STEP 4: Contact Info ── */
-      case 4:
+      /* ── STEP 3: Contact Info ── */
+      case 3:
         return (
           <motion.div
             key="step4"
@@ -745,8 +648,8 @@ export default function GamifiedForm() {
           </motion.div>
         );
 
-      /* ── STEP 5: Success ── */
-      case 5:
+      /* ── STEP 4: Success ── */
+      case 4:
         return (
           <motion.div
             key="step5"
@@ -795,10 +698,6 @@ export default function GamifiedForm() {
                   <span className="font-medium text-navy-deep">{getSectorLabel()}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-light">Servicio</span>
-                  <span className="font-medium text-navy-deep">{getNeedLabel()}</span>
-                </div>
-                <div className="flex justify-between">
                   <span className="text-slate-light">Equipo</span>
                   <span className="font-medium text-navy-deep">{getTeamLabel()}</span>
                 </div>
@@ -828,7 +727,7 @@ export default function GamifiedForm() {
     <div className="max-w-2xl mx-auto w-full">
       <div className="bg-white rounded-3xl shadow-float p-6 sm:p-8 min-h-[500px] flex flex-col relative overflow-hidden">
         {/* ── Progress Bar ── */}
-        {step < 5 && (
+        {step < 4 && (
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
               {/* Back button */}

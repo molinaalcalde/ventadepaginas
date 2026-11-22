@@ -53,7 +53,7 @@ export function JsonLd() {
         },
         serviceType: "Diseño y Desarrollo Web",
         description:
-          "Páginas web profesionales con CRM y WhatsApp Business integrado. Entrega en 2 semanas. Incluye dominio, hosting y soporte.",
+          "Páginas web profesionales con gestor de clientes y WhatsApp Business integrado. Entrega en 2 semanas. Hosting y soporte incluido.",
         areaServed: {
           "@type": "Country",
           name: "República Dominicana",
@@ -92,7 +92,7 @@ export function JsonLd() {
             name: "¿Qué incluye exactamente?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Todo lo que necesitas: web profesional, gestor de clientes integrado, conexión con WhatsApp Business, tu Tarjeta Digital para redes sociales, dominio, hosting de alta velocidad y soporte directo.",
+              text: "Todo lo que necesitas: web profesional, gestor de clientes integrado, conexión con WhatsApp Business, tu Tarjeta Digital para redes sociales, hosting de alta velocidad y soporte directo.",
             },
           },
           {

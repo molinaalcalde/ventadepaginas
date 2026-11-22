@@ -155,7 +155,7 @@ export default function Features() {
                 2
               </span>
               <span className="text-sm font-semibold text-coral uppercase tracking-wide">
-                Gestión de Clientes Fácil
+                Incluido por tiempo de lanzamiento
               </span>
             </div>
             <h3 className="text-fluid-h3 font-bold text-navy-deep mb-4 leading-snug">
@@ -216,8 +216,8 @@ export default function Features() {
               />
               <FeatureItem
                 icon={<CheckCircle weight="bold" className="w-5 h-5" />}
-                title="Todo verificado"
-                description="Dominio, hosting y mantenimiento gestionado por nosotros."
+                title="Hosting y mantenimiento incluido"
+                description="Servidor veloz, backups y actualizaciones. Si ya tienes dominio lo enlazamos, si no te orientamos para comprarlo."
               />
             </ul>
           </ScrollReveal>
@@ -249,7 +249,7 @@ export default function Features() {
               </div>
               {/* Mini checklist */}
               <div className="space-y-3">
-                {["Dominio y hosting gestionado", "Copias de seguridad diarias", "Certificado SSL activo", "Actualizaciones automáticas"].map(
+                {["Hosting veloz incluido en tu plan", "Copias de seguridad diarias", "Certificado SSL activo", "Actualizaciones automáticas"].map(
                   (item) => (
                     <div key={item} className="flex items-center gap-3">
                       <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">

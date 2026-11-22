@@ -104,7 +104,7 @@ export default function Hero() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-coral" />
             </span>
             <span className="text-sm font-medium text-navy-deep tracking-wide">
-              Tu competencia ya tiene web. ¿Y tú?
+              Por tiempo limitado: Gestor de Clientes + Tarjeta Digital incluidos
             </span>
           </motion.div>
 
