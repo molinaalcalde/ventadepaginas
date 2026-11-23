@@ -1,55 +1,44 @@
 "use client";
 
 import { useRef, useEffect, useCallback } from "react";
-import {
-  Check,
-  X,
-  Clock,
-  Palette,
-  ChatCircleDots,
-  ShieldCheck,
-  ChartLineUp,
-  DeviceMobile,
-  ArrowRight,
-} from "@phosphor-icons/react";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 const contrasts = [
   {
-    icon: Clock,
     them: "2 a 6 meses esperando tu web",
     us: "Tu web profesional lista en 14 días",
+    diy: "Meses de frustración intentando con Wix",
   },
   {
-    icon: Palette,
     them: "Plantillas recicladas que todos usan",
     us: "Diseño único hecho para tu negocio",
+    diy: "Idéntica a miles de páginas genéricas",
   },
   {
-    icon: ChatCircleDots,
     them: "Tickets de soporte que tardan 72 horas",
     us: "Te respondemos por WhatsApp en minutos",
+    diy: "Chatbots sin solución real",
   },
   {
-    icon: ChartLineUp,
     them: "Te cobran CRM aparte: $100 a $300 al mes",
     us: "CRM incluido y conectado a tu WhatsApp",
+    diy: "Plugins que se rompen con cada actualización",
   },
   {
-    icon: DeviceMobile,
-    them: "Pagas Linktree aparte para tus redes",
+    them: "No ofrecen link para tus redes sociales",
     us: "Tu web estilo Linktree incluida gratis",
+    diy: "Pagas Linktree aparte: $9 a $35 al mes",
   },
   {
-    icon: ShieldCheck,
     them: "Te amarran con contratos y letra chica",
     us: "Tu web es tuya para siempre, sin amarres",
+    diy: "Atrapado en su plataforma sin poder salir",
   },
 ];
 
 export default function Comparison() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const rowsRef = useRef<HTMLDivElement[]>([]);
 
   const setRowRef = useCallback((el: HTMLDivElement | null, i: number) => {
@@ -66,7 +55,7 @@ export default function Comparison() {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
     );
 
     rowsRef.current.forEach((row) => {
@@ -78,7 +67,7 @@ export default function Comparison() {
 
   return (
     <section className="py-28 lg:py-36 bg-white relative">
-      <div ref={sectionRef} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
           <ScrollReveal direction="up">
@@ -100,120 +89,150 @@ export default function Comparison() {
           </ScrollReveal>
         </div>
 
-        {/* Column labels */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8 max-w-4xl mx-auto">
-          <div className="flex items-center justify-center gap-2 py-3">
-            <X weight="bold" size={18} className="text-rose-400" />
+        {/* 3-column headers */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-5xl mx-auto">
+          <div className="hidden md:flex items-center justify-center gap-2 py-3">
             <span className="text-sm font-bold text-slate-light uppercase tracking-widest">
-              Las alternativas
+              Agencia tradicional
             </span>
           </div>
-          <div className="flex items-center justify-center gap-2 py-3">
-            <Check weight="bold" size={18} className="text-primary" />
+          <div className="hidden md:flex items-center justify-center gap-2 py-3">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-sm font-bold text-primary uppercase tracking-widest">
               Con KINETIC
+            </span>
+          </div>
+          <div className="hidden md:flex items-center justify-center gap-2 py-3">
+            <span className="text-sm font-bold text-slate-light uppercase tracking-widest">
+              Hacerlo tú mismo
             </span>
           </div>
         </div>
 
         {/* Contrast rows */}
-        <div className="space-y-4 md:space-y-5 max-w-4xl mx-auto">
-          {contrasts.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={i}
-                ref={(el) => setRowRef(el, i)}
-                className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 transition-all"
-                style={{
-                  opacity: 0,
-                  transform: "translateY(24px)",
-                  transitionProperty: "opacity, transform",
-                  transitionDuration: "0.6s",
-                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-                  transitionDelay: `${i * 0.08}s`,
-                }}
-              >
-                {/* THEM — faded, struck-through feel */}
-                <div
-                  className="relative rounded-2xl px-6 py-5 flex items-start gap-4 group"
-                  style={{
-                    backgroundColor: "#FEF2F2",
-                    border: "1px solid rgba(239,68,68,0.1)",
-                  }}
-                >
-                  <div
-                    className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: "rgba(239,68,68,0.08)" }}
-                  >
-                    <Icon size={20} weight="duotone" className="text-rose-400" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm sm:text-base text-slate-light leading-relaxed">
-                      {item.them}
-                    </p>
-                  </div>
-                  <X
-                    weight="bold"
-                    size={16}
-                    className="shrink-0 mt-1 text-rose-300"
-                  />
-                </div>
-
-                {/* US — vibrant, confident */}
-                <div
-                  className="relative rounded-2xl px-6 py-5 flex items-start gap-4 group"
-                  style={{
-                    backgroundColor: "#E8F5F3",
-                    border: "1px solid rgba(15,118,110,0.12)",
-                    boxShadow: "0 2px 12px -2px rgba(15,118,110,0.08)",
-                  }}
-                >
-                  <div
-                    className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: "rgba(15,118,110,0.12)" }}
-                  >
-                    <Icon size={20} weight="duotone" className="text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm sm:text-base font-semibold text-navy-deep leading-relaxed">
-                      {item.us}
-                    </p>
-                  </div>
-                  <Check
-                    weight="bold"
-                    size={16}
-                    className="shrink-0 mt-1 text-primary"
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* CTA */}
-        <ScrollReveal direction="up" delay={0.3}>
-          <div className="text-center mt-16">
-            <a
-              href="#contacto"
-              className="group inline-flex items-center gap-3 font-bold text-white transition-all hover:scale-105 active:scale-95"
+        <div className="space-y-3 md:space-y-4 max-w-5xl mx-auto">
+          {contrasts.map((item, i) => (
+            <div
+              key={i}
+              ref={(el) => setRowRef(el, i)}
+              className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 transition-all"
               style={{
-                backgroundColor: "#E8422A",
-                borderRadius: "99px",
-                padding: "16px 36px",
-                fontSize: "16px",
-                boxShadow:
-                  "0 4px 14px -3px rgba(232,66,42,0.4), 0 2px 6px -1px rgba(232,66,42,0.2)",
+                opacity: 0,
+                transform: "translateY(20px)",
+                transitionProperty: "opacity, transform",
+                transitionDuration: "0.6s",
+                transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                transitionDelay: `${i * 0.07}s`,
               }}
             >
-              Quiero mi web profesional
-              <ArrowRight
-                size={20}
-                weight="bold"
-                className="transition-transform group-hover:translate-x-1"
-              />
+              {/* Agency — negative */}
+              <div
+                className="rounded-2xl px-5 py-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  backgroundColor: "#FAFAFA",
+                  border: "1px solid #F0F0F0",
+                }}
+              >
+                {/* Mobile label */}
+                <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-slate-light shrink-0 w-16">
+                  Agencia
+                </span>
+                <p className="text-sm text-slate-light leading-relaxed flex-1">
+                  {item.them}
+                </p>
+              </div>
+
+              {/* KINETIC — hero column */}
+              <div
+                className="rounded-2xl px-5 py-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                style={{
+                  background: "linear-gradient(135deg, #E8F5F3 0%, #F0FBF9 100%)",
+                  border: "1px solid rgba(15,118,110,0.15)",
+                  boxShadow: "0 2px 8px -2px rgba(15,118,110,0.1)",
+                }}
+              >
+                {/* Mobile label */}
+                <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-primary shrink-0 w-16">
+                  KINETIC
+                </span>
+                <p className="text-sm font-semibold text-navy-deep leading-relaxed flex-1">
+                  {item.us}
+                </p>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  className="shrink-0"
+                >
+                  <circle cx="9" cy="9" r="9" fill="#0F766E" fillOpacity="0.12" />
+                  <path
+                    d="M6 9.5L8 11.5L12 7"
+                    stroke="#0F766E"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
+              {/* DIY — negative */}
+              <div
+                className="rounded-2xl px-5 py-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  backgroundColor: "#FAFAFA",
+                  border: "1px solid #F0F0F0",
+                }}
+              >
+                {/* Mobile label */}
+                <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-slate-light shrink-0 w-16">
+                  DIY
+                </span>
+                <p className="text-sm text-slate-light leading-relaxed flex-1">
+                  {item.diy}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA — Orbix-style dark pill with dramatic shadow */}
+        <ScrollReveal direction="up" delay={0.3}>
+          <div className="text-center mt-20">
+            <a
+              href="#contacto"
+              className="group relative inline-flex items-center font-bold text-white transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
+              style={{
+                backgroundColor: "#1A1A2E",
+                borderRadius: "99px",
+                padding: "18px 32px 18px 36px",
+                fontSize: "16px",
+                gap: "14px",
+                boxShadow: `
+                  0 0 0 0 rgba(26,26,46,0),
+                  0 1px 2px 0 rgba(26,26,46,0.06),
+                  0 4px 8px -1px rgba(26,26,46,0.08),
+                  0 8px 16px -2px rgba(26,26,46,0.10),
+                  0 16px 32px -4px rgba(26,26,46,0.12),
+                  0 24px 48px -8px rgba(26,26,46,0.14),
+                  0 32px 64px -12px rgba(26,26,46,0.08)
+                `,
+              }}
+            >
+              <span>Quiero mi web</span>
+              <span
+                className="flex items-center justify-center transition-transform duration-300 group-hover:rotate-[360deg]"
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  backgroundColor: "#FFFFFF",
+                }}
+              >
+                <ArrowUpRight size={18} weight="bold" className="text-navy-deep" />
+              </span>
             </a>
-            <p className="mt-4 text-sm text-slate-light">
+            <p className="mt-5 text-sm text-slate-light">
               Lista en 14 días. Sin compromisos.
             </p>
           </div>
