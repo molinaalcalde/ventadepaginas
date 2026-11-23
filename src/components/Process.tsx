@@ -313,21 +313,21 @@ export default function Process() {
       id="como-funciona"
       ref={sectionRef}
       className="relative"
-      style={{ backgroundColor: "#010101" }}
+      style={{ backgroundColor: "#ffffff" }}
     >
       {/* Section header */}
       <div className="pt-28 lg:pt-36 pb-16 text-center max-w-2xl mx-auto px-4">
         <ScrollReveal direction="up">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/70 text-sm font-semibold tracking-wide mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary-light text-primary text-sm font-semibold tracking-wide mb-4">
             Así de fácil
           </span>
         </ScrollReveal>
-        <TextReveal as="h2" className="text-fluid-h2 font-extrabold text-white leading-tight">
+        <TextReveal as="h2" className="text-fluid-h2 font-extrabold text-navy-deep leading-tight">
           De la idea a tu web en solo{" "}
-          <span className="text-primary-light">2 semanas</span>
+          <span className="text-primary">2 semanas</span>
         </TextReveal>
         <ScrollReveal direction="up" delay={0.15}>
-          <p className="mt-4 text-white/50 text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-slate-text text-base sm:text-lg leading-relaxed">
             Sin reuniones eternas ni tecnicismos. Tú nos cuentas, nosotros hacemos el resto.
           </p>
         </ScrollReveal>
@@ -380,8 +380,8 @@ export default function Process() {
           </div>
 
           {/* Tab pills */}
-          <div className="relative z-20 flex items-center gap-1 mb-3">
-            {/* Sliding indicator */}
+          <div className="relative z-20 flex items-center gap-1 mb-0" style={{ overflow: "visible" }}>
+            {/* Sliding indicator with droplet tail */}
             <div
               ref={indicatorRef}
               className="absolute z-10 pointer-events-none bg-white rounded-full"
@@ -389,7 +389,26 @@ export default function Process() {
                 transition: "all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)",
                 boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
               }}
-            />
+            >
+              {/* SVG droplet connector */}
+              <svg
+                viewBox="0 0 44 24"
+                fill="currentColor"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+                className="pointer-events-none text-white"
+                style={{
+                  width: "44px",
+                  height: "24px",
+                  position: "absolute",
+                  top: "calc(100% - 2px)",
+                  left: "calc(50% - 22px)",
+                }}
+              >
+                <path d="M35 0C35 0 28 1.5 28 8C28 14.5 44 16 44 16L0 16C0 16 16 14.5 16 8C16 1.5 9 0 9 0L35 0Z" />
+                <rect x="6" y="14" width="32" height="10" />
+              </svg>
+            </div>
             {steps.map((step, i) => (
               <div
                 key={step.id}
@@ -420,7 +439,7 @@ export default function Process() {
               backgroundColor: "#fff",
               borderRadius: "42px",
               boxShadow: "0 16px 50px -10px rgba(0,0,0,0.06)",
-              marginTop: "12px",
+              marginTop: "14px",
             }}
           >
             {/* Stacked panels (grid overlap) */}
