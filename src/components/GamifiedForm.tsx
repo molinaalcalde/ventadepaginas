@@ -31,25 +31,25 @@ const INITIAL: FormData = {
 /* ── Step Data ── */
 
 const SECTORS = [
-  { id: "hotel", label: "Hotel y Turismo" },
-  { id: "clinica", label: "Clínica y Salud" },
-  { id: "inmobiliaria", label: "Inmobiliaria" },
-  { id: "restaurante", label: "Restaurante y Eventos" },
-  { id: "servicios", label: "Servicios Profesionales" },
-  { id: "otro", label: "Otro tipo de negocio" },
+  { id: "hotel", label: "Hotel y Turismo", emoji: "🏨", sub: "Reservas, tours, hospedaje" },
+  { id: "clinica", label: "Clínica y Salud", emoji: "🩺", sub: "Citas, pacientes, consultas" },
+  { id: "inmobiliaria", label: "Inmobiliaria", emoji: "🏡", sub: "Propiedades, agentes, listados" },
+  { id: "restaurante", label: "Restaurante y Eventos", emoji: "🍽️", sub: "Menú, reservas, catering" },
+  { id: "servicios", label: "Servicios Profesionales", emoji: "💼", sub: "Abogados, contadores, agencias" },
+  { id: "otro", label: "Otro tipo de negocio", emoji: "✨", sub: "Cuéntanos y lo adaptamos" },
 ];
 
 const GOALS = [
-  { id: "nueva", label: "Crear mi primera web profesional" },
-  { id: "redisenar", label: "Rediseñar una web que ya tengo" },
-  { id: "clientes", label: "Conseguir más clientes online" },
-  { id: "reservas", label: "Automatizar reservas o citas" },
+  { id: "nueva", label: "Crear mi primera web", emoji: "🚀", sub: "Empezar desde cero con todo incluido" },
+  { id: "redisenar", label: "Rediseñar mi web actual", emoji: "🔄", sub: "Tengo una pero necesita mejorar" },
+  { id: "clientes", label: "Conseguir más clientes", emoji: "📈", sub: "Atraer y convertir visitantes" },
+  { id: "reservas", label: "Automatizar reservas", emoji: "📅", sub: "Que agenden sin llamar" },
 ];
 
 const TIMELINES = [
-  { id: "urgente", label: "Lo antes posible", tag: "Prioridad" },
-  { id: "semanas", label: "En las próximas semanas" },
-  { id: "explorando", label: "Estoy explorando opciones" },
+  { id: "urgente", label: "Lo antes posible", emoji: "⚡", sub: "Necesito arrancar ya", tag: "Prioridad" },
+  { id: "semanas", label: "En las próximas semanas", emoji: "📆", sub: "Tengo algo de tiempo" },
+  { id: "explorando", label: "Estoy explorando", emoji: "🔍", sub: "Quiero ver opciones primero" },
 ];
 
 /* ── Confetti ── */
@@ -119,59 +119,87 @@ function AnimatedCheckmark() {
   );
 }
 
-/* ── Option Button (reusable) ── */
+/* ── Option Card (reusable) ── */
 
-function OptionButton({
+function OptionCard({
   selected,
   label,
+  emoji,
+  sub,
   tag,
   onClick,
 }: {
   selected: boolean;
   label: string;
+  emoji: string;
+  sub?: string;
   tag?: string;
   onClick: () => void;
 }) {
   return (
     <motion.button
       type="button"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 0.97 }}
       onClick={onClick}
-      className="relative flex items-center gap-3 px-5 py-4 rounded-2xl border transition-all cursor-pointer text-left"
+      className="relative flex flex-col items-start p-5 rounded-2xl border-2 cursor-pointer text-left group"
       style={{
-        borderColor: selected ? "#0F766E" : "#E7E5E4",
+        borderColor: selected ? "#0F766E" : "transparent",
         backgroundColor: selected ? "#E8F5F3" : "#FAFAF9",
         boxShadow: selected
-          ? "0 0 0 1px #0F766E, 0 2px 8px -2px rgba(15,118,110,0.15)"
-          : "none",
-        transition: "all .25s cubic-bezier(.16,1,.3,1)",
+          ? "0 0 0 1px #0F766E, 0 4px 12px -2px rgba(15,118,110,0.15)"
+          : "0 1px 3px 0 rgba(0,0,0,0.04), 0 1px 2px -1px rgba(0,0,0,0.04)",
+        transition: "all .2s cubic-bezier(.16,1,.3,1)",
+      }}
+      onMouseEnter={(e) => {
+        if (!selected) {
+          (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+          (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px -4px rgba(0,0,0,0.1), 0 2px 6px -2px rgba(0,0,0,0.06)";
+          (e.currentTarget as HTMLElement).style.borderColor = "#A7F3D0";
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (!selected) {
+          (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+          (e.currentTarget as HTMLElement).style.boxShadow = "0 1px 3px 0 rgba(0,0,0,0.04), 0 1px 2px -1px rgba(0,0,0,0.04)";
+          (e.currentTarget as HTMLElement).style.borderColor = "transparent";
+        }
       }}
     >
-      {/* Radio indicator */}
-      <span
-        className="shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center"
-        style={{
-          borderColor: selected ? "#0F766E" : "#D6D3D1",
-          transition: "all .25s cubic-bezier(.16,1,.3,1)",
-        }}
-      >
-        {selected && (
-          <motion.span
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="w-2.5 h-2.5 rounded-full bg-primary"
-          />
-        )}
+      {/* Tag badge */}
+      {tag && (
+        <span className="absolute top-3 right-3 text-[10px] font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full tracking-wider uppercase">
+          {tag}
+        </span>
+      )}
+
+      {/* Selected check */}
+      {selected && (
+        <motion.span
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 15 }}
+          className="absolute top-3 right-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center"
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 6.5L5 9L9.5 3.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.span>
+      )}
+
+      {/* Emoji */}
+      <span className="text-3xl mb-3 block" style={{ transition: "transform .2s ease" }}>
+        {emoji}
       </span>
 
-      <span className={`text-sm sm:text-base font-medium ${selected ? "text-navy-deep" : "text-slate-text"}`}>
+      {/* Label */}
+      <span className={`text-sm sm:text-[15px] font-semibold leading-snug ${selected ? "text-navy-deep" : "text-navy-deep/80"}`}>
         {label}
       </span>
 
-      {tag && (
-        <span className="ml-auto text-[10px] font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full tracking-wider uppercase">
-          {tag}
+      {/* Subtitle */}
+      {sub && (
+        <span className="text-xs text-slate-light mt-1 leading-relaxed">
+          {sub}
         </span>
       )}
     </motion.button>
@@ -267,12 +295,14 @@ export default function GamifiedForm() {
               Así personalizamos tu web para tu tipo de cliente
             </p>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {SECTORS.map((sector) => (
-                <OptionButton
+                <OptionCard
                   key={sector.id}
                   selected={formData.sector === sector.id}
                   label={sector.label}
+                  emoji={sector.emoji}
+                  sub={sector.sub}
                   onClick={() => selectAndAdvance("sector", sector.id)}
                 />
               ))}
@@ -300,12 +330,14 @@ export default function GamifiedForm() {
               Nos ayuda a preparar la mejor solución para ti
             </p>
 
-            <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-2 gap-3">
               {GOALS.map((goal) => (
-                <OptionButton
+                <OptionCard
                   key={goal.id}
                   selected={formData.goal === goal.id}
                   label={goal.label}
+                  emoji={goal.emoji}
+                  sub={goal.sub}
                   onClick={() => selectAndAdvance("goal", goal.id)}
                 />
               ))}
@@ -333,12 +365,14 @@ export default function GamifiedForm() {
               Nos ayuda a priorizar tu proyecto
             </p>
 
-            <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-3 gap-3">
               {TIMELINES.map((tl) => (
-                <OptionButton
+                <OptionCard
                   key={tl.id}
                   selected={formData.timeline === tl.id}
                   label={tl.label}
+                  emoji={tl.emoji}
+                  sub={tl.sub}
                   tag={tl.tag}
                   onClick={() => selectAndAdvance("timeline", tl.id)}
                 />
@@ -573,7 +607,7 @@ export default function GamifiedForm() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto w-full">
+    <div className="max-w-[680px] mx-auto w-full">
       <div
         className="rounded-3xl p-6 sm:p-8 min-h-[520px] flex flex-col relative overflow-hidden"
         style={{
@@ -586,7 +620,7 @@ export default function GamifiedForm() {
         {/* Progress Bar */}
         {step < 4 && (
           <div className="mb-8">
-            <div className="flex items-center justify-between mb-2.5">
+            <div className="flex items-center justify-between mb-3">
               <div className="w-20">
                 {step > 0 && (
                   <motion.button
@@ -594,7 +628,7 @@ export default function GamifiedForm() {
                     animate={{ opacity: 1, x: 0 }}
                     type="button"
                     onClick={goBack}
-                    className="flex items-center gap-1 text-sm text-slate-light hover:text-primary transition-colors cursor-pointer font-medium"
+                    className="flex items-center gap-1.5 text-sm text-slate-light hover:text-navy-deep transition-colors cursor-pointer font-medium"
                     style={{ transition: "color .25s cubic-bezier(.16,1,.3,1)" }}
                   >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -605,21 +639,23 @@ export default function GamifiedForm() {
                 )}
               </div>
 
-              <span className="text-xs font-semibold text-slate-light tracking-wide">
-                Paso {step + 1} de {totalSteps}
-              </span>
+              {/* Step dots */}
+              <div className="flex items-center gap-2">
+                {Array.from({ length: totalSteps }).map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="rounded-full"
+                    animate={{
+                      width: i === step ? 24 : 8,
+                      height: 8,
+                      backgroundColor: i <= step ? "#0F766E" : "#E7E5E4",
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  />
+                ))}
+              </div>
 
               <div className="w-20" />
-            </div>
-
-            {/* Progress track — single color teal */}
-            <div className="h-1.5 bg-surface-muted rounded-full overflow-hidden">
-              <motion.div
-                className="h-full rounded-full bg-primary"
-                initial={false}
-                animate={{ width: `${((step + 1) / totalSteps) * 100}%` }}
-                transition={{ type: "spring", stiffness: 200, damping: 25 }}
-              />
             </div>
           </div>
         )}
