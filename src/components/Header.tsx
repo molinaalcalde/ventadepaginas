@@ -132,16 +132,24 @@ export default function Header() {
             <span className="hidden lg:inline">+1 809 XXX XXXX</span>
           </a>
 
-          {/* CTA Button — magnetic hover effect */}
+          {/* CTA Button — dark pill with deep shadow */}
           <motion.a
             href="#contacto"
-            whileHover={{ scale: 1.04, y: -2 }}
+            whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="hidden sm:inline-flex items-center justify-center gap-2 bg-coral hover:bg-coral-hover text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-coral transition-colors duration-300"
+            className="hidden sm:inline-flex items-center gap-2 text-white text-sm font-bold rounded-full transition-all duration-300"
+            style={{
+              backgroundColor: "#1A1A2E",
+              padding: "6px 6px 6px 20px",
+              boxShadow:
+                "0 1px 2px rgba(26,26,46,0.08), 0 4px 8px -1px rgba(26,26,46,0.10), 0 8px 16px -2px rgba(26,26,46,0.12), 0 16px 32px -4px rgba(26,26,46,0.10), 0 24px 48px -8px rgba(26,26,46,0.08)",
+            }}
           >
             <span>Quiero mi web</span>
-            <ArrowRight weight="bold" size={16} />
+            <span className="w-7 h-7 rounded-full bg-white flex items-center justify-center shrink-0">
+              <ArrowRight weight="bold" size={13} className="text-navy-deep" />
+            </span>
           </motion.a>
 
           {/* Mobile Hamburger Button */}
@@ -262,10 +270,18 @@ export default function Header() {
                 <a
                   href="#contacto"
                   onClick={closeMobile}
-                  className="inline-flex items-center justify-center gap-2 bg-coral hover:bg-coral-hover text-white text-base font-bold px-6 py-3.5 rounded-full shadow-coral hover:shadow-lg transition-all"
+                  className="inline-flex items-center gap-2 text-white text-base font-bold rounded-full transition-all"
+                  style={{
+                    backgroundColor: "#1A1A2E",
+                    padding: "10px 10px 10px 28px",
+                    boxShadow:
+                      "0 1px 2px rgba(26,26,46,0.08), 0 4px 8px -1px rgba(26,26,46,0.10), 0 8px 16px -2px rgba(26,26,46,0.12), 0 16px 32px -4px rgba(26,26,46,0.10), 0 24px 48px -8px rgba(26,26,46,0.08)",
+                  }}
                 >
                   <span>Quiero mi web</span>
-                  <ArrowRight weight="bold" size={18} />
+                  <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center shrink-0">
+                    <ArrowRight weight="bold" size={16} className="text-navy-deep" />
+                  </span>
                 </a>
               </motion.div>
             </motion.div>

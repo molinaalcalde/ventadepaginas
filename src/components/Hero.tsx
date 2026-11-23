@@ -161,10 +161,18 @@ export default function Hero() {
                 href="https://wa.me/18091234567"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-coral hover:bg-coral-hover text-white font-bold text-lg px-10 py-4 rounded-2xl shadow-coral transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]"
+                className="group inline-flex items-center gap-3 text-white font-bold text-lg rounded-full transition-all duration-300 hover:-translate-y-1 active:scale-[0.97]"
+                style={{
+                  backgroundColor: "#1A1A2E",
+                  padding: "12px 12px 12px 32px",
+                  boxShadow:
+                    "0 1px 2px rgba(26,26,46,0.08), 0 4px 8px -1px rgba(26,26,46,0.10), 0 8px 16px -2px rgba(26,26,46,0.12), 0 16px 32px -4px rgba(26,26,46,0.14), 0 24px 48px -8px rgba(26,26,46,0.12), 0 32px 64px -12px rgba(26,26,46,0.08)",
+                }}
               >
-                <WhatsappLogo size={22} weight="fill" aria-hidden="true" />
-                Ver qué incluye mi web
+                <span>Ver qué incluye mi web</span>
+                <span className="w-11 h-11 rounded-full bg-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-[360deg]">
+                  <WhatsappLogo size={20} weight="fill" className="text-[#25D366]" />
+                </span>
               </a>
             </MagneticButton>
 

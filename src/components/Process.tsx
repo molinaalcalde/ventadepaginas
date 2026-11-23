@@ -499,17 +499,18 @@ export default function Process() {
                         {/* CTA Button — Orbix-style dramatic shadow */}
                         <a
                           href="#contacto"
-                          className="inline-flex items-center gap-3 bg-[#010101] rounded-full self-start overflow-hidden"
+                          className="group inline-flex items-center gap-3 bg-[#1A1A2E] rounded-full self-start overflow-hidden transition-all duration-300 hover:-translate-y-1 active:scale-[0.97]"
                           style={{
-                            padding: "8px 8px 8px 24px",
-                            boxShadow: ctaShadow,
+                            padding: "10px 10px 10px 28px",
+                            boxShadow:
+                              "0 1px 2px rgba(26,26,46,0.08), 0 4px 8px -1px rgba(26,26,46,0.10), 0 8px 16px -2px rgba(26,26,46,0.12), 0 16px 32px -4px rgba(26,26,46,0.14), 0 24px 48px -8px rgba(26,26,46,0.12), 0 32px 64px -12px rgba(26,26,46,0.08)",
                           }}
                         >
-                          <span className="text-white text-base sm:text-lg font-normal">
+                          <span className="text-white text-base sm:text-lg font-semibold">
                             Quiero mi web
                           </span>
-                          <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0">
-                            <ArrowUpRight size={20} weight="bold" className="text-black" />
+                          <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-[360deg]">
+                            <ArrowUpRight size={20} weight="bold" className="text-navy-deep" />
                           </span>
                         </a>
                       </div>
