@@ -225,7 +225,7 @@ export default function Sectores() {
         scale = 1 - 0.7 * fadeProgress * fadeProgress;
       }
 
-      const zIndex = 50 - Math.round(absOffset) * 10;
+      const zIndex = 5 - Math.round(absOffset);
 
       card.style.transform = `translate3d(-50%, 0px, 0px) rotate(${rotation}deg) scale(${scale})`;
       card.style.opacity = `${Math.max(0, scale)}`;
@@ -398,7 +398,7 @@ export default function Sectores() {
   ]);
 
   return (
-    <section id="sectores" className="py-28 lg:py-36 bg-surface-soft relative overflow-hidden">
+    <section id="sectores" className="py-28 lg:py-36 bg-surface-soft relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-[680px] mx-auto mb-16 lg:mb-20">
@@ -578,7 +578,7 @@ export default function Sectores() {
           {/* Navigation arrows */}
           <button
             onClick={goPrev}
-            className="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-[60] flex items-center justify-center transition-all hover:scale-110 active:scale-95 hover:bg-white"
+            className="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center transition-all hover:scale-110 active:scale-95 hover:bg-white"
             style={{
               width: "48px",
               height: "48px",
@@ -595,7 +595,7 @@ export default function Sectores() {
 
           <button
             onClick={goNext}
-            className="absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-[60] flex items-center justify-center transition-all hover:scale-110 active:scale-95 hover:bg-white"
+            className="absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center transition-all hover:scale-110 active:scale-95 hover:bg-white"
             style={{
               width: "48px",
               height: "48px",
