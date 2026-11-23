@@ -398,7 +398,7 @@ export default function Sectores() {
   ]);
 
   return (
-    <section id="sectores" className="py-28 lg:py-36 bg-surface-soft relative" style={{ isolation: "isolate" }}>
+    <section id="sectores" className="py-28 lg:py-36 bg-surface-soft relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-[680px] mx-auto mb-16 lg:mb-20">
@@ -430,8 +430,6 @@ export default function Sectores() {
               height: `${dims.stage}px`,
               cursor: "grab",
               touchAction: "pan-y",
-              overflow: "hidden",
-              paddingTop: "20px",
             }}
           >
             <div
