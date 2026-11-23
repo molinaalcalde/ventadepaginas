@@ -1,14 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { Star, Quotes } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
@@ -27,7 +22,7 @@ const testimonials = [
     initials: "EV",
     stars: 5,
     quote:
-      "Con la nueva web empezamos a aparecer cuando alguien busca dentista en el área, y eso se tradujo en más o menos el doble de consultas nuevas al mes. El CRM me ayuda a saber exactamente qué pacientes no han vuelto en meses.",
+      "Con la nueva web empezamos a aparecer cuando alguien busca dentista en el área, y eso se tradujo en el doble de consultas nuevas al mes. El CRM me ayuda a saber exactamente qué pacientes no han vuelto en meses.",
   },
   {
     name: "Natalia Obando",
@@ -47,129 +42,86 @@ const testimonials = [
     quote:
       "Lo que más cambió fue el CRM. Antes llevaba mis contactos en un cuaderno y se me iban prospectos porque no les daba seguimiento a tiempo. Ahora tengo todo organizado y cerré tres ventas en el primer mes que se me hubieran escapado.",
   },
-  {
-    name: "Mariana Fonseca",
-    role: "Administradora, Hotel Casa Verde",
-    location: "Tamarindo, Costa Rica",
-    initials: "MF",
-    stars: 5,
-    quote:
-      "Teníamos presencia en Booking pero no teníamos web propia y eso nos hacía ver pequeños. Ahora los turistas nos encuentran directo en Google, nos escriben al WhatsApp desde la web, y hemos reducido la dependencia de las plataformas.",
-  },
-  {
-    name: "Jorge Cisneros",
-    role: "Fundador, Cisneros Fit Studio",
-    location: "Panamá Oeste, Panamá",
-    initials: "JC",
-    stars: 5,
-    quote:
-      "Me lo entregaron todo en menos de dos semanas. La página quedó exactamente como yo quería y el link de bio reemplazó el grupo de WhatsApp donde mandaba los horarios. Los alumnos nuevos llegan ya con toda la info.",
-  },
 ];
 
-function TestimonialCard({ testimonial, index }: { testimonial: (typeof testimonials)[0]; index: number }) {
-  return (
-    <div
-      className="sticky top-24 will-change-transform"
-      style={{ zIndex: index + 1 }}
-    >
-      <div
-        className="rounded-3xl overflow-hidden mx-auto max-w-6xl"
-        style={{
-          backgroundColor: "#1A1A2E",
-          boxShadow: "0 -4px 40px rgba(0,0,0,0.2)",
-          marginTop: index === 0 ? 0 : "-2rem",
-        }}
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[320px] lg:min-h-[380px]">
-          {/* Left: Visual element */}
-          <div
-            className="relative flex items-center justify-center p-10 lg:p-16"
-            style={{
-              backgroundColor: index % 2 === 0 ? "rgba(15,118,110,0.15)" : "rgba(232,66,42,0.1)",
-            }}
-          >
-            {/* Large decorative quote */}
-            <Quotes
-              weight="fill"
-              className="absolute top-8 left-8 text-white/[0.06]"
-              size={120}
-            />
-            {/* Avatar */}
-            <div className="relative z-10 flex flex-col items-center gap-5">
-              <div
-                className="w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center shrink-0"
-                style={{
-                  backgroundColor: index % 2 === 0 ? "rgba(15,118,110,0.4)" : "rgba(232,66,42,0.3)",
-                  border: "2px solid rgba(255,255,255,0.1)",
-                }}
-              >
-                <span className="text-2xl lg:text-3xl font-bold text-white/90 tracking-wide">
-                  {testimonial.initials}
-                </span>
-              </div>
-              <div className="text-center">
-                <p className="text-lg font-bold text-white">{testimonial.name}</p>
-                <p className="text-sm text-white/50 mt-0.5">{testimonial.role}</p>
-                <p className="text-xs text-white/30 mt-0.5">{testimonial.location}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Quote content */}
-          <div className="flex flex-col justify-center p-8 lg:p-14">
-            {/* Stars */}
-            <div className="flex items-center gap-1 mb-6">
-              {[...Array(testimonial.stars)].map((_, i) => (
-                <Star key={i} weight="fill" size={18} className="text-amber-400" />
-              ))}
-            </div>
-
-            {/* Quote */}
-            <blockquote className="text-base lg:text-lg text-white/80 leading-relaxed font-medium">
-              &ldquo;{testimonial.quote}&rdquo;
-            </blockquote>
-
-            {/* Step indicator */}
-            <div className="mt-8 pt-6 border-t border-white/[0.06]">
-              <span className="text-xs font-semibold text-white/25 uppercase tracking-widest">
-                {index + 1} / {testimonials.length}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const DESKTOP_GAP = 12;
+const MOBILE_GAP = 7;
+const CARD_SPACING = 72;
+const CARD_SPACING_MOBILE = 48;
 
 export default function Testimonials() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const stackRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const rafRef = useRef(0);
 
-  useGSAP(() => {
-    if (!containerRef.current) return;
+  const setCardRef = useCallback((el: HTMLDivElement | null, i: number) => {
+    if (el) cardsRef.current[i] = el;
+  }, []);
 
-    const cards = containerRef.current.querySelectorAll<HTMLElement>(".sticky");
+  /* ── Set --stack-top per card ── */
+  const layoutCards = useCallback(() => {
+    const headerH = document.querySelector("header")?.getBoundingClientRect().height || 80;
+    const gap = window.innerWidth < 768 ? MOBILE_GAP : DESKTOP_GAP;
+
+    cardsRef.current.forEach((card, i) => {
+      if (!card) return;
+      const top = Math.min(
+        headerH + 16 + i * gap,
+        window.innerHeight - card.offsetHeight - 18
+      );
+      card.style.setProperty("--stack-top", `${top}px`);
+    });
+  }, []);
+
+  /* ── Scroll handler: scale + brightness based on overlap ── */
+  const onScroll = useCallback(() => {
+    rafRef.current = 0;
+    const container = stackRef.current;
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    if (containerRect.bottom < 0 || containerRect.top > window.innerHeight) return;
+
+    const cards = cardsRef.current;
+    const rects = cards.map((c) => c?.getBoundingClientRect());
 
     cards.forEach((card, i) => {
-      if (i === cards.length - 1) return; // skip last card
+      if (!card || !rects[i]) return;
+      const surface = card.querySelector<HTMLElement>("[data-surface]");
+      if (!surface) return;
 
-      ScrollTrigger.create({
-        trigger: card,
-        start: "top 96px",
-        endTrigger: cards[i + 1],
-        end: "top 96px",
-        onUpdate: (self) => {
-          const scale = 1 - self.progress * 0.04;
-          const brightness = 1 - self.progress * 0.3;
-          gsap.set(card.children[0], {
-            scale,
-            filter: `brightness(${brightness})`,
-          });
-        },
-      });
+      const nextRect = rects[i + 1];
+      const thisTop = parseFloat(card.style.getPropertyValue("--stack-top")) || 100;
+
+      let overlap = 0;
+      if (nextRect) {
+        overlap = Math.max(0, Math.min(1,
+          (thisTop + rects[i]!.height - nextRect.top) / (0.8 * rects[i]!.height)
+        ));
+      }
+
+      surface.style.transform = `scale(${1 - 0.035 * overlap})`;
+      surface.style.filter = `brightness(${1 - 0.055 * overlap})`;
     });
-  }, { scope: containerRef });
+  }, []);
+
+  useEffect(() => {
+    layoutCards();
+    window.addEventListener("resize", layoutCards);
+
+    const scrollHandler = () => {
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(onScroll);
+      }
+    };
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", layoutCards);
+      window.removeEventListener("scroll", scrollHandler);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [layoutCards, onScroll]);
 
   return (
     <section
@@ -179,7 +131,6 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          {/* Rating pill */}
           <ScrollReveal direction="up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-soft border border-border-subtle mb-6">
               <div className="flex items-center gap-0.5">
@@ -200,14 +151,97 @@ export default function Testimonials() {
           </TextReveal>
         </div>
 
-        {/* Stacked cards */}
-        <div ref={containerRef} className="relative">
+        {/* Stacked cards container */}
+        <div
+          ref={stackRef}
+          className="relative isolate max-w-5xl mx-auto"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: `${CARD_SPACING}px`,
+            paddingBottom: "40px",
+            overflow: "visible",
+            overflowAnchor: "none",
+          }}
+        >
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              style={{ paddingTop: i === 0 ? 0 : "3rem" }}
+              ref={(el) => setCardRef(el, i)}
+              className="will-change-auto"
+              style={{
+                position: "sticky" as const,
+                top: "var(--stack-top, 100px)",
+                zIndex: i + 1,
+                scrollMarginTop: "100px",
+              }}
             >
-              <TestimonialCard testimonial={t} index={i} />
+              {/* Surface — receives scale + brightness transforms */}
+              <div
+                data-surface=""
+                className="rounded-2xl overflow-hidden"
+                style={{
+                  transformOrigin: "50% 0",
+                  backfaceVisibility: "hidden",
+                  backgroundColor: "#1A1A2E",
+                  boxShadow: "0 -8px 24px rgba(26,26,46,0.08)",
+                }}
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[300px] lg:min-h-[360px]">
+                  {/* Left: Avatar + Info */}
+                  <div
+                    className="relative flex items-center justify-center p-10 lg:p-14"
+                    style={{
+                      backgroundColor: i % 2 === 0
+                        ? "rgba(15,118,110,0.12)"
+                        : "rgba(232,66,42,0.08)",
+                    }}
+                  >
+                    <Quotes
+                      weight="fill"
+                      className="absolute top-6 left-6 text-white/[0.05]"
+                      size={100}
+                    />
+                    <div className="relative z-10 flex flex-col items-center gap-4">
+                      <div
+                        className="w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center"
+                        style={{
+                          backgroundColor: i % 2 === 0
+                            ? "rgba(15,118,110,0.35)"
+                            : "rgba(232,66,42,0.25)",
+                          border: "2px solid rgba(255,255,255,0.08)",
+                        }}
+                      >
+                        <span className="text-2xl lg:text-3xl font-bold text-white/90">
+                          {t.initials}
+                        </span>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-lg font-bold text-white">{t.name}</p>
+                        <p className="text-sm text-white/50 mt-0.5">{t.role}</p>
+                        <p className="text-xs text-white/30 mt-0.5">{t.location}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right: Quote */}
+                  <div className="flex flex-col justify-center p-8 lg:p-14">
+                    <div className="flex items-center gap-1 mb-5">
+                      {[...Array(t.stars)].map((_, j) => (
+                        <Star key={j} weight="fill" size={18} className="text-amber-400" />
+                      ))}
+                    </div>
+                    <blockquote className="text-base lg:text-lg text-white/80 leading-relaxed font-medium">
+                      &ldquo;{t.quote}&rdquo;
+                    </blockquote>
+                    <div className="mt-8 pt-5 border-t border-white/[0.06]">
+                      <span className="text-xs font-semibold text-white/25 uppercase tracking-widest">
+                        {i + 1} / {testimonials.length}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
