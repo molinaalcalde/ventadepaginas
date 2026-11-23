@@ -3,29 +3,29 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ArrowUpRight,
-  Buildings,
-  FirstAidKit,
-  HouseSimple,
-  ForkKnife,
-  Briefcase,
-  Sparkle,
-  RocketLaunch,
-  ArrowsClockwise,
-  ChartLineUp,
-  CalendarCheck,
-  Lightning,
-  Calendar,
-  MagnifyingGlass,
-} from "@phosphor-icons/react";
-import type { Icon } from "@phosphor-icons/react";
+  IconBuildingSkyscraper,
+  IconStethoscope,
+  IconHomeDollar,
+  IconToolsKitchen2,
+  IconBriefcase2,
+  IconSparkles,
+  IconRocket,
+  IconRefresh,
+  IconChartArrowsVertical,
+  IconCalendarEvent,
+  IconBolt,
+  IconCalendarWeek,
+  IconSearch,
+  IconArrowUpRight,
+} from "@tabler/icons-react";
+import type { TablerIcon } from "@tabler/icons-react";
 
 /* ── Types ── */
 
 interface OptionItem {
   id: string;
   label: string;
-  icon: Icon;
+  icon: TablerIcon;
   sub: string;
   tag?: string;
 }
@@ -55,25 +55,25 @@ const INITIAL: FormData = {
 /* ── Step Data ── */
 
 const SECTORS: OptionItem[] = [
-  { id: "hotel", label: "Hotel y Turismo", icon: Buildings, sub: "Reservas, tours, hospedaje" },
-  { id: "clinica", label: "Clínica y Salud", icon: FirstAidKit, sub: "Citas, pacientes, consultas" },
-  { id: "inmobiliaria", label: "Inmobiliaria", icon: HouseSimple, sub: "Propiedades, agentes, listados" },
-  { id: "restaurante", label: "Restaurante y Eventos", icon: ForkKnife, sub: "Menú, reservas, catering" },
-  { id: "servicios", label: "Servicios Profesionales", icon: Briefcase, sub: "Abogados, contadores, agencias" },
-  { id: "otro", label: "Otro tipo de negocio", icon: Sparkle, sub: "Cuéntanos y lo adaptamos" },
+  { id: "hotel", label: "Hotel y Turismo", icon: IconBuildingSkyscraper, sub: "Reservas, tours, hospedaje" },
+  { id: "clinica", label: "Clínica y Salud", icon: IconStethoscope, sub: "Citas, pacientes, consultas" },
+  { id: "inmobiliaria", label: "Inmobiliaria", icon: IconHomeDollar, sub: "Propiedades, agentes, listados" },
+  { id: "restaurante", label: "Restaurante y Eventos", icon: IconToolsKitchen2, sub: "Menú, reservas, catering" },
+  { id: "servicios", label: "Servicios Profesionales", icon: IconBriefcase2, sub: "Abogados, contadores, agencias" },
+  { id: "otro", label: "Otro tipo de negocio", icon: IconSparkles, sub: "Cuéntanos y lo adaptamos" },
 ];
 
 const GOALS: OptionItem[] = [
-  { id: "nueva", label: "Crear mi primera web", icon: RocketLaunch, sub: "Empezar desde cero con todo incluido" },
-  { id: "redisenar", label: "Rediseñar mi web actual", icon: ArrowsClockwise, sub: "Tengo una pero necesita mejorar" },
-  { id: "clientes", label: "Conseguir más clientes", icon: ChartLineUp, sub: "Atraer y convertir visitantes" },
-  { id: "reservas", label: "Automatizar reservas", icon: CalendarCheck, sub: "Que agenden sin llamar" },
+  { id: "nueva", label: "Crear mi primera web", icon: IconRocket, sub: "Empezar desde cero con todo incluido" },
+  { id: "redisenar", label: "Rediseñar mi web actual", icon: IconRefresh, sub: "Tengo una pero necesita mejorar" },
+  { id: "clientes", label: "Conseguir más clientes", icon: IconChartArrowsVertical, sub: "Atraer y convertir visitantes" },
+  { id: "reservas", label: "Automatizar reservas", icon: IconCalendarEvent, sub: "Que agenden sin llamar" },
 ];
 
 const TIMELINES: OptionItem[] = [
-  { id: "urgente", label: "Lo antes posible", icon: Lightning, sub: "Necesito arrancar ya", tag: "Prioridad" },
-  { id: "semanas", label: "En las próximas semanas", icon: Calendar, sub: "Tengo algo de tiempo" },
-  { id: "explorando", label: "Estoy explorando", icon: MagnifyingGlass, sub: "Quiero ver opciones primero" },
+  { id: "urgente", label: "Lo antes posible", icon: IconBolt, sub: "Necesito arrancar ya", tag: "Prioridad" },
+  { id: "semanas", label: "En las próximas semanas", icon: IconCalendarWeek, sub: "Tengo algo de tiempo" },
+  { id: "explorando", label: "Estoy explorando", icon: IconSearch, sub: "Quiero ver opciones primero" },
 ];
 
 /* ── Confetti ── */
@@ -155,7 +155,7 @@ function OptionCard({
 }: {
   selected: boolean;
   label: string;
-  icon: Icon;
+  icon: TablerIcon;
   sub?: string;
   tag?: string;
   onClick: () => void;
@@ -214,15 +214,15 @@ function OptionCard({
       <span
         className="flex items-center justify-center rounded-xl mb-3"
         style={{
-          width: 44,
-          height: 44,
-          backgroundColor: selected ? "rgba(15,118,110,0.12)" : "rgba(15,118,110,0.07)",
+          width: 46,
+          height: 46,
+          backgroundColor: selected ? "rgba(15,118,110,0.12)" : "rgba(15,118,110,0.06)",
           transition: "background-color .2s ease",
         }}
       >
         <IconComponent
-          size={24}
-          weight="duotone"
+          size={26}
+          stroke={1.6}
           className={selected ? "text-primary" : "text-primary/70"}
           style={{ transition: "color .2s ease" }}
         />
@@ -569,7 +569,7 @@ export default function GamifiedForm() {
                   className="w-9 h-9 rounded-full bg-white flex items-center justify-center shrink-0"
                   style={{ transition: "transform .35s cubic-bezier(.16,1,.3,1)" }}
                 >
-                  <ArrowUpRight size={18} weight="bold" className="text-navy-deep group-hover:rotate-45" />
+                  <IconArrowUpRight size={18} stroke={2.5} className="text-navy-deep group-hover:rotate-45" />
                 </span>
               </motion.button>
             </div>
