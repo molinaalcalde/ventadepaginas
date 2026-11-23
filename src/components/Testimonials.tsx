@@ -1,67 +1,196 @@
 "use client";
 
-import { Star } from "@phosphor-icons/react";
+import { useRef } from "react";
+import { Star, Quotes } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
-import { StaggerChildren } from "@/components/animations/StaggerChildren";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    name: "María del Carmen Núñez",
-    role: "Directora, Hotel Boutique Casa Colonial",
-    location: "Santo Domingo, RD",
-    initials: "MC",
-    color: "bg-primary",
-    metric: "60% reservas directas",
-    before:
-      "Antes dependíamos 100% de Booking y Expedia. Pagábamos una fortuna en comisiones.",
-    after:
-      "Desde que KINETIC nos montó la web con reservas directas, el 60% de nuestros huéspedes reservan sin intermediarios. En 6 meses recuperamos la inversión.",
-  },
-  {
-    name: "Dr. Rafael Méndez",
-    role: "Director, Centro Dental Sonríe",
-    location: "Santiago, RD",
-    initials: "RM",
-    color: "bg-coral",
-    metric: "3x más pacientes internacionales",
-    before:
-      "No teníamos web y los pacientes internacionales no nos encontraban.",
-    after:
-      "KINETIC nos hizo una página en español e inglés con citas online. En 3 meses triplicamos las consultas de americanos. Mi recepcionista ya no se pasa el día contestando llamadas.",
-  },
-  {
     name: "Carolina Reyes",
-    role: "Socia, Reyes & Asociados Bienes Raíces",
-    location: "Punta Cana, RD",
+    role: "Dueña, Restaurante El Bohío",
+    location: "Santo Domingo, RD",
     initials: "CR",
-    color: "bg-primary",
-    metric: "+40% en ventas",
-    before:
-      "Antes se me perdían los leads en papelitos y chats de WhatsApp.",
-    after:
-      "Con el gestor de clientes de KINETIC todo queda organizado. Me llega un aviso al WhatsApp cada vez que alguien se interesa en una propiedad. Las ventas subieron un 40%.",
+    stars: 5,
+    quote:
+      "Antes la gente nos encontraba solo de boca en boca. Desde que tenemos la web, recibimos entre 15 y 20 reservaciones nuevas por semana que antes simplemente no llegaban. El link de bio en Instagram fue lo que más nos sorprendió.",
+  },
+  {
+    name: "Dr. Ernesto Villalba",
+    role: "Director, Clínica Dental Villalba",
+    location: "Ciudad de Panamá, Panamá",
+    initials: "EV",
+    stars: 5,
+    quote:
+      "Con la nueva web empezamos a aparecer cuando alguien busca dentista en el área, y eso se tradujo en más o menos el doble de consultas nuevas al mes. El CRM me ayuda a saber exactamente qué pacientes no han vuelto en meses.",
+  },
+  {
+    name: "Natalia Obando",
+    role: "Propietaria, Studio N Beauty",
+    location: "San José, Costa Rica",
+    initials: "NO",
+    stars: 5,
+    quote:
+      "Mis clientas me decían que antes no podían encontrar mis precios ni mis servicios en ningún lado. Ahora entran al link de mi Instagram, ven todo, y me escriben ya decididas. Las citas por semana me subieron casi el triple.",
+  },
+  {
+    name: "Rafael Almonte",
+    role: "Gerente, Almonte Propiedades",
+    location: "Santiago, RD",
+    initials: "RA",
+    stars: 5,
+    quote:
+      "Lo que más cambió fue el CRM. Antes llevaba mis contactos en un cuaderno y se me iban prospectos porque no les daba seguimiento a tiempo. Ahora tengo todo organizado y cerré tres ventas en el primer mes que se me hubieran escapado.",
+  },
+  {
+    name: "Mariana Fonseca",
+    role: "Administradora, Hotel Casa Verde",
+    location: "Tamarindo, Costa Rica",
+    initials: "MF",
+    stars: 5,
+    quote:
+      "Teníamos presencia en Booking pero no teníamos web propia y eso nos hacía ver pequeños. Ahora los turistas nos encuentran directo en Google, nos escriben al WhatsApp desde la web, y hemos reducido la dependencia de las plataformas.",
+  },
+  {
+    name: "Jorge Cisneros",
+    role: "Fundador, Cisneros Fit Studio",
+    location: "Panamá Oeste, Panamá",
+    initials: "JC",
+    stars: 5,
+    quote:
+      "Me lo entregaron todo en menos de dos semanas. La página quedó exactamente como yo quería y el link de bio reemplazó el grupo de WhatsApp donde mandaba los horarios. Los alumnos nuevos llegan ya con toda la info.",
   },
 ];
 
+function TestimonialCard({ testimonial, index }: { testimonial: (typeof testimonials)[0]; index: number }) {
+  return (
+    <div
+      className="sticky top-24 will-change-transform"
+      style={{ zIndex: index + 1 }}
+    >
+      <div
+        className="rounded-3xl overflow-hidden mx-auto max-w-6xl"
+        style={{
+          backgroundColor: "#1A1A2E",
+          boxShadow: "0 -4px 40px rgba(0,0,0,0.2)",
+          marginTop: index === 0 ? 0 : "-2rem",
+        }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[320px] lg:min-h-[380px]">
+          {/* Left: Visual element */}
+          <div
+            className="relative flex items-center justify-center p-10 lg:p-16"
+            style={{
+              backgroundColor: index % 2 === 0 ? "rgba(15,118,110,0.15)" : "rgba(232,66,42,0.1)",
+            }}
+          >
+            {/* Large decorative quote */}
+            <Quotes
+              weight="fill"
+              className="absolute top-8 left-8 text-white/[0.06]"
+              size={120}
+            />
+            {/* Avatar */}
+            <div className="relative z-10 flex flex-col items-center gap-5">
+              <div
+                className="w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center shrink-0"
+                style={{
+                  backgroundColor: index % 2 === 0 ? "rgba(15,118,110,0.4)" : "rgba(232,66,42,0.3)",
+                  border: "2px solid rgba(255,255,255,0.1)",
+                }}
+              >
+                <span className="text-2xl lg:text-3xl font-bold text-white/90 tracking-wide">
+                  {testimonial.initials}
+                </span>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-bold text-white">{testimonial.name}</p>
+                <p className="text-sm text-white/50 mt-0.5">{testimonial.role}</p>
+                <p className="text-xs text-white/30 mt-0.5">{testimonial.location}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Quote content */}
+          <div className="flex flex-col justify-center p-8 lg:p-14">
+            {/* Stars */}
+            <div className="flex items-center gap-1 mb-6">
+              {[...Array(testimonial.stars)].map((_, i) => (
+                <Star key={i} weight="fill" size={18} className="text-amber-400" />
+              ))}
+            </div>
+
+            {/* Quote */}
+            <blockquote className="text-base lg:text-lg text-white/80 leading-relaxed font-medium">
+              &ldquo;{testimonial.quote}&rdquo;
+            </blockquote>
+
+            {/* Step indicator */}
+            <div className="mt-8 pt-6 border-t border-white/[0.06]">
+              <span className="text-xs font-semibold text-white/25 uppercase tracking-widest">
+                {index + 1} / {testimonials.length}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Testimonials() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!containerRef.current) return;
+
+    const cards = containerRef.current.querySelectorAll<HTMLElement>(".sticky");
+
+    cards.forEach((card, i) => {
+      if (i === cards.length - 1) return; // skip last card
+
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top 96px",
+        endTrigger: cards[i + 1],
+        end: "top 96px",
+        onUpdate: (self) => {
+          const scale = 1 - self.progress * 0.04;
+          const brightness = 1 - self.progress * 0.3;
+          gsap.set(card.children[0], {
+            scale,
+            filter: `brightness(${brightness})`,
+          });
+        },
+      });
+    });
+  }, { scope: containerRef });
+
   return (
     <section
       id="testimonios"
-      className="py-28 lg:py-36 bg-surface-soft"
+      className="py-28 lg:py-36 bg-warm-cream"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           {/* Rating pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-soft border border-border-subtle mb-6">
-            <div className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} weight="fill" size={16} className="text-amber-400" />
-              ))}
+          <ScrollReveal direction="up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-soft border border-border-subtle mb-6">
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} weight="fill" size={16} className="text-amber-400" />
+                ))}
+              </div>
+              <span className="text-sm font-bold text-navy-deep">4.9/5</span>
+              <span className="text-xs text-slate-light">· +140 negocios</span>
             </div>
-            <span className="text-sm font-bold text-navy-deep">4.9/5</span>
-            <span className="text-xs text-slate-light">· +140 negocios en RD</span>
-          </div>
+          </ScrollReveal>
           <TextReveal
             as="h2"
             className="text-fluid-h2 font-extrabold text-navy-deep leading-tight"
@@ -71,68 +200,17 @@ export default function Testimonials() {
           </TextReveal>
         </div>
 
-        {/* Testimonial Cards — static grid (no carousel) */}
-        <StaggerChildren
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          stagger={0.15}
-        >
-          {testimonials.map((t) => (
+        {/* Stacked cards */}
+        <div ref={containerRef} className="relative">
+          {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className="bg-white rounded-3xl p-8 shadow-soft border border-border-subtle flex flex-col gap-5 transition-shadow hover:shadow-float"
+              style={{ paddingTop: i === 0 ? 0 : "3rem" }}
             >
-              {/* Metric badge pill */}
-              <div className="self-start">
-                <span className="inline-block px-3 py-1 rounded-full bg-coral-light text-coral text-xs font-bold tracking-wide">
-                  {t.metric}
-                </span>
-              </div>
-
-              {/* Stars */}
-              <div className="flex items-center gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} weight="fill" size={16} className="text-amber-400" />
-                ))}
-              </div>
-
-              {/* Before → After quote */}
-              <div className="flex flex-col gap-3 flex-1">
-                <p className="text-xs font-semibold text-slate-light uppercase tracking-widest">
-                  Antes
-                </p>
-                <p className="text-sm text-slate-text leading-relaxed italic">
-                  &ldquo;{t.before}&rdquo;
-                </p>
-                <div className="flex items-center gap-2 my-1">
-                  <div className="flex-1 h-px bg-border-subtle" />
-                  <span className="text-xs font-bold text-primary tracking-widest uppercase">
-                    Ahora
-                  </span>
-                  <div className="flex-1 h-px bg-border-subtle" />
-                </div>
-                <p className="text-sm text-navy-deep leading-relaxed font-medium">
-                  &ldquo;{t.after}&rdquo;
-                </p>
-              </div>
-
-              {/* Author info */}
-              <div className="flex items-center gap-3 pt-4 border-t border-border-subtle">
-                <div
-                  className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center shrink-0`}
-                >
-                  <span className="text-xs font-bold text-white tracking-wide">
-                    {t.initials}
-                  </span>
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-navy-deep">{t.name}</p>
-                  <p className="text-xs text-slate-light">{t.role}</p>
-                  <p className="text-xs text-slate-light/70">{t.location}</p>
-                </div>
-              </div>
+              <TestimonialCard testimonial={t} index={i} />
             </div>
           ))}
-        </StaggerChildren>
+        </div>
       </div>
     </section>
   );
