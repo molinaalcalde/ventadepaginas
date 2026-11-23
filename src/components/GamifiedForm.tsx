@@ -2,33 +2,118 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  IconBuildingSkyscraper,
-  IconStethoscope,
-  IconHomeDollar,
-  IconToolsKitchen2,
-  IconBriefcase2,
-  IconSparkles,
-  IconRocket,
-  IconRefresh,
-  IconChartArrowsVertical,
-  IconCalendarEvent,
-  IconBolt,
-  IconCalendarWeek,
-  IconSearch,
-  IconArrowUpRight,
-} from "@tabler/icons-react";
-import type { Icon as TablerIcon } from "@tabler/icons-react";
+import { IconArrowUpRight } from "@tabler/icons-react";
+import type { ReactNode } from "react";
 
 /* ── Types ── */
 
 interface OptionItem {
   id: string;
   label: string;
-  icon: TablerIcon;
+  icon: ReactNode;
   sub: string;
   tag?: string;
 }
+
+/* ── Custom SVG Icons (two-tone, illustrative) ── */
+
+const ic = (paths: ReactNode) => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {paths}
+  </svg>
+);
+
+const ICONS = {
+  hotel: ic(<>
+    <rect x="4" y="12" width="24" height="16" rx="2" fill="#0F766E" opacity="0.15" />
+    <rect x="8" y="6" width="16" height="22" rx="2" fill="#0F766E" opacity="0.25" />
+    <path d="M8 6h16a2 2 0 012 2v18a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z" stroke="#0F766E" strokeWidth="1.8" />
+    <rect x="11" y="10" width="4" height="4" rx="1" fill="#0F766E" opacity="0.4" />
+    <rect x="17" y="10" width="4" height="4" rx="1" fill="#0F766E" opacity="0.4" />
+    <rect x="11" y="16" width="4" height="4" rx="1" fill="#0F766E" opacity="0.4" />
+    <rect x="17" y="16" width="4" height="4" rx="1" fill="#0F766E" opacity="0.4" />
+    <rect x="13" y="22" width="6" height="6" rx="1" fill="#0F766E" opacity="0.6" />
+  </>),
+  clinica: ic(<>
+    <circle cx="16" cy="16" r="12" fill="#0F766E" opacity="0.12" />
+    <circle cx="16" cy="16" r="10" stroke="#0F766E" strokeWidth="1.8" />
+    <rect x="14.5" y="10" width="3" height="12" rx="1.5" fill="#0F766E" opacity="0.7" />
+    <rect x="10" y="14.5" width="12" height="3" rx="1.5" fill="#0F766E" opacity="0.7" />
+  </>),
+  inmobiliaria: ic(<>
+    <path d="M4 28h24" stroke="#0F766E" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M16 4L4 14h24L16 4z" fill="#0F766E" opacity="0.15" />
+    <path d="M6 14l10-10 10 10" stroke="#0F766E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <rect x="8" y="14" width="16" height="14" fill="#0F766E" opacity="0.1" />
+    <path d="M8 14v14h16V14" stroke="#0F766E" strokeWidth="1.8" />
+    <rect x="13" y="20" width="6" height="8" rx="1" fill="#0F766E" opacity="0.35" stroke="#0F766E" strokeWidth="1.2" />
+    <circle cx="17.5" cy="24" r="0.8" fill="#0F766E" />
+  </>),
+  restaurante: ic(<>
+    <ellipse cx="16" cy="22" rx="12" ry="6" fill="#0F766E" opacity="0.1" />
+    <path d="M8 10v12M10 6v6a2 2 0 01-2 2h0a2 2 0 01-2-2V6" stroke="#0F766E" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M22 6v4c0 2.2 1 4 2 4v8" stroke="#0F766E" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M22 6c0 2 2 4 2 4" stroke="#0F766E" strokeWidth="1.8" strokeLinecap="round" />
+    <circle cx="16" cy="20" r="8" fill="#0F766E" opacity="0.08" stroke="#0F766E" strokeWidth="1.4" strokeDasharray="3 2" />
+  </>),
+  servicios: ic(<>
+    <rect x="3" y="8" width="26" height="18" rx="3" fill="#0F766E" opacity="0.12" />
+    <rect x="5" y="10" width="22" height="14" rx="2" stroke="#0F766E" strokeWidth="1.8" />
+    <path d="M12 10V7a4 4 0 018 0v3" stroke="#0F766E" strokeWidth="1.8" strokeLinecap="round" />
+    <circle cx="16" cy="17" r="2.5" fill="#0F766E" opacity="0.4" stroke="#0F766E" strokeWidth="1.4" />
+  </>),
+  otro: ic(<>
+    <path d="M16 2l3.5 7.5L28 11l-6 5.5 1.5 8.5-7.5-4-7.5 4 1.5-8.5-6-5.5 8.5-1.5z" fill="#0F766E" opacity="0.15" />
+    <path d="M16 2l3.5 7.5L28 11l-6 5.5 1.5 8.5-7.5-4-7.5 4 1.5-8.5-6-5.5 8.5-1.5z" stroke="#0F766E" strokeWidth="1.8" strokeLinejoin="round" />
+    <circle cx="16" cy="13" r="3" fill="#0F766E" opacity="0.3" />
+  </>),
+  rocket: ic(<>
+    <path d="M16 28s-3-2-5-6-2-10 5-18c7 8 7 14 5 18s-5 6-5 6z" fill="#0F766E" opacity="0.15" />
+    <path d="M16 28s-3-2-5-6-2-10 5-18c7 8 7 14 5 18s-5 6-5 6z" stroke="#0F766E" strokeWidth="1.8" strokeLinejoin="round" />
+    <circle cx="16" cy="14" r="3" fill="white" stroke="#0F766E" strokeWidth="1.5" />
+    <path d="M11 24l-3 2 1-4M21 24l3 2-1-4" stroke="#0F766E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </>),
+  refresh: ic(<>
+    <circle cx="16" cy="16" r="10" fill="#0F766E" opacity="0.08" />
+    <path d="M22 12a8 8 0 11-2.5-3.5" stroke="#0F766E" strokeWidth="2" strokeLinecap="round" />
+    <path d="M22 6v6h-6" stroke="#0F766E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="16" cy="16" r="3" fill="#0F766E" opacity="0.25" />
+  </>),
+  chart: ic(<>
+    <rect x="4" y="4" width="24" height="24" rx="3" fill="#0F766E" opacity="0.08" />
+    <rect x="7" y="18" width="4" height="8" rx="1" fill="#0F766E" opacity="0.3" />
+    <rect x="14" y="12" width="4" height="14" rx="1" fill="#0F766E" opacity="0.45" />
+    <rect x="21" y="6" width="4" height="20" rx="1" fill="#0F766E" opacity="0.6" />
+    <path d="M7 16l7-6 7 2 4-6" stroke="#0F766E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </>),
+  calendar: ic(<>
+    <rect x="4" y="6" width="24" height="22" rx="3" fill="#0F766E" opacity="0.1" />
+    <rect x="4" y="6" width="24" height="22" rx="3" stroke="#0F766E" strokeWidth="1.8" />
+    <path d="M4 12h24" stroke="#0F766E" strokeWidth="1.8" />
+    <path d="M10 4v4M22 4v4" stroke="#0F766E" strokeWidth="2" strokeLinecap="round" />
+    <circle cx="12" cy="19" r="2" fill="#0F766E" opacity="0.5" />
+    <circle cx="20" cy="19" r="2" fill="#0F766E" opacity="0.25" />
+    <circle cx="12" cy="24" r="2" fill="#0F766E" opacity="0.25" />
+  </>),
+  bolt: ic(<>
+    <path d="M18 2L8 18h7l-3 12 10-16h-7l3-12z" fill="#0F766E" opacity="0.2" />
+    <path d="M18 2L8 18h7l-3 12 10-16h-7l3-12z" stroke="#0F766E" strokeWidth="1.8" strokeLinejoin="round" />
+  </>),
+  calendarWeek: ic(<>
+    <rect x="4" y="6" width="24" height="22" rx="3" fill="#0F766E" opacity="0.1" />
+    <rect x="4" y="6" width="24" height="22" rx="3" stroke="#0F766E" strokeWidth="1.8" />
+    <path d="M4 12h24" stroke="#0F766E" strokeWidth="1.8" />
+    <path d="M10 4v4M22 4v4" stroke="#0F766E" strokeWidth="2" strokeLinecap="round" />
+    <rect x="8" y="16" width="16" height="3" rx="1.5" fill="#0F766E" opacity="0.35" />
+    <rect x="8" y="22" width="10" height="3" rx="1.5" fill="#0F766E" opacity="0.2" />
+  </>),
+  search: ic(<>
+    <circle cx="14" cy="14" r="8" fill="#0F766E" opacity="0.1" />
+    <circle cx="14" cy="14" r="8" stroke="#0F766E" strokeWidth="1.8" />
+    <path d="M20 20l7 7" stroke="#0F766E" strokeWidth="2.5" strokeLinecap="round" />
+    <circle cx="14" cy="14" r="4" fill="#0F766E" opacity="0.12" />
+  </>),
+};
 
 interface FormData {
   sector: string;
@@ -55,25 +140,25 @@ const INITIAL: FormData = {
 /* ── Step Data ── */
 
 const SECTORS: OptionItem[] = [
-  { id: "hotel", label: "Hotel y Turismo", icon: IconBuildingSkyscraper, sub: "Reservas, tours, hospedaje" },
-  { id: "clinica", label: "Clínica y Salud", icon: IconStethoscope, sub: "Citas, pacientes, consultas" },
-  { id: "inmobiliaria", label: "Inmobiliaria", icon: IconHomeDollar, sub: "Propiedades, agentes, listados" },
-  { id: "restaurante", label: "Restaurante y Eventos", icon: IconToolsKitchen2, sub: "Menú, reservas, catering" },
-  { id: "servicios", label: "Servicios Profesionales", icon: IconBriefcase2, sub: "Abogados, contadores, agencias" },
-  { id: "otro", label: "Otro tipo de negocio", icon: IconSparkles, sub: "Cuéntanos y lo adaptamos" },
+  { id: "hotel", label: "Hotel y Turismo", icon: ICONS.hotel, sub: "Reservas, tours, hospedaje" },
+  { id: "clinica", label: "Clínica y Salud", icon: ICONS.clinica, sub: "Citas, pacientes, consultas" },
+  { id: "inmobiliaria", label: "Inmobiliaria", icon: ICONS.inmobiliaria, sub: "Propiedades, agentes, listados" },
+  { id: "restaurante", label: "Restaurante y Eventos", icon: ICONS.restaurante, sub: "Menú, reservas, catering" },
+  { id: "servicios", label: "Servicios Profesionales", icon: ICONS.servicios, sub: "Abogados, contadores, agencias" },
+  { id: "otro", label: "Otro tipo de negocio", icon: ICONS.otro, sub: "Cuéntanos y lo adaptamos" },
 ];
 
 const GOALS: OptionItem[] = [
-  { id: "nueva", label: "Crear mi primera web", icon: IconRocket, sub: "Empezar desde cero con todo incluido" },
-  { id: "redisenar", label: "Rediseñar mi web actual", icon: IconRefresh, sub: "Tengo una pero necesita mejorar" },
-  { id: "clientes", label: "Conseguir más clientes", icon: IconChartArrowsVertical, sub: "Atraer y convertir visitantes" },
-  { id: "reservas", label: "Automatizar reservas", icon: IconCalendarEvent, sub: "Que agenden sin llamar" },
+  { id: "nueva", label: "Crear mi primera web", icon: ICONS.rocket, sub: "Empezar desde cero con todo incluido" },
+  { id: "redisenar", label: "Rediseñar mi web actual", icon: ICONS.refresh, sub: "Tengo una pero necesita mejorar" },
+  { id: "clientes", label: "Conseguir más clientes", icon: ICONS.chart, sub: "Atraer y convertir visitantes" },
+  { id: "reservas", label: "Automatizar reservas", icon: ICONS.calendar, sub: "Que agenden sin llamar" },
 ];
 
 const TIMELINES: OptionItem[] = [
-  { id: "urgente", label: "Lo antes posible", icon: IconBolt, sub: "Necesito arrancar ya", tag: "Prioridad" },
-  { id: "semanas", label: "En las próximas semanas", icon: IconCalendarWeek, sub: "Tengo algo de tiempo" },
-  { id: "explorando", label: "Estoy explorando", icon: IconSearch, sub: "Quiero ver opciones primero" },
+  { id: "urgente", label: "Lo antes posible", icon: ICONS.bolt, sub: "Necesito arrancar ya", tag: "Prioridad" },
+  { id: "semanas", label: "En las próximas semanas", icon: ICONS.calendarWeek, sub: "Tengo algo de tiempo" },
+  { id: "explorando", label: "Estoy explorando", icon: ICONS.search, sub: "Quiero ver opciones primero" },
 ];
 
 /* ── Confetti ── */
@@ -155,7 +240,7 @@ function OptionCard({
 }: {
   selected: boolean;
   label: string;
-  icon: TablerIcon;
+  icon: ReactNode;
   sub?: string;
   tag?: string;
   onClick: () => void;
@@ -210,27 +295,15 @@ function OptionCard({
         </motion.span>
       )}
 
-      {/* Icon in tinted container */}
+      {/* Icon */}
       <span
-        className="flex items-center justify-center rounded-2xl mb-4"
+        className="mb-4 block"
         style={{
-          width: 56,
-          height: 56,
-          background: selected
-            ? "linear-gradient(135deg, rgba(15,118,110,0.18) 0%, rgba(20,184,166,0.12) 100%)"
-            : "linear-gradient(135deg, rgba(15,118,110,0.08) 0%, rgba(20,184,166,0.04) 100%)",
-          boxShadow: selected
-            ? "0 2px 8px -2px rgba(15,118,110,0.2), inset 0 1px 1px rgba(255,255,255,0.4)"
-            : "inset 0 1px 1px rgba(255,255,255,0.3)",
-          transition: "all .25s cubic-bezier(.16,1,.3,1)",
+          opacity: selected ? 1 : 0.7,
+          transition: "opacity .25s ease",
         }}
       >
-        <IconComponent
-          size={28}
-          stroke={1.8}
-          color={selected ? "#0F766E" : "#0F766E"}
-          style={{ opacity: selected ? 1 : 0.65, transition: "opacity .2s ease" }}
-        />
+        {icon}
       </span>
 
       {/* Label */}
