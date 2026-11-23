@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Sectores from "@/components/Sectores";
 import Features from "@/components/Features";
+import MarqueeBanner from "@/components/MarqueeBanner";
 import Process from "@/components/Process";
 import Comparison from "@/components/Comparison";
 import Testimonials from "@/components/Testimonials";
@@ -22,6 +23,7 @@ export default function Home() {
         <Hero />
         <Sectores />
         <Features />
+        <MarqueeBanner />
         <Process />
         <Comparison />
         <Testimonials />
