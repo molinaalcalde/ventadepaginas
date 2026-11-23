@@ -1,65 +1,59 @@
 "use client";
 
 import {
-  Globe,
-  WhatsappLogo,
-  AddressBook,
-  Link as LinkIcon,
-  Sparkle,
   Gift,
-  Clock,
-  Rocket,
+  Sparkle,
   Star,
   Lightning,
+  Fire,
+  Crown,
 } from "@phosphor-icons/react";
 
-/* ─── Band 1: Dark — benefit phrases with colored dots ─── */
+/* ─── Band 1: Dark — urgency + benefit phrases ─── */
 const phrases = [
-  "Gestor de clientes incluido",
-  "WhatsApp conectado a tu web",
-  "Tarjeta Digital tipo Linktree GRATIS",
-  "Tu negocio abierto 24/7",
-  "Recibe clientes desde el día uno",
-  "Todo integrado, sin complicaciones",
-  "Oferta por tiempo limitado",
-  "Dominio propio y profesional",
+  "Tarjeta Digital GRATIS solo por este mes",
+  "Web + CRM + WhatsApp todo conectado",
+  "Empieza a recibir clientes en 14 días",
+  "Tu competencia ya tiene web, tú no",
+  "Oferta de lanzamiento por tiempo limitado",
+  "0 complicaciones, nosotros hacemos todo",
+  "Tarjeta Digital GRATIS solo por este mes",
+  "No necesitas saber de tecnología",
 ];
 
 const dotColors = [
+  "#E8422A", // coral
   "#0F766E", // teal
+  "#F2BF1D", // gold
   "#25D366", // whatsapp green
   "#E8422A", // coral
-  "#F2BF1D", // gold
   "#7C3AED", // purple
-  "#0EA5E9", // sky
-  "#E8422A", // coral
+  "#F2BF1D", // gold
   "#0F766E", // teal
 ];
 
-/* ─── Band 2: Teal — product features with icons ─── */
-const features = [
-  { label: "Web Profesional", Icon: Globe },
-  { label: "WhatsApp Business", Icon: WhatsappLogo },
-  { label: "Gestor CRM", Icon: AddressBook },
-  { label: "Tarjeta Digital", Icon: LinkIcon },
-  { label: "GRATIS", Icon: Gift },
-  { label: "Tiempo Limitado", Icon: Clock },
-  { label: "Lanzamiento", Icon: Rocket },
-  { label: "Premium", Icon: Star },
-  { label: "Rápido", Icon: Lightning },
-  { label: "Exclusivo", Icon: Sparkle },
+/* ─── Band 2: Coral — short punchy tags ─── */
+const tags = [
+  { label: "GRATIS este mes", Icon: Gift },
+  { label: "Solo por lanzamiento", Icon: Fire },
+  { label: "Tarjeta Digital", Icon: Sparkle },
+  { label: "Oferta limitada", Icon: Lightning },
+  { label: "Web Premium", Icon: Crown },
+  { label: "CRM incluido", Icon: Star },
+  { label: "GRATIS este mes", Icon: Gift },
+  { label: "No te lo pierdas", Icon: Fire },
 ];
 
 function Band1Content() {
   return (
     <>
       {phrases.map((phrase, i) => (
-        <span key={i} className="flex items-center gap-0 shrink-0">
-          <span className="text-[clamp(1.2rem,2.5vw,2.4rem)] font-bold text-[#F4F0E9] tracking-tight whitespace-nowrap">
+        <span key={i} className="flex items-center shrink-0">
+          <span className="text-[clamp(1.1rem,2.2vw,2.2rem)] font-extrabold text-white tracking-tight whitespace-nowrap">
             {phrase}
           </span>
           <i
-            className="shrink-0 w-4 h-4 sm:w-5 sm:h-5 rounded-full mx-6 sm:mx-10"
+            className="shrink-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full mx-6 sm:mx-10"
             style={{ backgroundColor: dotColors[i % dotColors.length] }}
           />
         </span>
@@ -71,13 +65,11 @@ function Band1Content() {
 function Band2Content() {
   return (
     <>
-      {features.map((feat, i) => (
-        <span key={i} className="flex items-center gap-2.5 shrink-0 mx-5 sm:mx-8">
-          <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
-            <feat.Icon weight="bold" className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-          </span>
-          <span className="text-base sm:text-xl font-bold text-white whitespace-nowrap tracking-tight">
-            {feat.label}
+      {tags.map((tag, i) => (
+        <span key={i} className="flex items-center gap-2 shrink-0 mx-5 sm:mx-8">
+          <tag.Icon weight="fill" className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          <span className="text-sm sm:text-lg font-extrabold text-white whitespace-nowrap uppercase tracking-wide">
+            {tag.label}
           </span>
         </span>
       ))}
@@ -88,34 +80,35 @@ function Band2Content() {
 export default function MarqueeBanner() {
   return (
     <section
-      className="relative py-6 sm:py-8 overflow-hidden select-none"
+      className="relative py-4 sm:py-6 overflow-hidden select-none"
       style={{ backgroundColor: "var(--color-warm-cream)" }}
       aria-hidden="true"
     >
-      {/* ── Band 1: Dark, rotated -3deg, scrolls left ── */}
+      {/* ── Band 1: Dark navy, rotated -3deg, scrolls left ── */}
       <div
-        className="relative -mx-4 overflow-hidden"
+        className="relative overflow-hidden"
         style={{
-          backgroundColor: "var(--color-navy-deep)",
-          transform: "rotate(-3deg)",
-          padding: "1.1rem 0",
+          backgroundColor: "#1A1A2E",
+          transform: "rotate(-3deg) scale(1.05)",
+          padding: "1rem 0",
+          boxShadow: "0 8px 30px rgba(0,0,0,0.3)",
         }}
       >
         <div className="flex items-center animate-marquee-left">
-          {/* Duplicate content 3x for seamless loop */}
           <Band1Content />
           <Band1Content />
           <Band1Content />
         </div>
       </div>
 
-      {/* ── Band 2: Teal, rotated +2.5deg, scrolls right ── */}
+      {/* ── Band 2: Vibrant coral, rotated +2.5deg, scrolls right ── */}
       <div
-        className="relative -mx-4 -mt-4 sm:-mt-5 overflow-hidden"
+        className="relative -mt-3 sm:-mt-4 overflow-hidden"
         style={{
-          backgroundColor: "var(--color-primary)",
-          transform: "rotate(2.5deg)",
-          padding: "0.9rem 0",
+          backgroundColor: "#E8422A",
+          transform: "rotate(2.5deg) scale(1.05)",
+          padding: "0.75rem 0",
+          boxShadow: "0 8px 30px rgba(232,66,42,0.3)",
         }}
       >
         <div className="flex items-center animate-marquee-right">
