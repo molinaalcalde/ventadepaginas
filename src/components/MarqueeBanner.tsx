@@ -2,46 +2,40 @@
 
 import {
   Gift,
-  Sparkle,
   Star,
   Lightning,
   Fire,
-  Crown,
+  Timer,
+  Lock,
 } from "@phosphor-icons/react";
 
-/* ─── Band 1: Dark — urgency + benefit phrases ─── */
+/* ─── Band 1: Dark — promo phrases ─── */
 const phrases = [
-  "CRM para gestionar tus clientes GRATIS",
-  "Tu web tipo Linktree incluida sin costo",
-  "Solo por este mes, después tiene precio",
-  "Tu competencia ya tiene web, tú no",
-  "Empieza a recibir clientes en 14 días",
-  "CRM + Tarjeta Digital GRATIS por lanzamiento",
-  "0 complicaciones, nosotros hacemos todo",
-  "No te quedes sin tu CRM gratis",
+  "Obtén tu CRM gratis solo por este mes",
+  "Web estilo Linktree para tus redes, gratis",
+  "Tu web profesional lista en 14 días",
+  "Oferta por tiempo limitado",
+  "CRM para gestionar tus clientes sin costo adicional",
+  "Tu página con menú, horarios, ubicación y WhatsApp en un solo link",
 ];
 
 const dotColors = [
-  "#E8422A", // coral
-  "#0F766E", // teal
-  "#F2BF1D", // gold
-  "#25D366", // whatsapp green
-  "#E8422A", // coral
-  "#7C3AED", // purple
-  "#F2BF1D", // gold
-  "#0F766E", // teal
+  "#E8422A",
+  "#0F766E",
+  "#F2BF1D",
+  "#25D366",
+  "#E8422A",
+  "#0F766E",
 ];
 
-/* ─── Band 2: Coral — short punchy tags ─── */
+/* ─── Band 2: Coral — short reinforcement tags ─── */
 const tags = [
-  { label: "CRM Gratis", Icon: Gift },
-  { label: "Solo este mes", Icon: Fire },
-  { label: "Tarjeta Digital", Icon: Sparkle },
-  { label: "Tipo Linktree", Icon: Lightning },
-  { label: "Sin costo extra", Icon: Crown },
-  { label: "Oferta limitada", Icon: Star },
-  { label: "CRM Gratis", Icon: Gift },
-  { label: "Aprovecha ahora", Icon: Fire },
+  { label: "CRM gratis", Icon: Gift },
+  { label: "Solo este mes", Icon: Timer },
+  { label: "Web en 14 días", Icon: Lightning },
+  { label: "Oferta limitada", Icon: Fire },
+  { label: "Link para tus redes gratis", Icon: Star },
+  { label: "Plazas limitadas", Icon: Lock },
 ];
 
 function Band1Content() {
@@ -68,7 +62,7 @@ function Band2Content() {
       {tags.map((tag, i) => (
         <span key={i} className="flex items-center gap-2 shrink-0 mx-5 sm:mx-8">
           <tag.Icon weight="fill" className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-          <span className="text-sm sm:text-lg font-extrabold text-white whitespace-nowrap uppercase tracking-wide">
+          <span className="text-sm sm:text-lg font-bold text-white whitespace-nowrap tracking-tight">
             {tag.label}
           </span>
         </span>
@@ -98,6 +92,7 @@ export default function MarqueeBanner() {
           <Band1Content />
           <Band1Content />
           <Band1Content />
+          <Band1Content />
         </div>
       </div>
 
@@ -112,6 +107,7 @@ export default function MarqueeBanner() {
         }}
       >
         <div className="flex items-center animate-marquee-right">
+          <Band2Content />
           <Band2Content />
           <Band2Content />
           <Band2Content />
