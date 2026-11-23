@@ -161,16 +161,17 @@ export default function Hero() {
                 href="https://wa.me/18091234567"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 text-white font-bold text-lg rounded-full transition-all duration-300 hover:-translate-y-1 active:scale-[0.97]"
+                className="group inline-flex items-center gap-3 text-white font-bold text-lg rounded-full hover:-translate-y-1 active:scale-[0.97]"
                 style={{
                   backgroundColor: "#1A1A2E",
                   padding: "12px 12px 12px 32px",
+                  transition: "all .35s cubic-bezier(.16,1,.3,1)",
                   boxShadow:
-                    "0 1px 2px rgba(26,26,46,0.08), 0 4px 8px -1px rgba(26,26,46,0.10), 0 8px 16px -2px rgba(26,26,46,0.12), 0 16px 32px -4px rgba(26,26,46,0.14), 0 24px 48px -8px rgba(26,26,46,0.12), 0 32px 64px -12px rgba(26,26,46,0.08)",
+                    "0 0 #0000, -1.1px 1.2px .1px #00000003, -2.2px 2.4px .3px #00000005, -3.3px 3.7px .5px #00000005, -4.6px 5.1px .7px #00000008, -6px 6.6px .9px #00000008, -7.6px 8.4px 1.3px #00000008, -9.5px 10.5px 1.8px #00000008, -11.8px 13px 2.4px #00000008, -14.7px 16.2px 3.2px #00000008, -18.3px 20.2px 4.4px #0000000a, -23px 25.4px 6px #0000000a, -29.3px 32.3px 8.2px #0000000a, -37.8px 41.8px 11.3px #0000000a, -49.9px 55.1px 15.9px #0000000a",
                 }}
               >
-                <span>Ver qué incluye mi web</span>
-                <span className="w-11 h-11 rounded-full bg-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-[360deg]">
+                <span>Agenda tu consulta gratis</span>
+                <span className="w-11 h-11 rounded-full bg-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-[360deg]" style={{ transition: "transform .35s cubic-bezier(.16,1,.3,1)" }}>
                   <WhatsappLogo size={20} weight="fill" className="text-[#25D366]" />
                 </span>
               </a>

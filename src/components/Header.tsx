@@ -132,18 +132,19 @@ export default function Header() {
             <span className="hidden lg:inline">+1 809 XXX XXXX</span>
           </a>
 
-          {/* CTA Button — dark pill with deep shadow */}
+          {/* CTA Button — Orbix-style dark pill */}
           <motion.a
             href="#contacto"
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="hidden sm:inline-flex items-center gap-2 text-white text-sm font-bold rounded-full transition-all duration-300"
+            className="hidden sm:inline-flex items-center gap-2 text-white text-sm font-bold rounded-full"
             style={{
               backgroundColor: "#1A1A2E",
               padding: "6px 6px 6px 20px",
+              transition: "all .35s cubic-bezier(.16,1,.3,1)",
               boxShadow:
-                "0 1px 2px rgba(26,26,46,0.08), 0 4px 8px -1px rgba(26,26,46,0.10), 0 8px 16px -2px rgba(26,26,46,0.12), 0 16px 32px -4px rgba(26,26,46,0.10), 0 24px 48px -8px rgba(26,26,46,0.08)",
+                "0 0 #0000, -1.1px 1.2px .1px #00000003, -2.2px 2.4px .3px #00000005, -3.3px 3.7px .5px #00000005, -4.6px 5.1px .7px #00000008, -6px 6.6px .9px #00000008, -7.6px 8.4px 1.3px #00000008, -9.5px 10.5px 1.8px #00000008, -11.8px 13px 2.4px #00000008, -14.7px 16.2px 3.2px #00000008, -18.3px 20.2px 4.4px #0000000a, -23px 25.4px 6px #0000000a, -29.3px 32.3px 8.2px #0000000a, -37.8px 41.8px 11.3px #0000000a, -49.9px 55.1px 15.9px #0000000a",
             }}
           >
             <span>Quiero mi web</span>
@@ -270,12 +271,13 @@ export default function Header() {
                 <a
                   href="#contacto"
                   onClick={closeMobile}
-                  className="inline-flex items-center gap-2 text-white text-base font-bold rounded-full transition-all"
+                  className="inline-flex items-center gap-2 text-white text-base font-bold rounded-full"
                   style={{
                     backgroundColor: "#1A1A2E",
                     padding: "10px 10px 10px 28px",
+                    transition: "all .35s cubic-bezier(.16,1,.3,1)",
                     boxShadow:
-                      "0 1px 2px rgba(26,26,46,0.08), 0 4px 8px -1px rgba(26,26,46,0.10), 0 8px 16px -2px rgba(26,26,46,0.12), 0 16px 32px -4px rgba(26,26,46,0.10), 0 24px 48px -8px rgba(26,26,46,0.08)",
+                      "0 0 #0000, -1.1px 1.2px .1px #00000003, -2.2px 2.4px .3px #00000005, -3.3px 3.7px .5px #00000005, -4.6px 5.1px .7px #00000008, -6px 6.6px .9px #00000008, -7.6px 8.4px 1.3px #00000008, -9.5px 10.5px 1.8px #00000008, -11.8px 13px 2.4px #00000008, -14.7px 16.2px 3.2px #00000008, -18.3px 20.2px 4.4px #0000000a, -23px 25.4px 6px #0000000a, -29.3px 32.3px 8.2px #0000000a, -37.8px 41.8px 11.3px #0000000a, -49.9px 55.1px 15.9px #0000000a",
                   }}
                 >
                   <span>Quiero mi web</span>

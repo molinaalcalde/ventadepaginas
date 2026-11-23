@@ -29,7 +29,7 @@ const sectores = [
     description:
       "Reservas directas desde tu web sin comisiones. Tus huéspedes reservan y tú recibes el aviso al WhatsApp.",
     icon: Bed,
-    cta: "Ver ejemplo",
+    cta: "Quiero más reservas",
     gradient: "linear-gradient(165deg, #E8956D 0%, #D4785A 35%, #C06A4C 70%, #9B5A42 100%)",
     mockupBg: "linear-gradient(135deg, #1a365d 0%, #2d3748 100%)",
   },
@@ -38,7 +38,7 @@ const sectores = [
     description:
       "Tus pacientes agendan citas online y reciben recordatorios automáticos. Menos cancelaciones, más consultas.",
     icon: Heartbeat,
-    cta: "Ver ejemplo",
+    cta: "Quiero más pacientes",
     gradient: "linear-gradient(165deg, #7C9FE8 0%, #5A82D4 35%, #4A6FC0 70%, #3D5A9B 100%)",
     mockupBg: "linear-gradient(135deg, #2d3748 0%, #1a202c 100%)",
   },
@@ -47,7 +47,7 @@ const sectores = [
     description:
       "Muestra propiedades con fotos profesionales y captura compradores que buscan en Google.",
     icon: Key,
-    cta: "Ver ejemplo",
+    cta: "Captar compradores",
     gradient: "linear-gradient(165deg, #6DCFA5 0%, #4DB88A 35%, #3AA074 70%, #2D8760 100%)",
     mockupBg: "linear-gradient(135deg, #1a202c 0%, #2d3748 100%)",
   },
@@ -56,7 +56,7 @@ const sectores = [
     description:
       "Reservas desde el celular, menú digital y pedidos por WhatsApp. Sin llamadas perdidas.",
     icon: ForkKnife,
-    cta: "Ver ejemplo",
+    cta: "Llenar más mesas",
     gradient: "linear-gradient(165deg, #E8A06D 0%, #D48A5A 35%, #C07A4C 70%, #9B6342 100%)",
     mockupBg: "linear-gradient(135deg, #2d3748 0%, #1a365d 100%)",
   },
@@ -65,7 +65,7 @@ const sectores = [
     description:
       "Tus clientes te encuentran en Google, llenan un formulario y tú recibes todo en WhatsApp.",
     icon: Handshake,
-    cta: "Ver ejemplo",
+    cta: "Conseguir más clientes",
     gradient: "linear-gradient(165deg, #8B7CE8 0%, #7466D4 35%, #6354C0 70%, #52449B 100%)",
     mockupBg: "linear-gradient(135deg, #1a202c 0%, #2d3748 100%)",
   },
@@ -553,24 +553,27 @@ export default function Sectores() {
                       {/* CTA Button overlapping the bottom */}
                       <a
                         href="#contacto"
-                        className="absolute inline-flex items-center justify-center gap-2 font-semibold text-navy-deep transition-all hover:scale-105 active:scale-95"
+                        className="absolute inline-flex items-center gap-2 font-semibold text-navy-deep hover:-translate-y-0.5 active:scale-95"
                         style={{
                           bottom: `${dims.pad * 0.5}px`,
                           backgroundColor: "#FFFFFF",
                           borderRadius: "99px",
                           height: dims.w < 350 ? "40px" : "48px",
-                          padding: dims.w < 350 ? "0 18px" : "0 28px",
+                          padding: dims.w < 350 ? "0 14px 0 18px" : "0 16px 0 24px",
                           fontSize: dims.w < 350 ? "13px" : "15px",
                           fontWeight: 600,
+                          transition: "all .35s cubic-bezier(.16,1,.3,1)",
                           boxShadow:
-                            "0 2px 4px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06)",
+                            "0 0 #0000, -1.1px 1.2px .1px #00000003, -2.2px 2.4px .3px #00000005, -3.3px 3.7px .5px #00000005, -4.6px 5.1px .7px #00000008, -6px 6.6px .9px #00000008, -7.6px 8.4px 1.3px #00000008, -9.5px 10.5px 1.8px #00000008, -11.8px 13px 2.4px #00000008",
                           zIndex: 3,
                         }}
                       >
                         {sector.cta}
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                        <span className="w-6 h-6 rounded-full bg-navy-deep flex items-center justify-center shrink-0">
+                          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 4l8 8M12 4v8H4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
                       </a>
                     </div>
                   </div>
