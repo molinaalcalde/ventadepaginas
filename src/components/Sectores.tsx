@@ -398,7 +398,11 @@ export default function Sectores() {
   ]);
 
   return (
-    <section id="sectores" className="py-28 lg:py-36 bg-surface-soft relative">
+    <section
+      id="sectores"
+      className="py-28 lg:py-36 bg-surface-soft relative"
+      style={{ clipPath: "inset(0 -100vw 0 -100vw)" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-[680px] mx-auto mb-16 lg:mb-20">
