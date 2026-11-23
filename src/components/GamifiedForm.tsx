@@ -2,9 +2,33 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight } from "@phosphor-icons/react";
+import {
+  ArrowUpRight,
+  Buildings,
+  FirstAidKit,
+  HouseSimple,
+  ForkKnife,
+  Briefcase,
+  Sparkle,
+  RocketLaunch,
+  ArrowsClockwise,
+  ChartLineUp,
+  CalendarCheck,
+  Lightning,
+  Calendar,
+  MagnifyingGlass,
+} from "@phosphor-icons/react";
+import type { Icon } from "@phosphor-icons/react";
 
 /* ── Types ── */
+
+interface OptionItem {
+  id: string;
+  label: string;
+  icon: Icon;
+  sub: string;
+  tag?: string;
+}
 
 interface FormData {
   sector: string;
@@ -30,26 +54,26 @@ const INITIAL: FormData = {
 
 /* ── Step Data ── */
 
-const SECTORS = [
-  { id: "hotel", label: "Hotel y Turismo", emoji: "🏨", sub: "Reservas, tours, hospedaje" },
-  { id: "clinica", label: "Clínica y Salud", emoji: "🩺", sub: "Citas, pacientes, consultas" },
-  { id: "inmobiliaria", label: "Inmobiliaria", emoji: "🏡", sub: "Propiedades, agentes, listados" },
-  { id: "restaurante", label: "Restaurante y Eventos", emoji: "🍽️", sub: "Menú, reservas, catering" },
-  { id: "servicios", label: "Servicios Profesionales", emoji: "💼", sub: "Abogados, contadores, agencias" },
-  { id: "otro", label: "Otro tipo de negocio", emoji: "✨", sub: "Cuéntanos y lo adaptamos" },
+const SECTORS: OptionItem[] = [
+  { id: "hotel", label: "Hotel y Turismo", icon: Buildings, sub: "Reservas, tours, hospedaje" },
+  { id: "clinica", label: "Clínica y Salud", icon: FirstAidKit, sub: "Citas, pacientes, consultas" },
+  { id: "inmobiliaria", label: "Inmobiliaria", icon: HouseSimple, sub: "Propiedades, agentes, listados" },
+  { id: "restaurante", label: "Restaurante y Eventos", icon: ForkKnife, sub: "Menú, reservas, catering" },
+  { id: "servicios", label: "Servicios Profesionales", icon: Briefcase, sub: "Abogados, contadores, agencias" },
+  { id: "otro", label: "Otro tipo de negocio", icon: Sparkle, sub: "Cuéntanos y lo adaptamos" },
 ];
 
-const GOALS = [
-  { id: "nueva", label: "Crear mi primera web", emoji: "🚀", sub: "Empezar desde cero con todo incluido" },
-  { id: "redisenar", label: "Rediseñar mi web actual", emoji: "🔄", sub: "Tengo una pero necesita mejorar" },
-  { id: "clientes", label: "Conseguir más clientes", emoji: "📈", sub: "Atraer y convertir visitantes" },
-  { id: "reservas", label: "Automatizar reservas", emoji: "📅", sub: "Que agenden sin llamar" },
+const GOALS: OptionItem[] = [
+  { id: "nueva", label: "Crear mi primera web", icon: RocketLaunch, sub: "Empezar desde cero con todo incluido" },
+  { id: "redisenar", label: "Rediseñar mi web actual", icon: ArrowsClockwise, sub: "Tengo una pero necesita mejorar" },
+  { id: "clientes", label: "Conseguir más clientes", icon: ChartLineUp, sub: "Atraer y convertir visitantes" },
+  { id: "reservas", label: "Automatizar reservas", icon: CalendarCheck, sub: "Que agenden sin llamar" },
 ];
 
-const TIMELINES = [
-  { id: "urgente", label: "Lo antes posible", emoji: "⚡", sub: "Necesito arrancar ya", tag: "Prioridad" },
-  { id: "semanas", label: "En las próximas semanas", emoji: "📆", sub: "Tengo algo de tiempo" },
-  { id: "explorando", label: "Estoy explorando", emoji: "🔍", sub: "Quiero ver opciones primero" },
+const TIMELINES: OptionItem[] = [
+  { id: "urgente", label: "Lo antes posible", icon: Lightning, sub: "Necesito arrancar ya", tag: "Prioridad" },
+  { id: "semanas", label: "En las próximas semanas", icon: Calendar, sub: "Tengo algo de tiempo" },
+  { id: "explorando", label: "Estoy explorando", icon: MagnifyingGlass, sub: "Quiero ver opciones primero" },
 ];
 
 /* ── Confetti ── */
@@ -124,14 +148,14 @@ function AnimatedCheckmark() {
 function OptionCard({
   selected,
   label,
-  emoji,
+  icon: IconComponent,
   sub,
   tag,
   onClick,
 }: {
   selected: boolean;
   label: string;
-  emoji: string;
+  icon: Icon;
   sub?: string;
   tag?: string;
   onClick: () => void;
@@ -166,7 +190,7 @@ function OptionCard({
       }}
     >
       {/* Tag badge */}
-      {tag && (
+      {tag && !selected && (
         <span className="absolute top-3 right-3 text-[10px] font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full tracking-wider uppercase">
           {tag}
         </span>
@@ -186,9 +210,22 @@ function OptionCard({
         </motion.span>
       )}
 
-      {/* Emoji */}
-      <span className="text-3xl mb-3 block" style={{ transition: "transform .2s ease" }}>
-        {emoji}
+      {/* Icon in tinted container */}
+      <span
+        className="flex items-center justify-center rounded-xl mb-3"
+        style={{
+          width: 44,
+          height: 44,
+          backgroundColor: selected ? "rgba(15,118,110,0.12)" : "rgba(15,118,110,0.07)",
+          transition: "background-color .2s ease",
+        }}
+      >
+        <IconComponent
+          size={24}
+          weight="duotone"
+          className={selected ? "text-primary" : "text-primary/70"}
+          style={{ transition: "color .2s ease" }}
+        />
       </span>
 
       {/* Label */}
@@ -301,7 +338,7 @@ export default function GamifiedForm() {
                   key={sector.id}
                   selected={formData.sector === sector.id}
                   label={sector.label}
-                  emoji={sector.emoji}
+                  icon={sector.icon}
                   sub={sector.sub}
                   onClick={() => selectAndAdvance("sector", sector.id)}
                 />
@@ -336,7 +373,7 @@ export default function GamifiedForm() {
                   key={goal.id}
                   selected={formData.goal === goal.id}
                   label={goal.label}
-                  emoji={goal.emoji}
+                  icon={goal.icon}
                   sub={goal.sub}
                   onClick={() => selectAndAdvance("goal", goal.id)}
                 />
@@ -371,7 +408,7 @@ export default function GamifiedForm() {
                   key={tl.id}
                   selected={formData.timeline === tl.id}
                   label={tl.label}
-                  emoji={tl.emoji}
+                  icon={tl.icon}
                   sub={tl.sub}
                   tag={tl.tag}
                   onClick={() => selectAndAdvance("timeline", tl.id)}
