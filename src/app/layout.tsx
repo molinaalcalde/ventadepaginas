@@ -75,7 +75,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es-DO"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white font-sans text-slate-text selection:bg-primary-light selection:text-primary">
+      <body className="min-h-full flex flex-col bg-white font-sans text-slate-text selection:bg-primary-light selection:text-primary overflow-x-hidden">
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

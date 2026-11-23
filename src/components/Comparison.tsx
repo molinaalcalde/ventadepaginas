@@ -66,7 +66,7 @@ export default function Comparison() {
   }, []);
 
   return (
-    <section className="py-28 lg:py-36 bg-white relative">
+    <section className="py-16 sm:py-28 lg:py-36 bg-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-20">
@@ -83,39 +83,90 @@ export default function Comparison() {
             <span className="text-primary">lo que hacemos nosotros</span>
           </TextReveal>
           <ScrollReveal direction="up" delay={0.15}>
-            <p className="mt-5 text-slate-text text-base sm:text-lg leading-relaxed">
+            <p className="mt-5 text-slate-text text-sm sm:text-base lg:text-lg leading-relaxed">
               No somos la opción más barata. Somos la que realmente funciona.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* 3-column headers */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-5xl mx-auto">
-          <div className="hidden md:flex items-center justify-center gap-2 py-3">
-            <span className="text-sm font-bold text-slate-light uppercase tracking-widest">
-              Agencia tradicional
-            </span>
+        {/* ── Desktop: 3-column layout (lg+) ── */}
+        <div className="hidden lg:block max-w-5xl mx-auto">
+          {/* Column headers */}
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="flex items-center justify-center gap-2 py-3">
+              <span className="text-sm font-bold text-slate-light uppercase tracking-widest">
+                Agencia tradicional
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-2 py-3">
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-sm font-bold text-primary uppercase tracking-widest">
+                Con KINETIC
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-2 py-3">
+              <span className="text-sm font-bold text-slate-light uppercase tracking-widest">
+                Hacerlo tú mismo
+              </span>
+            </div>
           </div>
-          <div className="hidden md:flex items-center justify-center gap-2 py-3">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-bold text-primary uppercase tracking-widest">
-              Con KINETIC
-            </span>
-          </div>
-          <div className="hidden md:flex items-center justify-center gap-2 py-3">
-            <span className="text-sm font-bold text-slate-light uppercase tracking-widest">
-              Hacerlo tú mismo
-            </span>
+
+          {/* Rows */}
+          <div className="space-y-4">
+            {contrasts.map((item, i) => (
+              <div
+                key={i}
+                ref={(el) => setRowRef(el, i)}
+                className="grid grid-cols-3 gap-4 transition-all"
+                style={{
+                  opacity: 0,
+                  transform: "translateY(20px)",
+                  transitionProperty: "opacity, transform",
+                  transitionDuration: "0.6s",
+                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                  transitionDelay: `${i * 0.07}s`,
+                }}
+              >
+                <div
+                  className="rounded-2xl px-5 py-4 flex items-center transition-all duration-300 hover:-translate-y-0.5"
+                  style={{ backgroundColor: "#FAFAFA", border: "1px solid #F0F0F0" }}
+                >
+                  <p className="text-sm text-slate-light leading-relaxed">{item.them}</p>
+                </div>
+
+                <div
+                  className="rounded-2xl px-5 py-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                  style={{
+                    background: "linear-gradient(135deg, #E8F5F3 0%, #F0FBF9 100%)",
+                    border: "1px solid rgba(15,118,110,0.15)",
+                    boxShadow: "0 2px 8px -2px rgba(15,118,110,0.1)",
+                  }}
+                >
+                  <p className="text-sm font-semibold text-navy-deep leading-relaxed flex-1">{item.us}</p>
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="shrink-0">
+                    <circle cx="9" cy="9" r="9" fill="#0F766E" fillOpacity="0.12" />
+                    <path d="M6 9.5L8 11.5L12 7" stroke="#0F766E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+
+                <div
+                  className="rounded-2xl px-5 py-4 flex items-center transition-all duration-300 hover:-translate-y-0.5"
+                  style={{ backgroundColor: "#FAFAFA", border: "1px solid #F0F0F0" }}
+                >
+                  <p className="text-sm text-slate-light leading-relaxed">{item.diy}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Contrast rows */}
-        <div className="space-y-3 md:space-y-4 max-w-5xl mx-auto">
+        {/* ── Mobile/Tablet: Card layout (<lg) ── */}
+        <div className="lg:hidden space-y-3 max-w-lg mx-auto">
           {contrasts.map((item, i) => (
             <div
-              key={i}
-              ref={(el) => setRowRef(el, i)}
-              className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 transition-all"
+              key={`m-${i}`}
+              ref={(el) => { if (el && !rowsRef.current[i]) rowsRef.current[i] = el; }}
+              className="rounded-2xl overflow-hidden transition-all"
               style={{
                 opacity: 0,
                 transform: "translateY(20px)",
@@ -123,82 +174,45 @@ export default function Comparison() {
                 transitionDuration: "0.6s",
                 transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                 transitionDelay: `${i * 0.07}s`,
+                border: "1px solid rgba(15,118,110,0.12)",
               }}
             >
-              {/* Agency — negative */}
+              {/* KINETIC benefit — prominent */}
               <div
-                className="rounded-2xl px-5 py-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5"
-                style={{
-                  backgroundColor: "#FAFAFA",
-                  border: "1px solid #F0F0F0",
-                }}
-              >
-                {/* Mobile label */}
-                <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-slate-light shrink-0 w-16">
-                  Agencia
-                </span>
-                <p className="text-sm text-slate-light leading-relaxed flex-1">
-                  {item.them}
-                </p>
-              </div>
-
-              {/* KINETIC — hero column */}
-              <div
-                className="rounded-2xl px-5 py-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                className="px-4 py-3.5 flex items-center gap-3"
                 style={{
                   background: "linear-gradient(135deg, #E8F5F3 0%, #F0FBF9 100%)",
-                  border: "1px solid rgba(15,118,110,0.15)",
-                  boxShadow: "0 2px 8px -2px rgba(15,118,110,0.1)",
                 }}
               >
-                {/* Mobile label */}
-                <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-primary shrink-0 w-16">
-                  KINETIC
-                </span>
-                <p className="text-sm font-semibold text-navy-deep leading-relaxed flex-1">
-                  {item.us}
-                </p>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  className="shrink-0"
-                >
-                  <circle cx="9" cy="9" r="9" fill="#0F766E" fillOpacity="0.12" />
-                  <path
-                    d="M6 9.5L8 11.5L12 7"
-                    stroke="#0F766E"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="shrink-0">
+                  <circle cx="9" cy="9" r="9" fill="#0F766E" fillOpacity="0.15" />
+                  <path d="M6 9.5L8 11.5L12 7" stroke="#0F766E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
+                <p className="text-sm font-semibold text-navy-deep leading-snug">{item.us}</p>
               </div>
 
-              {/* DIY — negative */}
-              <div
-                className="rounded-2xl px-5 py-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5"
-                style={{
-                  backgroundColor: "#FAFAFA",
-                  border: "1px solid #F0F0F0",
-                }}
-              >
-                {/* Mobile label */}
-                <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-slate-light shrink-0 w-16">
-                  DIY
-                </span>
-                <p className="text-sm text-slate-light leading-relaxed flex-1">
-                  {item.diy}
-                </p>
+              {/* Alternatives — muted, compact */}
+              <div className="px-4 py-2.5 flex gap-4 bg-white/80" style={{ borderTop: "1px solid rgba(15,118,110,0.06)" }}>
+                <div className="flex-1 flex items-start gap-2">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0 mt-0.5">
+                    <path d="M2 10L10 2M2 2l8 8" stroke="#D1D5DB" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                  <p className="text-xs text-slate-light/70 leading-snug">{item.them}</p>
+                </div>
+                <div className="flex-1 flex items-start gap-2">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0 mt-0.5">
+                    <path d="M2 10L10 2M2 2l8 8" stroke="#D1D5DB" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                  <p className="text-xs text-slate-light/70 leading-snug">{item.diy}</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA — Orbix-style dark pill with dramatic shadow */}
+        {/* CTA */}
         <ScrollReveal direction="up" delay={0.3}>
-          <div className="text-center mt-20">
+          <div className="text-center mt-12 sm:mt-20">
             <a
               href="#contacto"
               className="group relative inline-flex items-center font-bold text-white hover:-translate-y-1 active:translate-y-0"

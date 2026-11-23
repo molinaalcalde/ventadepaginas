@@ -333,9 +333,75 @@ export default function Process() {
         </ScrollReveal>
       </div>
 
-      {/* Scroll-driven tab container */}
+      {/* ── Mobile: Simple stacked cards (no sticky) ── */}
+      <div className="lg:hidden px-4 sm:px-6 pb-16 space-y-4 max-w-lg mx-auto">
+        {steps.map((step, i) => (
+          <div
+            key={step.id}
+            className="rounded-2xl overflow-hidden"
+            style={{
+              backgroundColor: "#fff",
+              border: "1px solid #E7E5E4",
+              boxShadow: "0 2px 12px -4px rgba(0,0,0,0.06)",
+            }}
+          >
+            <div
+              className="px-5 py-4 flex items-center gap-3"
+              style={{ backgroundColor: i % 2 === 0 ? "#E8F5F3" : "#FEF0ED" }}
+            >
+              <span
+                className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
+                style={{ backgroundColor: i % 2 === 0 ? "#0F766E" : "#E8422A" }}
+              >
+                {i + 1}
+              </span>
+              <h3 className="text-lg font-bold text-navy-deep">{step.title}</h3>
+            </div>
+            <div className="px-5 py-4">
+              <p className="text-sm text-slate-text leading-relaxed mb-4">{step.description}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {step.tags.map((tag, j) => {
+                  const TagIcon = step.tagIcons[j];
+                  return (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-1.5 bg-surface-soft rounded-full px-1 pr-3 py-1 text-xs text-navy-deep/70 border border-black/5"
+                    >
+                      <span className="w-5 h-5 rounded-full bg-primary-light flex items-center justify-center">
+                        <TagIcon size={11} weight="bold" className="text-primary" />
+                      </span>
+                      {tag}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* Mobile CTA */}
+        <div className="text-center pt-4">
+          <a
+            href="#contacto"
+            className="group inline-flex items-center gap-3 bg-[#1A1A2E] rounded-full overflow-hidden active:scale-[0.97]"
+            style={{
+              padding: "12px 12px 12px 28px",
+              transition: "all .35s cubic-bezier(.16,1,.3,1)",
+              boxShadow:
+                "0 0 #0000, -1.1px 1.2px .1px #00000003, -2.2px 2.4px .3px #00000005, -3.3px 3.7px .5px #00000005, -4.6px 5.1px .7px #00000008, -6px 6.6px .9px #00000008, -7.6px 8.4px 1.3px #00000008, -9.5px 10.5px 1.8px #00000008, -11.8px 13px 2.4px #00000008",
+            }}
+          >
+            <span className="text-white text-base font-semibold">Empezar mi proyecto</span>
+            <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center shrink-0">
+              <ArrowUpRight size={18} weight="bold" className="text-navy-deep" />
+            </span>
+          </a>
+        </div>
+      </div>
+
+      {/* ── Desktop: Scroll-driven sticky container (lg+) ── */}
       <div
-        className="relative"
+        className="relative hidden lg:block"
         style={{ height: "calc(1800px + 100vh)" }}
       >
         {/* Sticky hero stage */}
@@ -343,7 +409,7 @@ export default function Process() {
           ref={stageRef}
           className="sticky top-6 z-10 mx-auto flex flex-col items-center justify-center overflow-hidden"
           style={{
-            width: "calc(100vw - 48px)",
+            width: "calc(100vw - 64px)",
             maxWidth: "1400px",
             height: "calc(100vh - 48px)",
             borderRadius: "32px",
