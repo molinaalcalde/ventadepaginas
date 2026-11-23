@@ -11,14 +11,14 @@ import {
 
 /* ─── Band 1: Dark — urgency + benefit phrases ─── */
 const phrases = [
-  "Tarjeta Digital GRATIS solo por este mes",
-  "Web + CRM + WhatsApp todo conectado",
-  "Empieza a recibir clientes en 14 días",
+  "CRM para gestionar tus clientes GRATIS",
+  "Tu web tipo Linktree incluida sin costo",
+  "Solo por este mes, después tiene precio",
   "Tu competencia ya tiene web, tú no",
-  "Oferta de lanzamiento por tiempo limitado",
+  "Empieza a recibir clientes en 14 días",
+  "CRM + Tarjeta Digital GRATIS por lanzamiento",
   "0 complicaciones, nosotros hacemos todo",
-  "Tarjeta Digital GRATIS solo por este mes",
-  "No necesitas saber de tecnología",
+  "No te quedes sin tu CRM gratis",
 ];
 
 const dotColors = [
@@ -34,14 +34,14 @@ const dotColors = [
 
 /* ─── Band 2: Coral — short punchy tags ─── */
 const tags = [
-  { label: "GRATIS este mes", Icon: Gift },
-  { label: "Solo por lanzamiento", Icon: Fire },
+  { label: "CRM Gratis", Icon: Gift },
+  { label: "Solo este mes", Icon: Fire },
   { label: "Tarjeta Digital", Icon: Sparkle },
-  { label: "Oferta limitada", Icon: Lightning },
-  { label: "Web Premium", Icon: Crown },
-  { label: "CRM incluido", Icon: Star },
-  { label: "GRATIS este mes", Icon: Gift },
-  { label: "No te lo pierdas", Icon: Fire },
+  { label: "Tipo Linktree", Icon: Lightning },
+  { label: "Sin costo extra", Icon: Crown },
+  { label: "Oferta limitada", Icon: Star },
+  { label: "CRM Gratis", Icon: Gift },
+  { label: "Aprovecha ahora", Icon: Fire },
 ];
 
 function Band1Content() {
@@ -80,7 +80,7 @@ function Band2Content() {
 export default function MarqueeBanner() {
   return (
     <section
-      className="relative py-4 sm:py-6 overflow-hidden select-none"
+      className="relative py-10 sm:py-14 overflow-hidden select-none"
       style={{ backgroundColor: "var(--color-warm-cream)" }}
       aria-hidden="true"
     >
@@ -90,7 +90,7 @@ export default function MarqueeBanner() {
         style={{
           backgroundColor: "#1A1A2E",
           transform: "rotate(-3deg) scale(1.05)",
-          padding: "1rem 0",
+          padding: "1.15rem 0",
           boxShadow: "0 8px 30px rgba(0,0,0,0.3)",
         }}
       >
@@ -107,7 +107,7 @@ export default function MarqueeBanner() {
         style={{
           backgroundColor: "#E8422A",
           transform: "rotate(2.5deg) scale(1.05)",
-          padding: "0.75rem 0",
+          padding: "0.9rem 0",
           boxShadow: "0 8px 30px rgba(232,66,42,0.3)",
         }}
       >
