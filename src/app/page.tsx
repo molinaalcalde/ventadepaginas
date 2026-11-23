@@ -36,7 +36,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <ScrollRevealText
               text="Tus clientes ya están buscando un negocio como el tuyo en internet. La pregunta es: ¿te van a encontrar a ti o a tu competencia?"
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-deep leading-tight tracking-tighter"
+              className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-navy-deep leading-tight tracking-tighter"
               highlightWords={["ti", "competencia"]}
               highlightClassName="text-coral"
             />

@@ -185,9 +185,9 @@ export default function Testimonials() {
                   boxShadow: "0 -4px 30px rgba(26,26,46,0.06), 0 1px 3px rgba(0,0,0,0.04)",
                 }}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[280px] lg:min-h-[340px]">
+                <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[240px] sm:min-h-[280px] lg:min-h-[340px]">
                   {/* Left: Avatar + Info */}
-                  <div className="relative flex items-center justify-center p-10 lg:p-14">
+                  <div className="relative flex items-center justify-center p-6 sm:p-10 lg:p-14">
                     <Quotes
                       weight="fill"
                       className="absolute top-6 left-6 text-primary/[0.06]"
@@ -215,7 +215,7 @@ export default function Testimonials() {
                   </div>
 
                   {/* Right: Quote */}
-                  <div className="flex flex-col justify-center p-8 lg:p-14">
+                  <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-14">
                     <div className="flex items-center gap-1 mb-5">
                       {[...Array(t.stars)].map((_, j) => (
                         <Star key={j} weight="fill" size={18} className="text-amber-400" />

@@ -127,12 +127,12 @@ html.lenis, html.lenis body {
 
 /* ── Fluid typography (editorial, Squarespace-tight) ── */
 .text-fluid-hero {
-  font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+  font-size: clamp(2.1rem, 5vw + 1rem, 5.5rem);
   line-height: 1.04;
   letter-spacing: -0.05em;
 }
 .text-fluid-h2 {
-  font-size: clamp(2rem, 3.5vw + 0.5rem, 3.75rem);
+  font-size: clamp(1.75rem, 3.5vw + 0.5rem, 3.75rem);
   line-height: 1.08;
   letter-spacing: -0.04em;
 }

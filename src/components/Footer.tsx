@@ -127,8 +127,8 @@ export default function Footer() {
                 <EnvelopeSimple size={16} weight="duotone" className="text-slate-light flex-shrink-0" />
                 hola@kineticweb.com
               </li>
-              <li className="flex items-center gap-2">
-                <Clock size={16} weight="duotone" className="text-slate-light flex-shrink-0" />
+              <li className="flex items-start gap-2">
+                <Clock size={16} weight="duotone" className="text-slate-light flex-shrink-0 mt-0.5" />
                 Lunes a Viernes de 8:00 AM a 6:00 PM (hora RD)
               </li>
             </ul>

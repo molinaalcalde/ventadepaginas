@@ -69,7 +69,7 @@ export default function Comparison() {
     <section className="py-28 lg:py-36 bg-white relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-20">
           <ScrollReveal direction="up">
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary-light text-primary text-xs font-bold tracking-widest uppercase mb-5">
               Compara antes de decidir

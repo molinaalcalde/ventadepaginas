@@ -341,10 +341,8 @@ export default function Sectores() {
   /* ── Wheel ── */
   const onWheel = useCallback(
     (e: WheelEvent) => {
-      const delta =
-        Math.abs(e.deltaY) > Math.abs(e.deltaX)
-          ? e.shiftKey ? e.deltaY : e.deltaX
-          : e.deltaX;
+      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+      const delta = isHorizontal ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
       if (Math.abs(delta) < 0.5) return;
       e.preventDefault();
       stopAutoplay();
@@ -630,15 +628,23 @@ export default function Sectores() {
                   snapTo(current + diff);
                   startAutoplay();
                 }}
-                className="transition-all"
+                className="flex items-center justify-center transition-all"
                 style={{
-                  width: activeIndex === i ? "28px" : "8px",
-                  height: "8px",
-                  borderRadius: "99px",
-                  backgroundColor: activeIndex === i ? "#0F766E" : "rgba(15,118,110,0.2)",
-                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  minWidth: "44px",
+                  minHeight: "44px",
                 }}
                 aria-label={`Ir a ${s.title}`}
+              >
+                <span
+                  style={{
+                    display: "block",
+                    width: activeIndex === i ? "28px" : "8px",
+                    height: "8px",
+                    borderRadius: "99px",
+                    backgroundColor: activeIndex === i ? "#0F766E" : "rgba(15,118,110,0.2)",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
+                />
               />
             ))}
           </div>

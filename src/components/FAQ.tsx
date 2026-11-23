@@ -85,10 +85,10 @@ export default function FAQ() {
                 <div className="bg-surface-soft rounded-2xl">
                   <button
                     onClick={() => toggle(index)}
-                    className="w-full p-6 flex items-center justify-between text-left gap-4 cursor-pointer"
+                    className="w-full p-4 sm:p-6 flex items-center justify-between text-left gap-4 cursor-pointer"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-lg font-semibold text-navy-deep leading-snug">
+                    <span className="text-base sm:text-lg font-semibold text-navy-deep leading-snug">
                       {faq.question}
                     </span>
                     <span

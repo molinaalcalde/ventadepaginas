@@ -250,7 +250,7 @@ function OptionCard({
       type="button"
       whileTap={{ scale: 0.97 }}
       onClick={onClick}
-      className="relative flex flex-col items-start p-5 rounded-2xl border-2 cursor-pointer text-left group"
+      className="relative flex flex-col items-start p-3.5 sm:p-5 rounded-2xl border-2 cursor-pointer text-left group"
       style={{
         borderColor: selected ? "#0F766E" : "transparent",
         backgroundColor: selected ? "#E8F5F3" : "#FAFAF9",
@@ -480,7 +480,7 @@ export default function GamifiedForm() {
               Nos ayuda a priorizar tu proyecto
             </p>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {TIMELINES.map((tl) => (
                 <OptionCard
                   key={tl.id}
@@ -722,9 +722,9 @@ export default function GamifiedForm() {
   };
 
   return (
-    <div className="max-w-[680px] mx-auto w-full">
+    <div className="max-w-[680px] mx-auto w-full overflow-hidden">
       <div
-        className="rounded-3xl p-6 sm:p-8 min-h-[520px] flex flex-col relative overflow-hidden"
+        className="rounded-3xl p-5 sm:p-8 min-h-0 sm:min-h-[520px] flex flex-col relative overflow-hidden"
         style={{
           backgroundColor: "#FFFFFF",
           border: "1px solid #E7E5E4",

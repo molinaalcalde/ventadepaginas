@@ -413,7 +413,7 @@ export default function Process() {
               <div
                 key={step.id}
                 ref={(el) => setTabRef(el, i)}
-                className="relative z-20 cursor-pointer rounded-full px-4 sm:px-6 py-3 sm:py-3.5"
+                className="relative z-20 cursor-pointer rounded-full px-2.5 sm:px-6 py-2.5 sm:py-3.5"
                 style={{
                   backgroundColor: "rgba(255,255,255,0.5)",
                   boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
