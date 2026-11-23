@@ -18,7 +18,7 @@ import {
   IconSearch,
   IconArrowUpRight,
 } from "@tabler/icons-react";
-import type { TablerIcon } from "@tabler/icons-react";
+import type { Icon as TablerIcon } from "@tabler/icons-react";
 
 /* ── Types ── */
 
@@ -212,19 +212,24 @@ function OptionCard({
 
       {/* Icon in tinted container */}
       <span
-        className="flex items-center justify-center rounded-xl mb-3"
+        className="flex items-center justify-center rounded-2xl mb-4"
         style={{
-          width: 46,
-          height: 46,
-          backgroundColor: selected ? "rgba(15,118,110,0.12)" : "rgba(15,118,110,0.06)",
-          transition: "background-color .2s ease",
+          width: 56,
+          height: 56,
+          background: selected
+            ? "linear-gradient(135deg, rgba(15,118,110,0.18) 0%, rgba(20,184,166,0.12) 100%)"
+            : "linear-gradient(135deg, rgba(15,118,110,0.08) 0%, rgba(20,184,166,0.04) 100%)",
+          boxShadow: selected
+            ? "0 2px 8px -2px rgba(15,118,110,0.2), inset 0 1px 1px rgba(255,255,255,0.4)"
+            : "inset 0 1px 1px rgba(255,255,255,0.3)",
+          transition: "all .25s cubic-bezier(.16,1,.3,1)",
         }}
       >
         <IconComponent
-          size={26}
-          stroke={1.6}
-          className={selected ? "text-primary" : "text-primary/70"}
-          style={{ transition: "color .2s ease" }}
+          size={28}
+          stroke={1.8}
+          color={selected ? "#0F766E" : "#0F766E"}
+          style={{ opacity: selected ? 1 : 0.65, transition: "opacity .2s ease" }}
         />
       </span>
 
