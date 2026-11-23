@@ -1,17 +1,25 @@
 "use client";
 
 import { useRef, useEffect, useCallback, useState } from "react";
-import { Bed, Heartbeat, Key, ForkKnife, Handshake } from "@phosphor-icons/react";
+import {
+  Bed,
+  Heartbeat,
+  Key,
+  ForkKnife,
+  Handshake,
+  CaretLeft,
+  CaretRight,
+  Broadcast,
+} from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
-/* ── Responsive card dimensions ── */
-function getCardDimensions(width: number) {
-  if (width <= 479) return { w: 310, h: 380, radius: 20, stageH: 440, pad: 16, fontSize: 32, descSize: 15 };
-  if (width <= 767) return { w: 380, h: 480, radius: 24, stageH: 520, pad: 24, fontSize: 36, descSize: 17 };
-  if (width <= 991) return { w: 400, h: 520, radius: 32, stageH: 560, pad: 28, fontSize: 40, descSize: 18 };
-  if (width >= 1920) return { w: 670, h: 760, radius: 40, stageH: 700, pad: 40, fontSize: 48, descSize: 20 };
-  return { w: 620, h: 720, radius: 40, stageH: 620, pad: 40, fontSize: 48, descSize: 20 };
+/* ── Responsive card dimensions (smaller like Orbix) ── */
+function getCardDims(w: number) {
+  if (w <= 479) return { w: 280, h: 400, r: 20, stage: 440, pad: 20, title: 26, desc: 13, mock: 140 };
+  if (w <= 767) return { w: 340, h: 480, r: 28, stage: 520, pad: 28, title: 32, desc: 15, mock: 180 };
+  if (w <= 991) return { w: 380, h: 520, r: 32, stage: 560, pad: 30, title: 36, desc: 16, mock: 200 };
+  return { w: 460, h: 600, r: 36, stage: 640, pad: 36, title: 40, desc: 17, mock: 240 };
 }
 
 /* ── Sector data ── */
@@ -19,53 +27,137 @@ const sectores = [
   {
     title: "Hoteles y Turismo",
     description:
-      "Recibe reservas directas desde tu web sin pagar comisiones a Booking ni Expedia. Tus huéspedes reservan y tú recibes el aviso al WhatsApp.",
+      "Reservas directas desde tu web sin comisiones. Tus huéspedes reservan y tú recibes el aviso al WhatsApp.",
     icon: Bed,
-    cta: "Reservas directas para mi hotel",
-    gradient: "linear-gradient(165deg, #0D6560 0%, #0F766E 40%, #34D399 100%)",
+    cta: "Ver ejemplo",
+    gradient: "linear-gradient(165deg, #E8956D 0%, #D4785A 35%, #C06A4C 70%, #9B5A42 100%)",
+    mockupBg: "linear-gradient(135deg, #1a365d 0%, #2d3748 100%)",
   },
   {
     title: "Clínicas y Estética",
     description:
-      "Tus pacientes agendan citas online y reciben recordatorios automáticos. Menos llamadas, menos cancelaciones, más consultas.",
+      "Tus pacientes agendan citas online y reciben recordatorios automáticos. Menos cancelaciones, más consultas.",
     icon: Heartbeat,
-    cta: "Citas online para mi clínica",
-    gradient: "linear-gradient(165deg, #0F766E 0%, #14B8A6 40%, #5EEAD4 100%)",
+    cta: "Ver ejemplo",
+    gradient: "linear-gradient(165deg, #7C9FE8 0%, #5A82D4 35%, #4A6FC0 70%, #3D5A9B 100%)",
+    mockupBg: "linear-gradient(135deg, #2d3748 0%, #1a202c 100%)",
   },
   {
     title: "Inmobiliarias",
     description:
-      "Muestra tus propiedades con fotos profesionales y captura compradores de USA y Europa que buscan en Google.",
+      "Muestra propiedades con fotos profesionales y captura compradores que buscan en Google.",
     icon: Key,
-    cta: "Captar compradores internacionales",
-    gradient: "linear-gradient(165deg, #134E4A 0%, #0F766E 40%, #2DD4BF 100%)",
+    cta: "Ver ejemplo",
+    gradient: "linear-gradient(165deg, #6DCFA5 0%, #4DB88A 35%, #3AA074 70%, #2D8760 100%)",
+    mockupBg: "linear-gradient(135deg, #1a202c 0%, #2d3748 100%)",
   },
   {
-    title: "Restaurantes y Eventos",
+    title: "Restaurantes",
     description:
-      "Reservas de mesa desde el celular, menú digital y pedidos por WhatsApp. Sin llamadas perdidas, sin hojas de papel.",
+      "Reservas desde el celular, menú digital y pedidos por WhatsApp. Sin llamadas perdidas.",
     icon: ForkKnife,
-    cta: "Adiós a las llamadas perdidas",
-    gradient: "linear-gradient(165deg, #0D6560 0%, #0F766E 40%, #6EE7B7 100%)",
+    cta: "Ver ejemplo",
+    gradient: "linear-gradient(165deg, #E8A06D 0%, #D48A5A 35%, #C07A4C 70%, #9B6342 100%)",
+    mockupBg: "linear-gradient(135deg, #2d3748 0%, #1a365d 100%)",
   },
   {
     title: "Servicios Profesionales",
     description:
-      "Tus clientes te encuentran en Google, llenan un formulario y tú recibes todo en WhatsApp. Así de fácil.",
+      "Tus clientes te encuentran en Google, llenan un formulario y tú recibes todo en WhatsApp.",
     icon: Handshake,
-    cta: "Automatizar mi captación",
-    gradient: "linear-gradient(165deg, #115E59 0%, #0F766E 40%, #99F6E4 100%)",
+    cta: "Ver ejemplo",
+    gradient: "linear-gradient(165deg, #8B7CE8 0%, #7466D4 35%, #6354C0 70%, #52449B 100%)",
+    mockupBg: "linear-gradient(135deg, #1a202c 0%, #2d3748 100%)",
   },
 ];
 
-/* ── Wrapping position function (infinite loop) ── */
-function wrapOffset(cardIndex: number, currentPos: number, total: number) {
-  return cardIndex - (currentPos - Math.round((currentPos - cardIndex) / total) * total);
+/* ── Wrapping position (infinite loop) ── */
+function wrapOffset(i: number, pos: number, total: number) {
+  return i - (pos - Math.round((pos - i) / total) * total);
+}
+
+/* ── Laptop mockup SVG (simplified MacBook frame) ── */
+function LaptopMockup({ bg, title }: { bg: string; title: string }) {
+  return (
+    <div className="w-full flex flex-col items-center" style={{ perspective: "800px" }}>
+      <div
+        className="relative w-full"
+        style={{
+          transform: "rotateX(4deg)",
+          transformOrigin: "50% 100%",
+        }}
+      >
+        {/* Screen bezel */}
+        <div
+          className="relative mx-auto overflow-hidden"
+          style={{
+            width: "92%",
+            aspectRatio: "16 / 10",
+            borderRadius: "8px 8px 0 0",
+            border: "2px solid rgba(0,0,0,0.15)",
+            borderBottom: "none",
+            background: bg,
+            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.08)",
+          }}
+        >
+          {/* Browser chrome bar */}
+          <div
+            className="flex items-center gap-1.5 px-3"
+            style={{
+              height: "22px",
+              background: "rgba(255,255,255,0.1)",
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            <div className="w-2 h-2 rounded-full bg-red-400/70" />
+            <div className="w-2 h-2 rounded-full bg-yellow-400/70" />
+            <div className="w-2 h-2 rounded-full bg-green-400/70" />
+            <div
+              className="ml-3 flex-1 h-3.5 rounded-sm"
+              style={{ background: "rgba(255,255,255,0.08)", maxWidth: "140px" }}
+            />
+          </div>
+          {/* Fake page content */}
+          <div className="p-3 space-y-2">
+            <div className="h-3 rounded-sm bg-white/15 w-3/4" />
+            <div className="h-2 rounded-sm bg-white/10 w-full" />
+            <div className="h-2 rounded-sm bg-white/10 w-5/6" />
+            <div className="flex gap-2 mt-3">
+              <div className="h-6 rounded bg-white/12 flex-1" />
+              <div className="h-6 rounded bg-white/12 flex-1" />
+            </div>
+            <div className="h-12 rounded bg-white/8 w-full mt-2" />
+          </div>
+        </div>
+        {/* Keyboard base */}
+        <div
+          className="mx-auto"
+          style={{
+            width: "100%",
+            height: "10px",
+            background: "linear-gradient(180deg, #c0c0c0 0%, #a8a8a8 100%)",
+            borderRadius: "0 0 6px 6px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+          }}
+        >
+          {/* Notch */}
+          <div
+            className="mx-auto"
+            style={{
+              width: "28%",
+              height: "3px",
+              background: "rgba(0,0,0,0.08)",
+              borderRadius: "0 0 4px 4px",
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function Sectores() {
   const stageRef = useRef<HTMLDivElement>(null);
-  const deckRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const rafRef = useRef<number | null>(null);
   const lastTimeRef = useRef(0);
@@ -76,14 +168,15 @@ export default function Sectores() {
   const dragStartPosRef = useRef(0);
   const autoplayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wheelTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [dims, setDims] = useState({ w: 620, h: 720, radius: 40, stageH: 620, pad: 40, fontSize: 48, descSize: 20 });
+  const [dims, setDims] = useState(() => ({
+    w: 460, h: 600, r: 36, stage: 640, pad: 36, title: 40, desc: 17, mock: 240,
+  }));
   const [, forceUpdate] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // Clone cards for infinite loop (need minimum 8)
   const totalCards = useRef(0);
   const cardData = useRef(sectores);
 
-  // Ensure at least 8 cards by cloning + responsive dimensions
   useEffect(() => {
     const data = [...sectores];
     while (data.length < 8) {
@@ -91,10 +184,10 @@ export default function Sectores() {
     }
     cardData.current = data;
     totalCards.current = data.length;
-    setDims(getCardDimensions(window.innerWidth));
+    setDims(getCardDims(window.innerWidth));
     forceUpdate((n) => n + 1);
 
-    const onResize = () => setDims(getCardDimensions(window.innerWidth));
+    const onResize = () => setDims(getCardDims(window.innerWidth));
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -114,7 +207,6 @@ export default function Sectores() {
       const offset = wrapOffset(i, pos, count);
       const absOffset = Math.abs(offset);
 
-      // Hide cards too far away
       if (absOffset >= 2.8) {
         card.style.opacity = "0";
         card.style.pointerEvents = "none";
@@ -122,10 +214,8 @@ export default function Sectores() {
         continue;
       }
 
-      // Rotation: 21 degrees per position
       const rotation = offset * 21;
 
-      // Scale: reduce 4% per position, with quadratic falloff after 0.7
       let scale: number;
       if (absOffset <= 0.7) {
         scale = 1 - 0.04 * absOffset;
@@ -135,7 +225,6 @@ export default function Sectores() {
         scale = 1 - 0.7 * fadeProgress * fadeProgress;
       }
 
-      // Z-index: center highest
       const zIndex = 50 - Math.round(absOffset) * 10;
 
       card.style.transform = `translate3d(-50%, 0px, 0px) rotate(${rotation}deg) scale(${scale})`;
@@ -146,7 +235,7 @@ export default function Sectores() {
     }
   }, []);
 
-  /* ── Animation loop (spring/lerp) ── */
+  /* ── Animation loop ── */
   const animationLoop = useCallback(
     (timestamp: number) => {
       rafRef.current = null;
@@ -157,10 +246,8 @@ export default function Sectores() {
 
       const smoothing = isDraggingRef.current ? 0.3 : 0.12;
       const target = targetPosRef.current;
-      const current = currentPosRef.current;
-
       currentPosRef.current +=
-        (target - current) * (1 - Math.pow(1 - smoothing, dt / 16.67));
+        (target - currentPosRef.current) * (1 - Math.pow(1 - smoothing, dt / 16.67));
 
       if (Math.abs(target - currentPosRef.current) < 0.0005) {
         currentPosRef.current = target;
@@ -176,28 +263,19 @@ export default function Sectores() {
   );
 
   const startAnimation = useCallback(() => {
-    if (!rafRef.current) {
-      rafRef.current = requestAnimationFrame(animationLoop);
-    }
+    if (!rafRef.current) rafRef.current = requestAnimationFrame(animationLoop);
   }, [animationLoop]);
 
   const snapTo = useCallback(
     (index: number) => {
       targetPosRef.current = Math.round(index);
+      setActiveIndex(((Math.round(index) % sectores.length) + sectores.length) % sectores.length);
       startAnimation();
     },
     [startAnimation]
   );
 
   /* ── Autoplay ── */
-  const startAutoplay = useCallback(() => {
-    if (autoplayRef.current) clearTimeout(autoplayRef.current);
-    autoplayRef.current = setTimeout(() => {
-      snapTo(Math.round(targetPosRef.current) + 1);
-      startAutoplay();
-    }, 3000);
-  }, [snapTo]);
-
   const stopAutoplay = useCallback(() => {
     if (autoplayRef.current) {
       clearTimeout(autoplayRef.current);
@@ -205,7 +283,28 @@ export default function Sectores() {
     }
   }, []);
 
-  /* ── Pointer (drag) handlers ── */
+  const startAutoplay = useCallback(() => {
+    if (autoplayRef.current) clearTimeout(autoplayRef.current);
+    autoplayRef.current = setTimeout(() => {
+      snapTo(Math.round(targetPosRef.current) + 1);
+      startAutoplay();
+    }, 4000);
+  }, [snapTo]);
+
+  /* ── Navigation ── */
+  const goNext = useCallback(() => {
+    stopAutoplay();
+    snapTo(Math.round(targetPosRef.current) + 1);
+    startAutoplay();
+  }, [snapTo, stopAutoplay, startAutoplay]);
+
+  const goPrev = useCallback(() => {
+    stopAutoplay();
+    snapTo(Math.round(targetPosRef.current) - 1);
+    startAutoplay();
+  }, [snapTo, stopAutoplay, startAutoplay]);
+
+  /* ── Pointer (drag) ── */
   const onPointerDown = useCallback(
     (e: PointerEvent) => {
       if (e.pointerType === "mouse" && e.button !== 0) return;
@@ -213,8 +312,7 @@ export default function Sectores() {
       dragStartXRef.current = e.clientX;
       dragStartPosRef.current = targetPosRef.current;
       stopAutoplay();
-      const stage = stageRef.current;
-      if (stage) stage.style.cursor = "grabbing";
+      if (stageRef.current) stageRef.current.style.cursor = "grabbing";
       if (e.pointerType !== "touch") {
         (e.target as HTMLElement)?.setPointerCapture?.(e.pointerId);
       }
@@ -226,7 +324,7 @@ export default function Sectores() {
     (e: PointerEvent) => {
       if (!isDraggingRef.current) return;
       const dx = e.clientX - dragStartXRef.current;
-      targetPosRef.current = dragStartPosRef.current - dx / 440;
+      targetPosRef.current = dragStartPosRef.current - dx / 380;
       startAnimation();
     },
     [startAnimation]
@@ -235,20 +333,22 @@ export default function Sectores() {
   const onPointerUp = useCallback(() => {
     if (!isDraggingRef.current) return;
     isDraggingRef.current = false;
-    const stage = stageRef.current;
-    if (stage) stage.style.cursor = "grab";
+    if (stageRef.current) stageRef.current.style.cursor = "grab";
     snapTo(Math.round(targetPosRef.current));
     startAutoplay();
   }, [snapTo, startAutoplay]);
 
-  /* ── Wheel handler ── */
+  /* ── Wheel ── */
   const onWheel = useCallback(
     (e: WheelEvent) => {
-      const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? (e.shiftKey ? e.deltaY : e.deltaX) : e.deltaX;
+      const delta =
+        Math.abs(e.deltaY) > Math.abs(e.deltaX)
+          ? e.shiftKey ? e.deltaY : e.deltaX
+          : e.deltaX;
       if (Math.abs(delta) < 0.5) return;
       e.preventDefault();
       stopAutoplay();
-      targetPosRef.current += delta / 600;
+      targetPosRef.current += delta / 500;
       startAnimation();
 
       if (wheelTimeoutRef.current) clearTimeout(wheelTimeoutRef.current);
@@ -265,24 +365,17 @@ export default function Sectores() {
     const stage = stageRef.current;
     if (!stage || !totalCards.current) return;
 
-    // Initial render
     renderCards();
 
-    // Pointer events
     stage.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerUp);
     window.addEventListener("pointercancel", onPointerUp);
     stage.addEventListener("wheel", onWheel, { passive: false });
 
-    // Autoplay with IntersectionObserver
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          startAutoplay();
-        } else {
-          stopAutoplay();
-        }
+        entries[0].isIntersecting ? startAutoplay() : stopAutoplay();
       },
       { threshold: 0.2 }
     );
@@ -300,13 +393,8 @@ export default function Sectores() {
       if (wheelTimeoutRef.current) clearTimeout(wheelTimeoutRef.current);
     };
   }, [
-    renderCards,
-    onPointerDown,
-    onPointerMove,
-    onPointerUp,
-    onWheel,
-    startAutoplay,
-    stopAutoplay,
+    renderCards, onPointerDown, onPointerMove, onPointerUp,
+    onWheel, startAutoplay, stopAutoplay,
   ]);
 
   return (
@@ -334,135 +422,218 @@ export default function Sectores() {
         </div>
 
         {/* Arc Carousel */}
-        <div
-          ref={stageRef}
-          className="relative flex flex-col justify-center items-center select-none"
-          style={{
-            height: `${dims.stageH}px`,
-            cursor: "grab",
-            touchAction: "pan-y",
-          }}
-        >
+        <div className="relative">
           <div
-            ref={deckRef}
-            className="relative flex justify-center items-center w-full"
-            style={{ height: "100%", gap: "16px" }}
+            ref={stageRef}
+            className="relative flex flex-col justify-center items-center select-none"
+            style={{
+              height: `${dims.stage}px`,
+              cursor: "grab",
+              touchAction: "pan-y",
+            }}
           >
-            {cardData.current.map((sector, i) => {
-              const Icon = sector.icon;
-              return (
-                <div
-                  key={`${sector.title}-${i}`}
-                  ref={(el) => {
-                    if (el) cardsRef.current[i] = el;
-                  }}
-                  className="absolute will-change-transform"
-                  style={{
-                    transformOrigin: "50% 360%",
-                    width: `${dims.w}px`,
-                    height: `${dims.h}px`,
-                    borderRadius: `${dims.radius}px`,
-                    overflow: "hidden",
-                    opacity: 0,
-                    left: "50%",
-                  }}
-                >
-                  {/* Card surface with gradient */}
+            <div
+              className="relative flex justify-center items-center w-full"
+              style={{ height: "100%" }}
+            >
+              {cardData.current.map((sector, i) => {
+                const Icon = sector.icon;
+                return (
                   <div
-                    className="w-full h-full relative flex flex-col justify-between items-center"
+                    key={`${sector.title}-${i}`}
+                    ref={(el) => {
+                      if (el) cardsRef.current[i] = el;
+                    }}
+                    className="absolute will-change-transform"
                     style={{
-                      background: sector.gradient,
-                      padding: `${dims.pad}px`,
+                      transformOrigin: "50% 360%",
+                      width: `${dims.w}px`,
+                      height: `${dims.h}px`,
+                      borderRadius: `${dims.r}px`,
+                      overflow: "hidden",
+                      opacity: 0,
+                      left: "50%",
                     }}
                   >
-                    {/* Top content */}
-                    <div className="flex flex-col items-center gap-6 sm:gap-9 text-center">
-                      {/* Badge */}
-                      <div className="flex items-center" style={{ gap: "1px" }}>
-                        <div
-                          className="flex items-center justify-center"
-                          style={{
-                            backgroundColor: "#E8422A",
-                            borderRadius: "100px",
-                            height: dims.w < 400 ? "36px" : "42px",
-                            padding: dims.w < 400 ? "6px 14px" : "8px 20px",
-                          }}
-                        >
-                          <Icon size={dims.w < 400 ? 18 : 22} weight="bold" className="text-white" />
-                        </div>
-                        <div
-                          className="flex items-center justify-center"
-                          style={{
-                            backgroundColor: "#FFFFFF",
-                            borderRadius: "100px",
-                            height: dims.w < 400 ? "36px" : "42px",
-                            padding: dims.w < 400 ? "6px 14px" : "8px 20px",
-                          }}
-                        >
-                          <span
-                            className="font-medium text-navy-deep"
+                    {/* Bevel / glass border effect */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        borderRadius: `${dims.r}px`,
+                        border: "1.5px solid rgba(255,255,255,0.35)",
+                        boxShadow:
+                          "inset 0 1px 0 0 rgba(255,255,255,0.4), inset 0 -1px 0 0 rgba(0,0,0,0.08), 0 8px 32px -4px rgba(0,0,0,0.12), 0 2px 8px -2px rgba(0,0,0,0.06)",
+                        zIndex: 2,
+                      }}
+                    />
+
+                    {/* Card surface */}
+                    <div
+                      className="w-full h-full relative flex flex-col items-center"
+                      style={{
+                        background: sector.gradient,
+                        padding: `${dims.pad}px`,
+                        paddingBottom: `${dims.pad * 0.6}px`,
+                      }}
+                    >
+                      {/* Top content */}
+                      <div className="flex flex-col items-center text-center flex-1 justify-start" style={{ gap: `${dims.pad * 0.5}px` }}>
+                        {/* Badge */}
+                        <div className="flex items-center" style={{ gap: "1px" }}>
+                          <div
+                            className="flex items-center justify-center gap-1.5"
                             style={{
-                              fontSize: dims.w < 400 ? "14px" : "18px",
-                              lineHeight: "145%",
+                              backgroundColor: "#E8422A",
+                              borderRadius: "100px",
+                              height: dims.w < 350 ? "32px" : "38px",
+                              padding: dims.w < 350 ? "6px 12px" : "6px 16px",
                             }}
                           >
-                            En vivo
-                          </span>
+                            <Broadcast
+                              size={dims.w < 350 ? 14 : 16}
+                              weight="bold"
+                              className="text-white"
+                            />
+                          </div>
+                          <div
+                            className="flex items-center justify-center"
+                            style={{
+                              backgroundColor: "#FFFFFF",
+                              borderRadius: "100px",
+                              height: dims.w < 350 ? "32px" : "38px",
+                              padding: dims.w < 350 ? "6px 12px" : "6px 16px",
+                            }}
+                          >
+                            <span
+                              className="font-semibold text-navy-deep"
+                              style={{
+                                fontSize: dims.w < 350 ? "13px" : "15px",
+                                lineHeight: 1,
+                              }}
+                            >
+                              En vivo
+                            </span>
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Text */}
-                      <div className="flex flex-col items-center gap-3 sm:gap-5 max-w-[540px]">
+                        {/* Title */}
                         <h3
                           className="font-extrabold text-white"
                           style={{
-                            fontSize: `${dims.fontSize}px`,
-                            letterSpacing: "-0.32px",
+                            fontSize: `${dims.title}px`,
+                            letterSpacing: "-0.02em",
                             lineHeight: "110%",
+                            marginTop: `${dims.pad * 0.2}px`,
                           }}
                         >
                           {sector.title}
                         </h3>
+
+                        {/* Description */}
                         <p
-                          className="text-white/85"
+                          className="text-white/80 max-w-[380px]"
                           style={{
-                            fontSize: `${dims.descSize}px`,
-                            lineHeight: "145%",
+                            fontSize: `${dims.desc}px`,
+                            lineHeight: "150%",
                           }}
                         >
                           {sector.description}
                         </p>
                       </div>
-                    </div>
 
-                    {/* CTA Button */}
-                    <a
-                      href="#contacto"
-                      className="inline-flex items-center justify-center font-medium text-navy-deep transition-transform hover:scale-105"
-                      style={{
-                        backgroundColor: "#FFFFFF",
-                        borderRadius: "99px",
-                        height: dims.w < 400 ? "44px" : "56px",
-                        padding: dims.w < 400 ? "0 20px" : "0 32px",
-                        fontSize: dims.w < 400 ? "14px" : "16px",
-                        fontWeight: 500,
-                        boxShadow:
-                          "rgba(0,0,0,0) 0px 0px 0px 0px, rgba(0,0,0,0.01) -1.1px 1.2px 0.1px 0px, rgba(0,0,0,0.02) -2.2px 2.4px 0.3px 0px, rgba(0,0,0,0.02) -3.3px 3.7px 0.5px 0px, rgba(0,0,0,0.03) -4.6px 5.1px 0.7px 0px, rgba(0,0,0,0.03) -6px 6.6px 0.9px 0px, rgba(0,0,0,0.03) -7.6px 8.4px 1.3px 0px, rgba(0,0,0,0.03) -9.5px 10.5px 1.8px 0px, rgba(0,0,0,0.03) -11.8px 13px 2.4px 0px",
-                      }}
-                    >
-                      {sector.cta}
-                    </a>
+                      {/* Laptop mockup */}
+                      <div className="w-full mt-auto" style={{ maxWidth: `${dims.mock + 60}px` }}>
+                        <LaptopMockup bg={sector.mockupBg} title={sector.title} />
+                      </div>
+
+                      {/* CTA Button overlapping the bottom */}
+                      <a
+                        href="#contacto"
+                        className="absolute inline-flex items-center justify-center gap-2 font-semibold text-navy-deep transition-all hover:scale-105 active:scale-95"
+                        style={{
+                          bottom: `${dims.pad * 0.5}px`,
+                          backgroundColor: "#FFFFFF",
+                          borderRadius: "99px",
+                          height: dims.w < 350 ? "40px" : "48px",
+                          padding: dims.w < 350 ? "0 18px" : "0 28px",
+                          fontSize: dims.w < 350 ? "13px" : "15px",
+                          fontWeight: 600,
+                          boxShadow:
+                            "0 2px 4px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06)",
+                          zIndex: 3,
+                        }}
+                      >
+                        {sector.cta}
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
-          {/* Drag hint (desktop only) */}
-          <div className="hidden md:flex items-center gap-3 absolute bottom-4 left-1/2 -translate-x-1/2 opacity-50 pointer-events-none select-none">
-            <div className="w-2.5 h-2.5 rounded-full bg-navy-deep" />
-            <span className="text-xs font-semibold uppercase tracking-widest text-navy-deep">Desliza</span>
-            <div className="w-2.5 h-2.5 rounded-full bg-navy-deep" />
+          {/* Navigation arrows */}
+          <button
+            onClick={goPrev}
+            className="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-[60] flex items-center justify-center transition-all hover:scale-110 active:scale-95 hover:bg-white"
+            style={{
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              backgroundColor: "rgba(255,255,255,0.85)",
+              backdropFilter: "blur(8px)",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04)",
+              border: "1px solid rgba(0,0,0,0.06)",
+            }}
+            aria-label="Anterior"
+          >
+            <CaretLeft size={20} weight="bold" className="text-navy-deep" />
+          </button>
+
+          <button
+            onClick={goNext}
+            className="absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-[60] flex items-center justify-center transition-all hover:scale-110 active:scale-95 hover:bg-white"
+            style={{
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              backgroundColor: "rgba(255,255,255,0.85)",
+              backdropFilter: "blur(8px)",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04)",
+              border: "1px solid rgba(0,0,0,0.06)",
+            }}
+            aria-label="Siguiente"
+          >
+            <CaretRight size={20} weight="bold" className="text-navy-deep" />
+          </button>
+
+          {/* Dot indicators */}
+          <div className="flex items-center justify-center gap-2 mt-8">
+            {sectores.map((s, i) => (
+              <button
+                key={s.title}
+                onClick={() => {
+                  stopAutoplay();
+                  const current = Math.round(targetPosRef.current);
+                  const currentMod = ((current % sectores.length) + sectores.length) % sectores.length;
+                  const diff = i - currentMod;
+                  snapTo(current + diff);
+                  startAutoplay();
+                }}
+                className="transition-all"
+                style={{
+                  width: activeIndex === i ? "28px" : "8px",
+                  height: "8px",
+                  borderRadius: "99px",
+                  backgroundColor: activeIndex === i ? "#0F766E" : "rgba(15,118,110,0.2)",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+                aria-label={`Ir a ${s.title}`}
+              />
+            ))}
           </div>
         </div>
       </div>
