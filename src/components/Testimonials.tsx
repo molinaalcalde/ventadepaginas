@@ -13,7 +13,7 @@ const testimonials = [
     initials: "CR",
     stars: 5,
     quote:
-      "Antes la gente nos encontraba solo de boca en boca. Desde que tenemos la web, recibimos entre 15 y 20 reservaciones nuevas por semana que antes simplemente no llegaban. El link de bio en Instagram fue lo que más nos sorprendió.",
+      "Desde el primer mensaje me explicaron todo clarito, sin tecnicismos. En 10 días tenía mi web funcionando con menú, horarios y un formulario donde los clientes reservan solos. Ahora recibo entre 15 y 20 reservaciones nuevas por semana sin mover un dedo.",
   },
   {
     name: "Dr. Ernesto Villalba",
@@ -22,7 +22,7 @@ const testimonials = [
     initials: "EV",
     stars: 5,
     quote:
-      "Con la nueva web empezamos a aparecer cuando alguien busca dentista en el área, y eso se tradujo en el doble de consultas nuevas al mes. El CRM me ayuda a saber exactamente qué pacientes no han vuelto en meses.",
+      "Me atendieron de manera súper profesional. Me mostraron el diseño antes de construirlo y quedó exactamente como lo imaginaba. Los pacientes ahora agendan desde la web a cualquier hora y el formulario me llega directo al WhatsApp. Todo en menos de dos semanas.",
   },
   {
     name: "Natalia Obando",
@@ -31,7 +31,7 @@ const testimonials = [
     initials: "NO",
     stars: 5,
     quote:
-      "Mis clientas me decían que antes no podían encontrar mis precios ni mis servicios en ningún lado. Ahora entran al link de mi Instagram, ven todo, y me escriben ya decididas. Las citas por semana me subieron casi el triple.",
+      "Yo no sabía nada de páginas web y ellos se encargaron de absolutamente todo. La web se ve premium, mis clientas me dicen que se ve carísima. El proceso fue rápido, me explicaron cada paso y me capacitaron para usarla. Las citas por semana me subieron casi el triple.",
   },
   {
     name: "Rafael Almonte",
@@ -40,14 +40,13 @@ const testimonials = [
     initials: "RA",
     stars: 5,
     quote:
-      "Lo que más cambió fue el CRM. Antes llevaba mis contactos en un cuaderno y se me iban prospectos porque no les daba seguimiento a tiempo. Ahora tengo todo organizado y cerré tres ventas en el primer mes que se me hubieran escapado.",
+      "Lo que más me gustó fue la atención. Siempre disponibles, me respondían al momento. La web quedó profesional, con un formulario para captación de prospectos que me organiza todo automáticamente. En el primer mes cerré tres ventas que antes se me hubieran escapado.",
   },
 ];
 
 const DESKTOP_GAP = 12;
 const MOBILE_GAP = 7;
 const CARD_SPACING = 72;
-const CARD_SPACING_MOBILE = 48;
 
 export default function Testimonials() {
   const stackRef = useRef<HTMLDivElement>(null);
@@ -58,7 +57,6 @@ export default function Testimonials() {
     if (el) cardsRef.current[i] = el;
   }, []);
 
-  /* ── Set --stack-top per card ── */
   const layoutCards = useCallback(() => {
     const headerH = document.querySelector("header")?.getBoundingClientRect().height || 80;
     const gap = window.innerWidth < 768 ? MOBILE_GAP : DESKTOP_GAP;
@@ -73,7 +71,6 @@ export default function Testimonials() {
     });
   }, []);
 
-  /* ── Scroll handler: scale + brightness based on overlap ── */
   const onScroll = useCallback(() => {
     rafRef.current = 0;
     const container = stackRef.current;
@@ -101,7 +98,7 @@ export default function Testimonials() {
       }
 
       surface.style.transform = `scale(${1 - 0.035 * overlap})`;
-      surface.style.filter = `brightness(${1 - 0.055 * overlap})`;
+      surface.style.filter = `brightness(${1 - 0.06 * overlap})`;
     });
   }, []);
 
@@ -151,7 +148,7 @@ export default function Testimonials() {
           </TextReveal>
         </div>
 
-        {/* Stacked cards container */}
+        {/* Stacked cards */}
         <div
           ref={stackRef}
           className="relative isolate max-w-5xl mx-auto"
@@ -176,50 +173,43 @@ export default function Testimonials() {
                 scrollMarginTop: "100px",
               }}
             >
-              {/* Surface — receives scale + brightness transforms */}
               <div
                 data-surface=""
-                className="rounded-2xl overflow-hidden"
+                className="rounded-2xl overflow-hidden border border-border-subtle"
                 style={{
                   transformOrigin: "50% 0",
                   backfaceVisibility: "hidden",
-                  backgroundColor: "#1A1A2E",
-                  boxShadow: "0 -8px 24px rgba(26,26,46,0.08)",
+                  background: i % 2 === 0
+                    ? "linear-gradient(135deg, #E8F5F3 0%, #FFFFFF 60%, #FEF0ED 100%)"
+                    : "linear-gradient(135deg, #FEF0ED 0%, #FFFFFF 60%, #E8F5F3 100%)",
+                  boxShadow: "0 -4px 30px rgba(26,26,46,0.06), 0 1px 3px rgba(0,0,0,0.04)",
                 }}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[300px] lg:min-h-[360px]">
+                <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[280px] lg:min-h-[340px]">
                   {/* Left: Avatar + Info */}
-                  <div
-                    className="relative flex items-center justify-center p-10 lg:p-14"
-                    style={{
-                      backgroundColor: i % 2 === 0
-                        ? "rgba(15,118,110,0.12)"
-                        : "rgba(232,66,42,0.08)",
-                    }}
-                  >
+                  <div className="relative flex items-center justify-center p-10 lg:p-14">
                     <Quotes
                       weight="fill"
-                      className="absolute top-6 left-6 text-white/[0.05]"
+                      className="absolute top-6 left-6 text-primary/[0.06]"
                       size={100}
                     />
                     <div className="relative z-10 flex flex-col items-center gap-4">
                       <div
                         className="w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center"
                         style={{
-                          backgroundColor: i % 2 === 0
-                            ? "rgba(15,118,110,0.35)"
-                            : "rgba(232,66,42,0.25)",
-                          border: "2px solid rgba(255,255,255,0.08)",
+                          background: i % 2 === 0
+                            ? "linear-gradient(135deg, #0F766E, #0D6560)"
+                            : "linear-gradient(135deg, #E8422A, #C1341F)",
                         }}
                       >
-                        <span className="text-2xl lg:text-3xl font-bold text-white/90">
+                        <span className="text-2xl lg:text-3xl font-bold text-white">
                           {t.initials}
                         </span>
                       </div>
                       <div className="text-center">
-                        <p className="text-lg font-bold text-white">{t.name}</p>
-                        <p className="text-sm text-white/50 mt-0.5">{t.role}</p>
-                        <p className="text-xs text-white/30 mt-0.5">{t.location}</p>
+                        <p className="text-lg font-bold text-navy-deep">{t.name}</p>
+                        <p className="text-sm text-slate-text mt-0.5">{t.role}</p>
+                        <p className="text-xs text-slate-light mt-0.5">{t.location}</p>
                       </div>
                     </div>
                   </div>
@@ -231,11 +221,11 @@ export default function Testimonials() {
                         <Star key={j} weight="fill" size={18} className="text-amber-400" />
                       ))}
                     </div>
-                    <blockquote className="text-base lg:text-lg text-white/80 leading-relaxed font-medium">
+                    <blockquote className="text-base lg:text-lg text-slate-text leading-relaxed">
                       &ldquo;{t.quote}&rdquo;
                     </blockquote>
-                    <div className="mt-8 pt-5 border-t border-white/[0.06]">
-                      <span className="text-xs font-semibold text-white/25 uppercase tracking-widest">
+                    <div className="mt-8 pt-5 border-t border-border-subtle">
+                      <span className="text-xs font-semibold text-slate-light uppercase tracking-widest">
                         {i + 1} / {testimonials.length}
                       </span>
                     </div>
