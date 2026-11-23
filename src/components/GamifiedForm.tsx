@@ -233,7 +233,7 @@ function AnimatedCheckmark() {
 function OptionCard({
   selected,
   label,
-  icon: IconComponent,
+  icon,
   sub,
   tag,
   onClick,
