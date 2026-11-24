@@ -160,6 +160,7 @@ export default function Sectores() {
   const stageRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const rafRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(false);
   const lastTimeRef = useRef(0);
   const targetPosRef = useRef(0);
   const currentPosRef = useRef(0);
@@ -263,7 +264,7 @@ export default function Sectores() {
   );
 
   const startAnimation = useCallback(() => {
-    if (!rafRef.current) rafRef.current = requestAnimationFrame(animationLoop);
+    if (!rafRef.current && isVisibleRef.current) rafRef.current = requestAnimationFrame(animationLoop);
   }, [animationLoop]);
 
   const snapTo = useCallback(
@@ -373,7 +374,14 @@ export default function Sectores() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries[0].isIntersecting ? startAutoplay() : stopAutoplay();
+        const visible = entries[0].isIntersecting;
+        isVisibleRef.current = visible;
+        if (visible) {
+          startAutoplay();
+        } else {
+          stopAutoplay();
+          if (rafRef.current) { cancelAnimationFrame(rafRef.current); rafRef.current = null; }
+        }
       },
       { threshold: 0.2 }
     );

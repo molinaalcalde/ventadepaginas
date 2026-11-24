@@ -63,7 +63,7 @@ export function ScrollReveal({
   }, { scope: ref });
 
   return (
-    <div ref={ref} className={className} style={{ opacity: 0 }}>
+    <div ref={ref} className={className} style={{ willChange: "opacity, transform" }}>
       {children}
     </div>
   );

@@ -10,15 +10,22 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.1,
-      smoothWheel: true,
-    });
+    // Skip Lenis on touch/mobile devices — native scroll is smoother and lighter
+    const isMobile = window.matchMedia("(pointer: coarse)").matches;
 
-    // Sync Lenis -> GSAP ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
+    let lenis: Lenis | null = null;
+
+    if (!isMobile) {
+      lenis = new Lenis({
+        lerp: 0.1,
+        smoothWheel: true,
+      });
+
+      // Sync Lenis -> GSAP ScrollTrigger
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis!.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
 
     // Scroll progress bar
     if (progressRef.current) {
@@ -35,7 +42,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     }
 
     return () => {
-      lenis.destroy();
+      if (lenis) lenis.destroy();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);

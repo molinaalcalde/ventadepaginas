@@ -91,8 +91,7 @@ export function TextReveal({
             className={`text-reveal-inner ${word.className || ""}`}
             style={{
               display: "inline-block",
-              transform: "translateY(110%)",
-              opacity: 0,
+              willChange: "opacity, transform",
             }}
           >
             {word.text}

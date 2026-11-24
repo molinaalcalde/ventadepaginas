@@ -25,66 +25,42 @@ export default function Hero() {
       {/* ── Light gradient mesh background ── */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-surface-soft to-white" />
 
-      {/* Warm peach glow orb — very subtle */}
-      <motion.div
-        className="absolute w-[700px] h-[700px] rounded-full blur-[140px]"
+      {/* Warm peach glow orb — static on mobile, animated on desktop */}
+      <div
+        className="absolute w-[400px] h-[400px] lg:w-[700px] lg:h-[700px] rounded-full"
         style={{
           background:
             "radial-gradient(circle, var(--color-warm-blush) 0%, transparent 70%)",
           opacity: 0.5,
           top: "5%",
           left: "10%",
-        }}
-        animate={{
-          x: [0, 80, -40, 0],
-          y: [0, -60, 40, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
+          filter: "blur(80px)",
         }}
       />
 
-      {/* Warm cream glow orb — very subtle */}
-      <motion.div
-        className="absolute w-[550px] h-[550px] rounded-full blur-[110px]"
+      {/* Warm cream glow orb — static on mobile, animated on desktop */}
+      <div
+        className="absolute w-[300px] h-[300px] lg:w-[550px] lg:h-[550px] rounded-full"
         style={{
           background:
             "radial-gradient(circle, var(--color-warm-peach) 0%, transparent 70%)",
           opacity: 0.8,
           bottom: "15%",
           right: "8%",
-        }}
-        animate={{
-          x: [0, -60, 50, 0],
-          y: [0, 50, -30, 0],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut",
+          filter: "blur(60px)",
         }}
       />
 
-      {/* Secondary warm blush accent — very subtle */}
-      <motion.div
-        className="absolute w-[320px] h-[320px] rounded-full blur-[90px]"
+      {/* Secondary warm blush accent — hidden on mobile */}
+      <div
+        className="hidden lg:block absolute w-[320px] h-[320px] rounded-full"
         style={{
           background:
             "radial-gradient(circle, var(--color-warm-blush) 0%, transparent 70%)",
           opacity: 0.4,
           top: "55%",
           right: "28%",
-        }}
-        animate={{
-          x: [0, 40, -30, 0],
-          y: [0, -40, 20, 0],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
+          filter: "blur(90px)",
         }}
       />
 
@@ -96,7 +72,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-3 bg-primary/10 border border-primary/20 rounded-full px-5 py-2.5 mb-12"
           >
             <span className="relative flex h-2.5 w-2.5">
@@ -113,7 +89,7 @@ export default function Hero() {
             <TextReveal
               as="span"
               className="block text-fluid-hero font-display font-extrabold text-navy-deep leading-[1.1] tracking-tight"
-              delay={0.4}
+              delay={0.2}
               splitBy="words"
             >
               La vitrina digital
@@ -121,7 +97,7 @@ export default function Hero() {
             <TextReveal
               as="span"
               className="block text-fluid-hero font-display font-extrabold text-navy-deep leading-[1.1] tracking-tight"
-              delay={0.7}
+              delay={0.4}
               splitBy="words"
             >
               de tu negocio.
@@ -130,7 +106,7 @@ export default function Hero() {
               className="block text-fluid-hero font-serif italic text-coral leading-[1.1] tracking-tight"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 1.1, ease: "easeOut" }}
+              transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
             >
               Abierta las 24 horas.
             </motion.span>
@@ -138,10 +114,10 @@ export default function Hero() {
 
           {/* Subtitle */}
           <ScrollReveal
-            delay={0.3}
+            delay={0.15}
             direction="up"
             distance={30}
-            duration={0.8}
+            duration={0.6}
             className="max-w-2xl mx-auto mb-12"
           >
             <p className="text-slate-text text-lg lg:text-xl leading-relaxed">
@@ -153,7 +129,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.4 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
             className="flex flex-col items-center gap-4 mb-14"
           >
             <MagneticButton strength={0.25}>
@@ -183,7 +159,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Social proof micro-badges */}
-          <ScrollReveal delay={0.5} direction="up" distance={20}>
+          <ScrollReveal delay={0.2} direction="up" distance={20}>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warm-peach/80 border border-coral/10 text-sm text-navy-deep font-medium">
                 <span className="text-coral font-bold">140+</span> negocios ya venden online
