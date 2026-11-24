@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
-import { Star, Quotes } from "@phosphor-icons/react";
+import { useRef, useEffect, useCallback, useState } from "react";
+import { Star, Quotes, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
@@ -45,10 +45,137 @@ const testimonials = [
 ];
 
 const DESKTOP_GAP = 12;
-const MOBILE_GAP = 7;
 const CARD_SPACING = 72;
 
-export default function Testimonials() {
+/* ── Mobile testimonial card ── */
+function MobileTestimonialCard({ t, i }: { t: (typeof testimonials)[0]; i: number }) {
+  return (
+    <div
+      className="rounded-2xl overflow-hidden border border-border-subtle"
+      style={{
+        background: i % 2 === 0
+          ? "linear-gradient(135deg, #E8F5F3 0%, #FFFFFF 60%, #FEF0ED 100%)"
+          : "linear-gradient(135deg, #FEF0ED 0%, #FFFFFF 60%, #E8F5F3 100%)",
+        boxShadow: "0 4px 24px rgba(26,26,46,0.08), 0 1px 3px rgba(0,0,0,0.04)",
+      }}
+    >
+      {/* Avatar + name */}
+      <div className="relative flex items-center gap-4 px-5 pt-6 pb-4">
+        <Quotes
+          weight="fill"
+          className="absolute top-4 right-4 text-primary/[0.06]"
+          size={60}
+        />
+        <div
+          className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+          style={{
+            background: i % 2 === 0
+              ? "linear-gradient(135deg, #0F766E, #0D6560)"
+              : "linear-gradient(135deg, #E8422A, #C1341F)",
+          }}
+        >
+          <span className="text-lg font-bold text-white">{t.initials}</span>
+        </div>
+        <div>
+          <p className="text-base font-bold text-navy-deep">{t.name}</p>
+          <p className="text-xs text-slate-text mt-0.5">{t.role}</p>
+          <p className="text-[11px] text-slate-light">{t.location}</p>
+        </div>
+      </div>
+
+      {/* Stars + Quote */}
+      <div className="px-5 pb-6">
+        <div className="flex items-center gap-0.5 mb-3">
+          {[...Array(t.stars)].map((_, j) => (
+            <Star key={j} weight="fill" size={14} className="text-amber-400" />
+          ))}
+        </div>
+        <blockquote className="text-sm text-slate-text leading-relaxed">
+          &ldquo;{t.quote}&rdquo;
+        </blockquote>
+      </div>
+    </div>
+  );
+}
+
+/* ── Mobile carousel ── */
+function MobileTestimonials() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const scroll = useCallback((dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.children[0]?.clientWidth ?? 300;
+    const gap = 16;
+    scrollRef.current.scrollBy({
+      left: dir === "right" ? cardWidth + gap : -(cardWidth + gap),
+      behavior: "smooth",
+    });
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    if (!scrollRef.current) return;
+    const { scrollLeft } = scrollRef.current;
+    const cardWidth = scrollRef.current.children[0]?.clientWidth ?? 300;
+    const gap = 16;
+    setActiveIdx(Math.round(scrollLeft / (cardWidth + gap)));
+  }, []);
+
+  return (
+    <div className="lg:hidden">
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="flex gap-4 overflow-x-auto px-4 sm:px-6 pb-4 snap-x snap-mandatory scrollbar-hide"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
+        {testimonials.map((t, i) => (
+          <div
+            key={t.name}
+            className="flex-none w-[85vw] max-w-[380px] snap-center"
+          >
+            <MobileTestimonialCard t={t} i={i} />
+          </div>
+        ))}
+      </div>
+
+      {/* Nav: arrows + dots */}
+      <div className="flex items-center justify-center gap-4 mt-6">
+        <button
+          onClick={() => scroll("left")}
+          className="w-10 h-10 rounded-full bg-white border border-border-subtle flex items-center justify-center active:bg-surface-soft transition-colors shadow-sm"
+          aria-label="Anterior"
+        >
+          <CaretLeft size={16} weight="bold" className="text-navy-deep" />
+        </button>
+
+        <div className="flex gap-1.5">
+          {testimonials.map((_, i) => (
+            <div
+              key={i}
+              className="h-1.5 rounded-full transition-all duration-300"
+              style={{
+                width: i === activeIdx ? "20px" : "6px",
+                backgroundColor: i === activeIdx ? "#0F766E" : "rgba(26,26,46,0.12)",
+              }}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={() => scroll("right")}
+          className="w-10 h-10 rounded-full bg-white border border-border-subtle flex items-center justify-center active:bg-surface-soft transition-colors shadow-sm"
+          aria-label="Siguiente"
+        >
+          <CaretRight size={16} weight="bold" className="text-navy-deep" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ── Desktop sticky stacked cards ── */
+function DesktopTestimonials() {
   const stackRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const rafRef = useRef(0);
@@ -59,12 +186,11 @@ export default function Testimonials() {
 
   const layoutCards = useCallback(() => {
     const headerH = document.querySelector("header")?.getBoundingClientRect().height || 80;
-    const gap = window.innerWidth < 768 ? MOBILE_GAP : DESKTOP_GAP;
 
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
       const top = Math.min(
-        headerH + 16 + i * gap,
+        headerH + 16 + i * DESKTOP_GAP,
         window.innerHeight - card.offsetHeight - 18
       );
       card.style.setProperty("--stack-top", `${top}px`);
@@ -121,13 +247,103 @@ export default function Testimonials() {
   }, [layoutCards, onScroll]);
 
   return (
+    <div
+      ref={stackRef}
+      className="hidden lg:flex relative isolate max-w-5xl mx-auto"
+      style={{
+        flexDirection: "column",
+        gap: `${CARD_SPACING}px`,
+        paddingBottom: "40px",
+        overflow: "visible",
+        overflowAnchor: "none",
+      }}
+    >
+      {testimonials.map((t, i) => (
+        <div
+          key={t.name}
+          ref={(el) => setCardRef(el, i)}
+          className="will-change-auto"
+          style={{
+            position: "sticky" as const,
+            top: "var(--stack-top, 100px)",
+            zIndex: i + 1,
+            scrollMarginTop: "100px",
+          }}
+        >
+          <div
+            data-surface=""
+            className="rounded-2xl overflow-hidden border border-border-subtle"
+            style={{
+              transformOrigin: "50% 0",
+              backfaceVisibility: "hidden",
+              background: i % 2 === 0
+                ? "linear-gradient(135deg, #E8F5F3 0%, #FFFFFF 60%, #FEF0ED 100%)"
+                : "linear-gradient(135deg, #FEF0ED 0%, #FFFFFF 60%, #E8F5F3 100%)",
+              boxShadow: "0 -4px 30px rgba(26,26,46,0.06), 0 1px 3px rgba(0,0,0,0.04)",
+            }}
+          >
+            <div className="grid grid-cols-2 min-h-[340px]">
+              {/* Left: Avatar + Info */}
+              <div className="relative flex items-center justify-center p-14">
+                <Quotes
+                  weight="fill"
+                  className="absolute top-6 left-6 text-primary/[0.06]"
+                  size={100}
+                />
+                <div className="relative z-10 flex flex-col items-center gap-4">
+                  <div
+                    className="w-24 h-24 rounded-full flex items-center justify-center"
+                    style={{
+                      background: i % 2 === 0
+                        ? "linear-gradient(135deg, #0F766E, #0D6560)"
+                        : "linear-gradient(135deg, #E8422A, #C1341F)",
+                    }}
+                  >
+                    <span className="text-3xl font-bold text-white">
+                      {t.initials}
+                    </span>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-lg font-bold text-navy-deep">{t.name}</p>
+                    <p className="text-sm text-slate-text mt-0.5">{t.role}</p>
+                    <p className="text-xs text-slate-light mt-0.5">{t.location}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Quote */}
+              <div className="flex flex-col justify-center p-14">
+                <div className="flex items-center gap-1 mb-5">
+                  {[...Array(t.stars)].map((_, j) => (
+                    <Star key={j} weight="fill" size={18} className="text-amber-400" />
+                  ))}
+                </div>
+                <blockquote className="text-lg text-slate-text leading-relaxed">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <div className="mt-8 pt-5 border-t border-border-subtle">
+                  <span className="text-xs font-semibold text-slate-light uppercase tracking-widest">
+                    {i + 1} / {testimonials.length}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function Testimonials() {
+  return (
     <section
       id="testimonios"
-      className="py-28 lg:py-36 bg-warm-cream"
+      className="py-16 lg:py-36 bg-warm-cream"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-16">
           <ScrollReveal direction="up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-soft border border-border-subtle mb-6">
               <div className="flex items-center gap-0.5">
@@ -148,93 +364,11 @@ export default function Testimonials() {
           </TextReveal>
         </div>
 
-        {/* Stacked cards */}
-        <div
-          ref={stackRef}
-          className="relative isolate max-w-5xl mx-auto"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: `${CARD_SPACING}px`,
-            paddingBottom: "40px",
-            overflow: "visible",
-            overflowAnchor: "none",
-          }}
-        >
-          {testimonials.map((t, i) => (
-            <div
-              key={t.name}
-              ref={(el) => setCardRef(el, i)}
-              className="will-change-auto"
-              style={{
-                position: "sticky" as const,
-                top: "var(--stack-top, 100px)",
-                zIndex: i + 1,
-                scrollMarginTop: "100px",
-              }}
-            >
-              <div
-                data-surface=""
-                className="rounded-2xl overflow-hidden border border-border-subtle"
-                style={{
-                  transformOrigin: "50% 0",
-                  backfaceVisibility: "hidden",
-                  background: i % 2 === 0
-                    ? "linear-gradient(135deg, #E8F5F3 0%, #FFFFFF 60%, #FEF0ED 100%)"
-                    : "linear-gradient(135deg, #FEF0ED 0%, #FFFFFF 60%, #E8F5F3 100%)",
-                  boxShadow: "0 -4px 30px rgba(26,26,46,0.06), 0 1px 3px rgba(0,0,0,0.04)",
-                }}
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[240px] sm:min-h-[280px] lg:min-h-[340px]">
-                  {/* Left: Avatar + Info */}
-                  <div className="relative flex items-center justify-center p-6 sm:p-10 lg:p-14">
-                    <Quotes
-                      weight="fill"
-                      className="absolute top-6 left-6 text-primary/[0.06]"
-                      size={100}
-                    />
-                    <div className="relative z-10 flex flex-col items-center gap-4">
-                      <div
-                        className="w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center"
-                        style={{
-                          background: i % 2 === 0
-                            ? "linear-gradient(135deg, #0F766E, #0D6560)"
-                            : "linear-gradient(135deg, #E8422A, #C1341F)",
-                        }}
-                      >
-                        <span className="text-2xl lg:text-3xl font-bold text-white">
-                          {t.initials}
-                        </span>
-                      </div>
-                      <div className="text-center">
-                        <p className="text-lg font-bold text-navy-deep">{t.name}</p>
-                        <p className="text-sm text-slate-text mt-0.5">{t.role}</p>
-                        <p className="text-xs text-slate-light mt-0.5">{t.location}</p>
-                      </div>
-                    </div>
-                  </div>
+        {/* Mobile: swipeable carousel */}
+        <MobileTestimonials />
 
-                  {/* Right: Quote */}
-                  <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-14">
-                    <div className="flex items-center gap-1 mb-5">
-                      {[...Array(t.stars)].map((_, j) => (
-                        <Star key={j} weight="fill" size={18} className="text-amber-400" />
-                      ))}
-                    </div>
-                    <blockquote className="text-base lg:text-lg text-slate-text leading-relaxed">
-                      &ldquo;{t.quote}&rdquo;
-                    </blockquote>
-                    <div className="mt-8 pt-5 border-t border-border-subtle">
-                      <span className="text-xs font-semibold text-slate-light uppercase tracking-widest">
-                        {i + 1} / {testimonials.length}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Desktop: sticky stacked cards */}
+        <DesktopTestimonials />
       </div>
     </section>
   );

@@ -27,7 +27,7 @@ export default function Hero() {
 
       {/* Decorative orbs — contained to prevent overflow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
+        <motion.div
           className="absolute w-[300px] h-[300px] lg:w-[700px] lg:h-[700px] rounded-full"
           style={{
             background:
@@ -35,10 +35,18 @@ export default function Hero() {
             opacity: 0.5,
             top: "5%",
             left: "10%",
-            filter: "blur(80px)",
+          }}
+          animate={{
+            x: [0, 80, -40, 0],
+            y: [0, -60, 40, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
           }}
         />
-        <div
+        <motion.div
           className="absolute w-[200px] h-[200px] lg:w-[550px] lg:h-[550px] rounded-full"
           style={{
             background:
@@ -46,10 +54,18 @@ export default function Hero() {
             opacity: 0.8,
             bottom: "15%",
             right: "8%",
-            filter: "blur(60px)",
+          }}
+          animate={{
+            x: [0, -60, 50, 0],
+            y: [0, 50, -30, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
           }}
         />
-        <div
+        <motion.div
           className="hidden lg:block absolute w-[320px] h-[320px] rounded-full"
           style={{
             background:
@@ -57,7 +73,15 @@ export default function Hero() {
             opacity: 0.4,
             top: "55%",
             right: "28%",
-            filter: "blur(90px)",
+          }}
+          animate={{
+            x: [0, 40, -30, 0],
+            y: [0, -40, 20, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
           }}
         />
       </div>

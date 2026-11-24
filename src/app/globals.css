@@ -60,7 +60,6 @@
 @layer base {
   html {
     scroll-behavior: initial; /* Lenis handles smooth scroll */
-    overflow-x: hidden;
   }
   body {
     -webkit-font-smoothing: antialiased;
