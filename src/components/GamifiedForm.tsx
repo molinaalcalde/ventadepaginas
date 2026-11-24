@@ -722,14 +722,14 @@ export default function GamifiedForm() {
   };
 
   return (
-    <div className="max-w-[680px] mx-auto w-full overflow-hidden">
+    <div className="max-w-[680px] mx-auto w-full">
       <div
         className="rounded-3xl p-5 sm:p-8 min-h-0 sm:min-h-[520px] flex flex-col relative overflow-hidden"
         style={{
           backgroundColor: "#FFFFFF",
-          border: "1px solid #E7E5E4",
+          border: "1px solid rgba(0,0,0,0.08)",
           boxShadow:
-            "0 0 #0000, -1.1px 1.2px .1px #00000003, -2.2px 2.4px .3px #00000005, -3.3px 3.7px .5px #00000005, -4.6px 5.1px .7px #00000008, -6px 6.6px .9px #00000008, -7.6px 8.4px 1.3px #00000008, -9.5px 10.5px 1.8px #00000008, -11.8px 13px 2.4px #00000008",
+            "0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px -8px rgba(0,0,0,0.08)",
         }}
       >
         {/* Progress Bar */}
