@@ -25,44 +25,42 @@ export default function Hero() {
       {/* ── Light gradient mesh background ── */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-surface-soft to-white" />
 
-      {/* Warm peach glow orb — static on mobile, animated on desktop */}
-      <div
-        className="absolute w-[400px] h-[400px] lg:w-[700px] lg:h-[700px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, var(--color-warm-blush) 0%, transparent 70%)",
-          opacity: 0.5,
-          top: "5%",
-          left: "10%",
-          filter: "blur(80px)",
-        }}
-      />
-
-      {/* Warm cream glow orb — static on mobile, animated on desktop */}
-      <div
-        className="absolute w-[300px] h-[300px] lg:w-[550px] lg:h-[550px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, var(--color-warm-peach) 0%, transparent 70%)",
-          opacity: 0.8,
-          bottom: "15%",
-          right: "8%",
-          filter: "blur(60px)",
-        }}
-      />
-
-      {/* Secondary warm blush accent — hidden on mobile */}
-      <div
-        className="hidden lg:block absolute w-[320px] h-[320px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, var(--color-warm-blush) 0%, transparent 70%)",
-          opacity: 0.4,
-          top: "55%",
-          right: "28%",
-          filter: "blur(90px)",
-        }}
-      />
+      {/* Decorative orbs — contained to prevent overflow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute w-[300px] h-[300px] lg:w-[700px] lg:h-[700px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, var(--color-warm-blush) 0%, transparent 70%)",
+            opacity: 0.5,
+            top: "5%",
+            left: "10%",
+            filter: "blur(80px)",
+          }}
+        />
+        <div
+          className="absolute w-[200px] h-[200px] lg:w-[550px] lg:h-[550px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, var(--color-warm-peach) 0%, transparent 70%)",
+            opacity: 0.8,
+            bottom: "15%",
+            right: "8%",
+            filter: "blur(60px)",
+          }}
+        />
+        <div
+          className="hidden lg:block absolute w-[320px] h-[320px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, var(--color-warm-blush) 0%, transparent 70%)",
+            opacity: 0.4,
+            top: "55%",
+            right: "28%",
+            filter: "blur(90px)",
+          }}
+        />
+      </div>
 
       {/* ── Main Content ── */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">

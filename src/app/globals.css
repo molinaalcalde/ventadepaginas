@@ -60,6 +60,7 @@
 @layer base {
   html {
     scroll-behavior: initial; /* Lenis handles smooth scroll */
+    overflow-x: hidden;
   }
   body {
     -webkit-font-smoothing: antialiased;
@@ -114,6 +115,15 @@ html.lenis, html.lenis body {
 .animate-marquee-right {
   animation: marquee-right 18s linear infinite;
   will-change: transform;
+}
+
+/* ── Hide scrollbar for carousels ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* ── Reduced motion ── */

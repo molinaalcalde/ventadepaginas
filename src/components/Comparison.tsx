@@ -46,6 +46,19 @@ export default function Comparison() {
   }, []);
 
   useEffect(() => {
+    const rows = rowsRef.current.filter(Boolean);
+    if (!rows.length) return;
+
+    // Make rows visible immediately on mobile for instant rendering
+    const isMobile = window.innerWidth < 1024;
+    if (isMobile) {
+      rows.forEach((row) => {
+        row.style.opacity = "1";
+        row.style.transform = "translateY(0)";
+      });
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -58,9 +71,7 @@ export default function Comparison() {
       { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
     );
 
-    rowsRef.current.forEach((row) => {
-      if (row) observer.observe(row);
-    });
+    rows.forEach((row) => observer.observe(row));
 
     return () => observer.disconnect();
   }, []);
