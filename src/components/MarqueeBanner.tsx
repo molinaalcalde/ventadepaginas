@@ -74,8 +74,8 @@ function Band2Content() {
 export default function MarqueeBanner() {
   return (
     <section
-      className="relative py-10 sm:py-14 overflow-hidden select-none"
-      style={{ backgroundColor: "var(--color-warm-cream)" }}
+      className="relative py-10 sm:py-14 select-none"
+      style={{ backgroundColor: "var(--color-warm-cream)", overflow: "clip" }}
       aria-hidden="true"
     >
       {/* ── Band 1: Dark navy, rotated -3deg, scrolls left ── */}

@@ -51,7 +51,7 @@ const CARD_SPACING = 72;
 function MobileTestimonialCard({ t, i }: { t: (typeof testimonials)[0]; i: number }) {
   return (
     <div
-      className="rounded-2xl overflow-hidden border border-border-subtle"
+      className="rounded-2xl overflow-hidden border border-border-subtle h-full flex flex-col"
       style={{
         background: i % 2 === 0
           ? "linear-gradient(135deg, #E8F5F3 0%, #FFFFFF 60%, #FEF0ED 100%)"
@@ -59,40 +59,45 @@ function MobileTestimonialCard({ t, i }: { t: (typeof testimonials)[0]; i: numbe
         boxShadow: "0 4px 24px rgba(26,26,46,0.08), 0 1px 3px rgba(0,0,0,0.04)",
       }}
     >
-      {/* Avatar + name */}
-      <div className="relative flex items-center gap-4 px-5 pt-6 pb-4">
+      {/* Avatar + Info — centered like desktop */}
+      <div className="relative flex flex-col items-center pt-8 pb-5 px-5">
         <Quotes
           weight="fill"
-          className="absolute top-4 right-4 text-primary/[0.06]"
-          size={60}
+          className="absolute top-4 left-4 text-primary/[0.06]"
+          size={80}
         />
         <div
-          className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+          className="w-18 h-18 rounded-full flex items-center justify-center mb-3"
           style={{
+            width: "72px",
+            height: "72px",
             background: i % 2 === 0
               ? "linear-gradient(135deg, #0F766E, #0D6560)"
               : "linear-gradient(135deg, #E8422A, #C1341F)",
           }}
         >
-          <span className="text-lg font-bold text-white">{t.initials}</span>
+          <span className="text-2xl font-bold text-white">{t.initials}</span>
         </div>
-        <div>
-          <p className="text-base font-bold text-navy-deep">{t.name}</p>
-          <p className="text-xs text-slate-text mt-0.5">{t.role}</p>
-          <p className="text-[11px] text-slate-light">{t.location}</p>
-        </div>
+        <p className="text-lg font-bold text-navy-deep">{t.name}</p>
+        <p className="text-sm text-slate-text mt-0.5">{t.role}</p>
+        <p className="text-xs text-slate-light mt-0.5">{t.location}</p>
       </div>
 
       {/* Stars + Quote */}
-      <div className="px-5 pb-6">
-        <div className="flex items-center gap-0.5 mb-3">
+      <div className="px-6 pb-7 flex-1 flex flex-col">
+        <div className="flex items-center gap-1 mb-4">
           {[...Array(t.stars)].map((_, j) => (
-            <Star key={j} weight="fill" size={14} className="text-amber-400" />
+            <Star key={j} weight="fill" size={16} className="text-amber-400" />
           ))}
         </div>
-        <blockquote className="text-sm text-slate-text leading-relaxed">
+        <blockquote className="text-base text-slate-text leading-relaxed flex-1">
           &ldquo;{t.quote}&rdquo;
         </blockquote>
+        <div className="mt-6 pt-4 border-t border-border-subtle">
+          <span className="text-xs font-semibold text-slate-light uppercase tracking-widest">
+            {i + 1} / {testimonials.length}
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -39,25 +39,16 @@ const contrasts = [
 ];
 
 export default function Comparison() {
-  const rowsRef = useRef<HTMLDivElement[]>([]);
+  /* Desktop rows — animated with IntersectionObserver */
+  const desktopRowsRef = useRef<HTMLDivElement[]>([]);
 
-  const setRowRef = useCallback((el: HTMLDivElement | null, i: number) => {
-    if (el) rowsRef.current[i] = el;
+  const setDesktopRef = useCallback((el: HTMLDivElement | null, i: number) => {
+    if (el) desktopRowsRef.current[i] = el;
   }, []);
 
   useEffect(() => {
-    const rows = rowsRef.current.filter(Boolean);
+    const rows = desktopRowsRef.current.filter(Boolean);
     if (!rows.length) return;
-
-    // Make rows visible immediately on mobile for instant rendering
-    const isMobile = window.innerWidth < 1024;
-    if (isMobile) {
-      rows.forEach((row) => {
-        row.style.opacity = "1";
-        row.style.transform = "translateY(0)";
-      });
-      return;
-    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -72,12 +63,11 @@ export default function Comparison() {
     );
 
     rows.forEach((row) => observer.observe(row));
-
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="py-16 sm:py-28 lg:py-36 bg-white relative overflow-hidden">
+    <section className="py-16 sm:py-28 lg:py-36 bg-white relative" style={{ overflow: "clip" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-20">
@@ -102,7 +92,6 @@ export default function Comparison() {
 
         {/* ── Desktop: 3-column layout (lg+) ── */}
         <div className="hidden lg:block max-w-5xl mx-auto">
-          {/* Column headers */}
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="flex items-center justify-center gap-2 py-3">
               <span className="text-sm font-bold text-slate-light uppercase tracking-widest">
@@ -122,12 +111,11 @@ export default function Comparison() {
             </div>
           </div>
 
-          {/* Rows */}
           <div className="space-y-4">
             {contrasts.map((item, i) => (
               <div
                 key={i}
-                ref={(el) => setRowRef(el, i)}
+                ref={(el) => setDesktopRef(el, i)}
                 className="grid grid-cols-3 gap-4 transition-all"
                 style={{
                   opacity: 0,
@@ -171,20 +159,13 @@ export default function Comparison() {
           </div>
         </div>
 
-        {/* ── Mobile/Tablet: Card layout (<lg) ── */}
+        {/* ── Mobile/Tablet: Card layout (<lg) — NO JS refs, always visible ── */}
         <div className="lg:hidden space-y-3 max-w-lg mx-auto">
           {contrasts.map((item, i) => (
             <div
               key={`m-${i}`}
-              ref={(el) => { if (el && !rowsRef.current[i]) rowsRef.current[i] = el; }}
-              className="rounded-2xl overflow-hidden transition-all"
+              className="rounded-2xl overflow-hidden"
               style={{
-                opacity: 0,
-                transform: "translateY(20px)",
-                transitionProperty: "opacity, transform",
-                transitionDuration: "0.6s",
-                transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-                transitionDelay: `${i * 0.07}s`,
                 border: "1px solid rgba(15,118,110,0.12)",
               }}
             >
