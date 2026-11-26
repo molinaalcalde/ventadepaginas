@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useEffect, useCallback, useState } from "react";
-import { Star, Quotes, CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { useRef, useEffect, useCallback } from "react";
+import { Star, Quotes } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
@@ -103,78 +103,105 @@ function MobileTestimonialCard({ t, i }: { t: (typeof testimonials)[0]; i: numbe
   );
 }
 
-/* ── Mobile carousel ── */
-function MobileTestimonials() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
+const MOBILE_GAP = 42;
+const MOBILE_CARD_OFFSET = 8;
 
-  const scroll = useCallback((dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.children[0]?.clientWidth ?? 300;
-    const gap = 16;
-    scrollRef.current.scrollBy({
-      left: dir === "right" ? cardWidth + gap : -(cardWidth + gap),
-      behavior: "smooth",
+/* ── Mobile: Sticky stacking vertical ── */
+function MobileTestimonials() {
+  const stackRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const rafRef = useRef(0);
+
+  const setCardRef = useCallback((el: HTMLDivElement | null, i: number) => {
+    if (el) cardsRef.current[i] = el;
+  }, []);
+
+  const layoutCards = useCallback(() => {
+    const baseTop = 80;
+    cardsRef.current.forEach((card, i) => {
+      if (!card) return;
+      const top = baseTop + i * MOBILE_CARD_OFFSET;
+      card.style.setProperty("--stack-top", `${top}px`);
     });
   }, []);
 
-  const handleScroll = useCallback(() => {
-    if (!scrollRef.current) return;
-    const { scrollLeft } = scrollRef.current;
-    const cardWidth = scrollRef.current.children[0]?.clientWidth ?? 300;
-    const gap = 16;
-    setActiveIdx(Math.round(scrollLeft / (cardWidth + gap)));
+  const onScroll = useCallback(() => {
+    rafRef.current = 0;
+    const container = stackRef.current;
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    if (containerRect.bottom < 0 || containerRect.top > window.innerHeight) return;
+
+    const cards = cardsRef.current;
+    const rects = cards.map((c) => c?.getBoundingClientRect());
+
+    cards.forEach((card, i) => {
+      if (!card || !rects[i]) return;
+      const surface = card.querySelector<HTMLElement>("[data-surface]");
+      if (!surface) return;
+
+      const nextRect = rects[i + 1];
+      const thisTop = parseFloat(card.style.getPropertyValue("--stack-top")) || 80;
+
+      let overlap = 0;
+      if (nextRect) {
+        overlap = Math.max(0, Math.min(1,
+          (thisTop + rects[i]!.height - nextRect.top) / (0.8 * rects[i]!.height)
+        ));
+      }
+
+      surface.style.transform = `scale(${1 - 0.03 * overlap})`;
+      surface.style.filter = `brightness(${1 - 0.05 * overlap})`;
+    });
   }, []);
 
+  useEffect(() => {
+    layoutCards();
+    window.addEventListener("resize", layoutCards);
+
+    const scrollHandler = () => {
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(onScroll);
+      }
+    };
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", layoutCards);
+      window.removeEventListener("scroll", scrollHandler);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [layoutCards, onScroll]);
+
   return (
-    <div className="lg:hidden">
-      <div
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="flex gap-4 overflow-x-auto px-4 sm:px-6 pb-4 snap-x snap-mandatory scrollbar-hide"
-        style={{ WebkitOverflowScrolling: "touch" }}
-      >
-        {testimonials.map((t, i) => (
-          <div
-            key={t.name}
-            className="flex-none w-[85vw] max-w-[380px] snap-center"
-          >
+    <div
+      ref={stackRef}
+      className="lg:hidden relative"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: `${MOBILE_GAP}px`,
+        paddingBottom: "20px",
+        overflow: "visible",
+      }}
+    >
+      {testimonials.map((t, i) => (
+        <div
+          key={t.name}
+          ref={(el) => setCardRef(el, i)}
+          className="will-change-auto"
+          style={{
+            position: "sticky" as const,
+            top: "var(--stack-top, 80px)",
+            zIndex: i + 1,
+          }}
+        >
+          <div data-surface="">
             <MobileTestimonialCard t={t} i={i} />
           </div>
-        ))}
-      </div>
-
-      {/* Nav: arrows + dots */}
-      <div className="flex items-center justify-center gap-4 mt-6">
-        <button
-          onClick={() => scroll("left")}
-          className="w-10 h-10 rounded-full bg-white border border-border-subtle flex items-center justify-center active:bg-surface-soft transition-colors shadow-sm"
-          aria-label="Anterior"
-        >
-          <CaretLeft size={16} weight="bold" className="text-navy-deep" />
-        </button>
-
-        <div className="flex gap-1.5">
-          {testimonials.map((_, i) => (
-            <div
-              key={i}
-              className="h-1.5 rounded-full transition-all duration-300"
-              style={{
-                width: i === activeIdx ? "20px" : "6px",
-                backgroundColor: i === activeIdx ? "#0F766E" : "rgba(26,26,46,0.12)",
-              }}
-            />
-          ))}
         </div>
-
-        <button
-          onClick={() => scroll("right")}
-          className="w-10 h-10 rounded-full bg-white border border-border-subtle flex items-center justify-center active:bg-surface-soft transition-colors shadow-sm"
-          aria-label="Siguiente"
-        >
-          <CaretRight size={16} weight="bold" className="text-navy-deep" />
-        </button>
-      </div>
+      ))}
     </div>
   );
 }

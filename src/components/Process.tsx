@@ -333,54 +333,74 @@ export default function Process() {
         </ScrollReveal>
       </div>
 
-      {/* ── Mobile: Simple stacked cards (no sticky) ── */}
-      <div className="lg:hidden px-4 sm:px-6 pb-16 space-y-4 max-w-lg mx-auto">
-        {steps.map((step, i) => (
+      {/* ── Mobile: Vertical timeline ── */}
+      <div className="lg:hidden px-4 sm:px-6 pb-16 max-w-lg mx-auto">
+        <div className="relative">
+          {/* Timeline line */}
           <div
-            key={step.id}
-            className="rounded-2xl overflow-hidden"
-            style={{
-              backgroundColor: "#fff",
-              border: "1px solid #E7E5E4",
-              boxShadow: "0 2px 12px -4px rgba(0,0,0,0.06)",
-            }}
-          >
-            <div
-              className="px-5 py-4 flex items-center gap-3"
-              style={{ backgroundColor: i % 2 === 0 ? "#E8F5F3" : "#FEF0ED" }}
-            >
-              <span
-                className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                style={{ backgroundColor: i % 2 === 0 ? "#0F766E" : "#E8422A" }}
-              >
-                {i + 1}
-              </span>
-              <h3 className="text-lg font-bold text-navy-deep">{step.title}</h3>
-            </div>
-            <div className="px-5 py-4">
-              <p className="text-sm text-slate-text leading-relaxed mb-4">{step.description}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {step.tags.map((tag, j) => {
-                  const TagIcon = step.tagIcons[j];
-                  return (
-                    <span
-                      key={tag}
-                      className="inline-flex items-center gap-1.5 bg-surface-soft rounded-full px-1 pr-3 py-1 text-xs text-navy-deep/70 border border-black/5"
+            className="absolute left-[19px] top-2 bottom-2 w-[2px]"
+            style={{ background: "linear-gradient(to bottom, #0F766E 0%, #E8422A 100%)" }}
+          />
+
+          <div className="space-y-6">
+            {steps.map((step, i) => {
+              const StepIcon = step.icon;
+              return (
+                <div key={step.id} className="relative flex gap-4">
+                  {/* Timeline node */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center"
+                      style={{
+                        backgroundColor: i % 2 === 0 ? "#0F766E" : "#E8422A",
+                        boxShadow: `0 0 0 4px white, 0 0 0 5px ${i % 2 === 0 ? "rgba(15,118,110,0.2)" : "rgba(232,66,42,0.2)"}`,
+                      }}
                     >
-                      <span className="w-5 h-5 rounded-full bg-primary-light flex items-center justify-center">
-                        <TagIcon size={11} weight="bold" className="text-primary" />
+                      <StepIcon size={18} weight="bold" className="text-white" />
+                    </div>
+                  </div>
+
+                  {/* Card */}
+                  <div
+                    className="flex-1 rounded-2xl overflow-hidden pb-1"
+                    style={{
+                      backgroundColor: "#fff",
+                      border: "1px solid #E7E5E4",
+                      boxShadow: "0 2px 12px -4px rgba(0,0,0,0.06)",
+                    }}
+                  >
+                    <div className="px-5 py-4">
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-slate-light">
+                        Paso {i + 1}
                       </span>
-                      {tag}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
+                      <h3 className="text-lg font-bold text-navy-deep mt-1">{step.title}</h3>
+                      <p className="text-sm text-slate-text leading-relaxed mt-2 mb-4">{step.description}</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {step.tags.map((tag, j) => {
+                          const TagIcon = step.tagIcons[j];
+                          return (
+                            <span
+                              key={tag}
+                              className="inline-flex items-center gap-1.5 bg-surface-soft rounded-full px-1 pr-3 py-1 text-xs text-navy-deep/70 border border-black/5"
+                            >
+                              <span className="w-5 h-5 rounded-full bg-primary-light flex items-center justify-center">
+                                <TagIcon size={11} weight="bold" className="text-primary" />
+                              </span>
+                              {tag}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        ))}
+        </div>
 
         {/* Mobile CTA */}
-        <div className="text-center pt-4">
+        <div className="text-center pt-8">
           <a
             href="#contacto"
             className="group inline-flex items-center gap-3 bg-[#1A1A2E] rounded-full overflow-hidden active:scale-[0.97]"

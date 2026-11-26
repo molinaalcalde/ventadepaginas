@@ -5,10 +5,13 @@ import {
   Phone,
   EnvelopeSimple,
   Clock,
-  MapPin,
   WhatsappLogo,
   ShieldCheck,
   ArrowRight,
+  InstagramLogo,
+  FacebookLogo,
+  TiktokLogo,
+  LinkedinLogo,
 } from "@phosphor-icons/react";
 
 const includeLinks = [
@@ -25,6 +28,13 @@ const sectorLinks = [
   { label: "Bienes Raíces", href: "#sectores" },
   { label: "Servicios Profesionales", href: "#sectores" },
   { label: "Restaurantes y Delivery", href: "#sectores" },
+];
+
+const socialLinks = [
+  { label: "Instagram", Icon: InstagramLogo, href: "#" },
+  { label: "Facebook", Icon: FacebookLogo, href: "#" },
+  { label: "TikTok", Icon: TiktokLogo, href: "#" },
+  { label: "LinkedIn", Icon: LinkedinLogo, href: "#" },
 ];
 
 const legalLinks = [
@@ -69,6 +79,21 @@ export default function Footer() {
             <p className="text-sm text-slate-light mb-5">
               Santo Domingo, República Dominicana
             </p>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-3 mb-5">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  className="w-10 h-10 rounded-full bg-surface-soft border border-border-subtle flex items-center justify-center text-slate-light hover:text-primary hover:border-primary/20 hover:bg-primary-light transition-all duration-200"
+                >
+                  <s.Icon size={18} weight="fill" />
+                </a>
+              ))}
+            </div>
+
             <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-light bg-surface-soft px-3 py-1.5 rounded-full border border-border-subtle">
               <ShieldCheck size={14} weight="duotone" />
               Protección de datos garantizada
