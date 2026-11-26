@@ -109,11 +109,11 @@ html.lenis, html.lenis body {
   100% { transform: translateX(0); }
 }
 .animate-marquee-left {
-  animation: marquee-left 20s linear infinite;
+  animation: marquee-left 10s linear infinite;
   will-change: transform;
 }
 .animate-marquee-right {
-  animation: marquee-right 18s linear infinite;
+  animation: marquee-right 9s linear infinite;
   will-change: transform;
 }
 
