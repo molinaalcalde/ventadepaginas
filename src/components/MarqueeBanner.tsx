@@ -83,7 +83,9 @@ export default function MarqueeBanner() {
         className="relative overflow-hidden"
         style={{
           backgroundColor: "#1A1A2E",
-          transform: "rotate(-3deg) scale(1.05)",
+          transform: "rotate(-3deg)",
+          width: "calc(100% + 60px)",
+          marginLeft: "-30px",
           padding: "1.15rem 0",
           boxShadow: "0 8px 30px rgba(0,0,0,0.3)",
         }}
@@ -101,7 +103,9 @@ export default function MarqueeBanner() {
         className="relative -mt-3 sm:-mt-4 overflow-hidden"
         style={{
           backgroundColor: "#E8422A",
-          transform: "rotate(2.5deg) scale(1.05)",
+          transform: "rotate(2.5deg)",
+          width: "calc(100% + 60px)",
+          marginLeft: "-30px",
           padding: "0.9rem 0",
           boxShadow: "0 8px 30px rgba(232,66,42,0.3)",
         }}

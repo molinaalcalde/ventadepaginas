@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
@@ -37,6 +37,82 @@ const contrasts = [
     diy: "Atrapado en su plataforma sin poder salir",
   },
 ];
+
+type TabKey = "us" | "them" | "diy";
+
+const tabs: { key: TabKey; label: string; recommended?: boolean }[] = [
+  { key: "us", label: "Con KINETIC", recommended: true },
+  { key: "them", label: "Agencia tradicional" },
+  { key: "diy", label: "Hacerlo tú mismo" },
+];
+
+function MobileComparison() {
+  const [activeTab, setActiveTab] = useState<TabKey>("us");
+
+  return (
+    <div className="lg:hidden max-w-lg mx-auto">
+      {/* Tab bar */}
+      <div className="flex gap-2 mb-6 overflow-x-auto scrollbar-hide pb-1">
+        {tabs.map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            className="relative shrink-0 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 active:scale-[0.97]"
+            style={{
+              backgroundColor: activeTab === tab.key
+                ? (tab.key === "us" ? "#0F766E" : "#1A1A2E")
+                : "#F5F5F4",
+              color: activeTab === tab.key ? "#FFFFFF" : "#64748B",
+            }}
+          >
+            {tab.recommended && activeTab === tab.key && (
+              <span className="absolute -top-2 -right-1 bg-coral text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                TOP
+              </span>
+            )}
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Rows for active tab */}
+      <div className="space-y-3">
+        {contrasts.map((item, i) => {
+          const text = item[activeTab];
+          const isUs = activeTab === "us";
+
+          return (
+            <div
+              key={`${activeTab}-${i}`}
+              className="rounded-2xl px-5 py-4 flex items-start gap-3"
+              style={{
+                backgroundColor: isUs ? undefined : "#FAFAFA",
+                background: isUs ? "linear-gradient(135deg, #E8F5F3 0%, #F0FBF9 100%)" : undefined,
+                border: isUs ? "1px solid rgba(15,118,110,0.15)" : "1px solid #F0F0F0",
+                boxShadow: isUs ? "0 2px 8px -2px rgba(15,118,110,0.1)" : undefined,
+              }}
+            >
+              {isUs ? (
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5">
+                  <circle cx="10" cy="10" r="10" fill="#0F766E" fillOpacity="0.12" />
+                  <path d="M6.5 10.5L9 13L14 7.5" stroke="#0F766E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5">
+                  <circle cx="10" cy="10" r="10" fill="#E8422A" fillOpacity="0.08" />
+                  <path d="M7 13L13 7M7 7l6 6" stroke="#E8422A" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              )}
+              <p className={`text-sm leading-relaxed ${isUs ? "font-semibold text-navy-deep" : "text-slate-light"}`}>
+                {text}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default function Comparison() {
   /* Desktop rows — animated with IntersectionObserver */
@@ -159,48 +235,8 @@ export default function Comparison() {
           </div>
         </div>
 
-        {/* ── Mobile/Tablet: Card layout (<lg) — NO JS refs, always visible ── */}
-        <div className="lg:hidden space-y-3 max-w-lg mx-auto">
-          {contrasts.map((item, i) => (
-            <div
-              key={`m-${i}`}
-              className="rounded-2xl overflow-hidden"
-              style={{
-                border: "1px solid rgba(15,118,110,0.12)",
-              }}
-            >
-              {/* KINETIC benefit — prominent */}
-              <div
-                className="px-4 py-3.5 flex items-center gap-3"
-                style={{
-                  background: "linear-gradient(135deg, #E8F5F3 0%, #F0FBF9 100%)",
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="shrink-0">
-                  <circle cx="9" cy="9" r="9" fill="#0F766E" fillOpacity="0.15" />
-                  <path d="M6 9.5L8 11.5L12 7" stroke="#0F766E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <p className="text-sm font-semibold text-navy-deep leading-snug">{item.us}</p>
-              </div>
-
-              {/* Alternatives — muted, compact */}
-              <div className="px-4 py-2.5 flex gap-4 bg-white/80" style={{ borderTop: "1px solid rgba(15,118,110,0.06)" }}>
-                <div className="flex-1 flex items-start gap-2">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0 mt-0.5">
-                    <path d="M2 10L10 2M2 2l8 8" stroke="#D1D5DB" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                  <p className="text-xs text-slate-light/70 leading-snug">{item.them}</p>
-                </div>
-                <div className="flex-1 flex items-start gap-2">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0 mt-0.5">
-                    <path d="M2 10L10 2M2 2l8 8" stroke="#D1D5DB" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                  <p className="text-xs text-slate-light/70 leading-snug">{item.diy}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* ── Mobile: Tab-based comparison ── */}
+        <MobileComparison />
 
         {/* CTA */}
         <ScrollReveal direction="up" delay={0.3}>
