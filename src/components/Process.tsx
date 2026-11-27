@@ -36,7 +36,7 @@ const steps = [
     icon: PaintBrush,
     title: "Diseñamos tu web",
     description:
-      "Creamos un diseño único para tu negocio, nada de plantillas. Te enviamos el prototipo para que lo veas antes de construir. Tienes 3 días hábiles para revisarlo y pedirnos ajustes.",
+      "Te entregamos tu web terminada con un diseño único para tu negocio, nada de plantillas. Tienes 3 días hábiles para probarla y decirnos qué ajustes deseas.",
     tags: ["Prototipo", "Diseño único", "Revisiones"],
     tagIcons: [Eye, PaintBrush, Check],
   },
@@ -133,9 +133,9 @@ function FloatingCards2() {
         </div>
       </div>
       <div className="absolute top-[160px] left-[140px] z-20 w-[220px] bg-white rounded-2xl p-4 border border-gray-100" style={{ boxShadow: "0 24px 15px rgba(0,0,0,0.05)" }}>
-        <span className="text-sm font-semibold text-black">Revisiones</span>
+        <span className="text-sm font-semibold text-black">Tu periodo de prueba</span>
         <div className="flex flex-col gap-1 mt-2">
-          {["3 días para revisar", "Feedback incluido", "Ajustes sin costo"].map((t) => (
+          {["3 días hábiles", "Pruébala en vivo", "Ajustes incluidos"].map((t) => (
             <div key={t} className="flex items-center gap-2">
               <Check size={16} weight="bold" className="text-primary" />
               <span className="text-[11px] text-black/70">{t}</span>
