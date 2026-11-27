@@ -453,7 +453,11 @@ export default function Sectores() {
                   <div
                     key={`${sector.title}-${i}`}
                     ref={(el) => {
-                      if (el) cardsRef.current[i] = el;
+                      if (el) {
+                        cardsRef.current[i] = el;
+                        // Render cards as soon as refs are assigned
+                        if (i === 0) requestAnimationFrame(() => renderCards());
+                      }
                     }}
                     className="absolute will-change-transform"
                     style={{
