@@ -66,6 +66,13 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://ventadepaginas.vercel.app",
+    languages: {
+      "es-DO": "https://ventadepaginas.vercel.app",
+      "es-PA": "https://ventadepaginas.vercel.app",
+      "es-CR": "https://ventadepaginas.vercel.app",
+      "es": "https://ventadepaginas.vercel.app",
+      "x-default": "https://ventadepaginas.vercel.app",
+    },
   },
 };
 

@@ -23,7 +23,7 @@ const contrasts = [
   },
   {
     them: "Te cobran CRM aparte: $100 a $300 al mes",
-    us: "CRM incluido y conectado a tu WhatsApp",
+    us: "CRM incluido con alertas a tu correo",
     diy: "Plugins que se rompen con cada actualización",
   },
   {

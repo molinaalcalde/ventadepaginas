@@ -5,6 +5,7 @@ import {
   DeviceMobile,
   MagnifyingGlass,
   WhatsappLogo,
+  EnvelopeSimple,
   AddressBook,
   ShieldCheck,
   Headset,
@@ -119,7 +120,7 @@ export default function Features() {
                   initials="CR"
                   initialsColor="bg-coral"
                   name="Carlos Rodríguez"
-                  status="Alerta WhatsApp"
+                  status="Alerta Email"
                   statusColor="text-emerald-600 bg-emerald-50"
                   time="Hace 5 min"
                 />
@@ -161,9 +162,9 @@ export default function Features() {
             </p>
             <ul className="space-y-5">
               <FeatureItem
-                icon={<WhatsappLogo weight="bold" className="w-5 h-5" />}
-                title="Alertas por WhatsApp"
-                description="Cada nuevo contacto te avisa al instante en tu celular."
+                icon={<EnvelopeSimple weight="bold" className="w-5 h-5" />}
+                title="Alertas por correo"
+                description="Cada nuevo contacto te llega directo a tu email al instante."
               />
               <FeatureItem
                 icon={<AddressBook weight="bold" className="w-5 h-5" />}

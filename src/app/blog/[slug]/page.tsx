@@ -46,23 +46,61 @@ export async function generateMetadata({
   };
 }
 
-// --- BlogPosting JSON-LD ---
+// --- BlogPosting + BreadcrumbList JSON-LD ---
 function BlogPostJsonLd({ post }: { post: { title: string; excerpt: string; date: string; slug: string; author: string } }) {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.date,
-    author: {
-      "@type": "Organization",
-      name: "KINETIC Cloud & Web",
-    },
-    publisher: {
-      "@id": `${baseUrl}/#business`,
-    },
-    url: `${baseUrl}/blog/${post.slug}`,
-    inLanguage: "es",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        datePublished: post.date,
+        dateModified: post.date,
+        author: {
+          "@type": "Person",
+          name: "Alejandro Molina",
+          jobTitle: "Fundador de KINETIC Cloud & Web",
+          url: "https://www.linkedin.com/company/kineticweb",
+          worksFor: {
+            "@id": `${baseUrl}/#organization`,
+          },
+        },
+        publisher: {
+          "@id": `${baseUrl}/#organization`,
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${baseUrl}/blog/${post.slug}`,
+        },
+        url: `${baseUrl}/blog/${post.slug}`,
+        image: `${baseUrl}/blog/${post.slug}/opengraph-image`,
+        inLanguage: "es",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio",
+            item: baseUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: `${baseUrl}/blog`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: post.title,
+            item: `${baseUrl}/blog/${post.slug}`,
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -156,6 +194,20 @@ export default async function BlogPostPage({
                 "
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
+
+              {/* Author bio — E-E-A-T signal */}
+              <div className="mt-12 pt-8 border-t border-border-subtle flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg shrink-0">
+                  AM
+                </div>
+                <div>
+                  <p className="font-bold text-navy-deep text-sm">Alejandro Molina</p>
+                  <p className="text-slate-light text-sm">Fundador de KINETIC Cloud & Web</p>
+                  <p className="text-slate-text text-sm mt-1 leading-relaxed">
+                    Especialista en diseño web y soluciones digitales para pymes en el Caribe. Ayuda a negocios en República Dominicana, Panamá y Costa Rica a crecer con presencia web profesional y herramientas de gestión de clientes.
+                  </p>
+                </div>
+              </div>
             </article>
 
             {/* Sticky Sidebar TOC */}

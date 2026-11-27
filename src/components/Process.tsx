@@ -36,7 +36,7 @@ const steps = [
     icon: PaintBrush,
     title: "Diseñamos tu web",
     description:
-      "Te mostramos tu web antes de construirla. La cambiamos hasta que digas 'wow'. Diseño único para tu negocio, nada de plantillas recicladas.",
+      "Creamos un diseño único para tu negocio, nada de plantillas. Te enviamos el prototipo para que lo veas antes de construir. Tienes 3 días hábiles para revisarlo y pedirnos ajustes.",
     tags: ["Prototipo", "Diseño único", "Revisiones"],
     tagIcons: [Eye, PaintBrush, Check],
   },
@@ -46,7 +46,7 @@ const steps = [
     icon: Plugs,
     title: "Construimos y conectamos",
     description:
-      "Montamos todo: web, gestor de clientes y WhatsApp conectado. Tú no tocas nada técnico. Formularios inteligentes que capturan clientes automáticamente.",
+      "Montamos todo: web, gestor de clientes y notificaciones por correo. Tú no tocas nada técnico. Formularios inteligentes que capturan clientes automáticamente.",
     tags: ["CRM", "WhatsApp", "Formularios"],
     tagIcons: [AddressBook, WhatsappLogo, Users],
   },
@@ -135,7 +135,7 @@ function FloatingCards2() {
       <div className="absolute top-[160px] left-[140px] z-20 w-[220px] bg-white rounded-2xl p-4 border border-gray-100" style={{ boxShadow: "0 24px 15px rgba(0,0,0,0.05)" }}>
         <span className="text-sm font-semibold text-black">Revisiones</span>
         <div className="flex flex-col gap-1 mt-2">
-          {["Diseño aprobado", "Colores definidos", "Contenido listo"].map((t) => (
+          {["3 días para revisar", "Feedback incluido", "Ajustes sin costo"].map((t) => (
             <div key={t} className="flex items-center gap-2">
               <Check size={16} weight="bold" className="text-primary" />
               <span className="text-[11px] text-black/70">{t}</span>
@@ -152,7 +152,7 @@ function FloatingCards3() {
     <div className="relative w-[380px] h-[300px]" style={{ transform: "scale(0.85)" }}>
       {[
         { label: "Sitio web", sub: "Responsive", color: "primary", top: 0, left: 0 },
-        { label: "WhatsApp", sub: "Conectado", color: "[#25D366]", top: 55, left: 170 },
+        { label: "Email", sub: "Conectado", color: "[#25D366]", top: 55, left: 170 },
         { label: "CRM", sub: "Integrado", color: "coral", top: 165, left: 40 },
       ].map((item) => (
         <div key={item.label} className="absolute z-10 w-[210px] bg-white rounded-2xl p-4 border border-gray-100" style={{ top: item.top, left: item.left, boxShadow: "0 24px 15px rgba(0,0,0,0.05)" }}>
