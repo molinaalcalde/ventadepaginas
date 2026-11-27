@@ -188,13 +188,10 @@ export default function Sectores() {
     setDims(getCardDims(window.innerWidth));
     forceUpdate((n) => n + 1);
 
-    // Render cards immediately so they're visible before IntersectionObserver fires
-    requestAnimationFrame(() => renderCards());
-
     const onResize = () => setDims(getCardDims(window.innerWidth));
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [renderCards]);
+  }, []);
 
   /* ── Render arc positions ── */
   const renderCards = useCallback(() => {
@@ -367,6 +364,7 @@ export default function Sectores() {
     const stage = stageRef.current;
     if (!stage || !totalCards.current) return;
 
+    // Render immediately so cards are visible before IntersectionObserver fires
     renderCards();
 
     stage.addEventListener("pointerdown", onPointerDown);
