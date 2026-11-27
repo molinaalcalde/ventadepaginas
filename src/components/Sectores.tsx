@@ -188,10 +188,13 @@ export default function Sectores() {
     setDims(getCardDims(window.innerWidth));
     forceUpdate((n) => n + 1);
 
+    // Render cards immediately so they're visible before IntersectionObserver fires
+    requestAnimationFrame(() => renderCards());
+
     const onResize = () => setDims(getCardDims(window.innerWidth));
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [renderCards]);
 
   /* ── Render arc positions ── */
   const renderCards = useCallback(() => {
