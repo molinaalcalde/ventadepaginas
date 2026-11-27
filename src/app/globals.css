@@ -101,19 +101,19 @@ html.lenis, html.lenis body {
 
 /* ── Marquee infinite scroll ── */
 @keyframes marquee-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-25%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 @keyframes marquee-right {
-  0% { transform: translateX(-25%); }
-  100% { transform: translateX(0); }
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 .animate-marquee-left {
-  animation: marquee-left 10s linear infinite;
+  animation: marquee-left 8s linear infinite;
   will-change: transform;
 }
 .animate-marquee-right {
-  animation: marquee-right 9s linear infinite;
+  animation: marquee-right 7.2s linear infinite;
   will-change: transform;
 }
 
