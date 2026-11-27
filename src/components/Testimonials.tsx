@@ -53,9 +53,7 @@ function MobileTestimonialCard({ t, i }: { t: (typeof testimonials)[0]; i: numbe
     <div
       className="rounded-2xl overflow-hidden border border-border-subtle h-full flex flex-col"
       style={{
-        background: i % 2 === 0
-          ? "linear-gradient(135deg, #E8F5F3 0%, #FFFFFF 60%, #FEF0ED 100%)"
-          : "linear-gradient(135deg, #FEF0ED 0%, #FFFFFF 60%, #E8F5F3 100%)",
+        background: "linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 50%, #F5F5F4 100%)",
         boxShadow: "0 4px 24px rgba(26,26,46,0.08), 0 1px 3px rgba(0,0,0,0.04)",
       }}
     >
@@ -71,9 +69,7 @@ function MobileTestimonialCard({ t, i }: { t: (typeof testimonials)[0]; i: numbe
           style={{
             width: "72px",
             height: "72px",
-            background: i % 2 === 0
-              ? "linear-gradient(135deg, #0F766E, #0D6560)"
-              : "linear-gradient(135deg, #E8422A, #C1341F)",
+            background: "linear-gradient(135deg, #0F766E, #0D6560)",
           }}
         >
           <span className="text-2xl font-bold text-white">{t.initials}</span>
@@ -308,9 +304,7 @@ function DesktopTestimonials() {
             style={{
               transformOrigin: "50% 0",
               backfaceVisibility: "hidden",
-              background: i % 2 === 0
-                ? "linear-gradient(135deg, #E8F5F3 0%, #FFFFFF 60%, #FEF0ED 100%)"
-                : "linear-gradient(135deg, #FEF0ED 0%, #FFFFFF 60%, #E8F5F3 100%)",
+              background: "linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 50%, #F5F5F4 100%)",
               boxShadow: "0 -4px 30px rgba(26,26,46,0.06), 0 1px 3px rgba(0,0,0,0.04)",
             }}
           >
@@ -326,9 +320,7 @@ function DesktopTestimonials() {
                   <div
                     className="w-24 h-24 rounded-full flex items-center justify-center"
                     style={{
-                      background: i % 2 === 0
-                        ? "linear-gradient(135deg, #0F766E, #0D6560)"
-                        : "linear-gradient(135deg, #E8422A, #C1341F)",
+                      background: "linear-gradient(135deg, #0F766E, #0D6560)",
                     }}
                   >
                     <span className="text-3xl font-bold text-white">
